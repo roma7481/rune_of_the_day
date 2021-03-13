@@ -1,0 +1,105 @@
+/// uncomment and override this file to test the flutter_funding_choices
+/// then use it as the dependency instead of import 'package:flutter_funding_choices/flutter_funding_choices.dart';
+
+// import 'dart:async';
+//
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+//
+// /// The main plugin class.
+// class FlutterFundingChoices {
+//   /// The method channel.
+//   static const MethodChannel _channel =
+//   const MethodChannel('flutter_funding_choices');
+//
+//   /// Allows to get the current consent information.
+//   ///
+//   /// [tagForUnderAgeOfConsent] Whether to tag for under age of consent.
+//   /// [testDevicesHashedIds] Provide test devices id in order to force geography to the EEA.
+//   static Future<ConsentInformation> requestConsentInformation({
+//     bool tagForUnderAgeOfConsent = false,
+//     List<String> testDevicesHashedIds = const <String>['1ACA8035-3410-4473-92D8-D93057B4C2E8']
+//     // List<String> testDevicesHashedIds = const <String>[],
+//   }) async {
+//     Map<String, dynamic> result = Map<String, dynamic>.from(
+//       (await _channel.invokeMethod(
+//         'requestConsentInformation',
+//         {
+//           'tagForUnderAgeOfConsent': tagForUnderAgeOfConsent,
+//           'testDevicesHashedIds': testDevicesHashedIds
+//         },
+//       )) ?? // If null default to unknown.
+//           {
+//             "consentStatus": ConsentStatus.UNKNOWN,
+//             "consentType": ConsentType.UNKNOWN,
+//             "isConsentFormAvailable": false,
+//           },
+//     );
+//     return ConsentInformation(
+//       consentStatus: result['consentStatus'],
+//       consentType: result['consentType'],
+//       isConsentFormAvailable: result['isConsentFormAvailable'],
+//     );
+//   }
+//
+//   /// Shows the consent form.
+//   static Future<bool> showConsentForm() async =>
+//       (await _channel.invokeMethod('showConsentForm')) ?? false;
+//
+//   /// Resets the user consent information.
+//   /// Must be requested using [requestConsentInformation] before.
+//   static Future<bool> reset() async =>
+//       (await _channel.invokeMethod('reset')) ?? false;
+// }
+//
+// /// Contains all possible information about user consent state.
+// class ConsentInformation {
+//   /// The consent status. See [ConsentStatus].
+//   final int consentStatus;
+//
+//   /// The consent type. See [ConsentType].
+//   final int consentType;
+//
+//   /// Whether a consent form is available to show.
+//   final bool isConsentFormAvailable;
+//
+//   /// Creates a new consent information instance.
+//   const ConsentInformation({
+//     @required this.consentStatus,
+//     @required this.consentType,
+//     @required this.isConsentFormAvailable,
+//   });
+// }
+//
+// /// Contains all possible consent status.
+// class ConsentStatus {
+//   /// Consent status is unknown.
+//   static const int UNKNOWN = 0;
+//
+//   /// Consent is not required for this user (Android).
+//   static const int NOT_REQUIRED_ANDROID = 1;
+//
+//   /// Consent is required for this user (Android).
+//   static const int REQUIRED_ANDROID = 2;
+//
+//   /// Consent is not required for this user (iOS).
+//   static const int NOT_REQUIRED_IOS = 2;
+//
+//   /// Consent is required for this user (iOS).
+//   static const int REQUIRED_IOS = 1;
+//
+//   /// Consent has been obtained for this user.
+//   static const int OBTAINED = 3;
+// }
+//
+// /// Contains all possible consent type.
+// class ConsentType {
+//   /// Unknown consent type.
+//   static const int UNKNOWN = 0;
+//
+//   /// The user doesn't want personalized ads.
+//   static const int NON_PERSONALIZED = 1;
+//
+//   /// The user wants personalized ads.
+//   static const int PERSONALIZED = 2;
+// }
