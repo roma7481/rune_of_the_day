@@ -95,7 +95,7 @@ flutter:
   assets:
     - assets/svg_icons/
     - assets/database/tarot_cards_ver16.db
-    - assets/background/app_bg.jpg
+    - assets/background/app_bg.png
     - assets/images/
     - assets/
 

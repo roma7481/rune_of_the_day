@@ -26,7 +26,7 @@ const backButtonIcon = 'assets/svg_icons/back.svg';
 
 // PNG / JPG
 
-const background = 'assets/background/app_bg.jpg';
+const background = 'assets/background/app_bg.png';
 const cardBack = 'assets/images/card_back.png';
 
 const aceofcups = 'assets/images/aceofcups.png';
