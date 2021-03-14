@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>335367644035-h2cs65qbd9ho0bioijts48957c3ubtnc.apps.googleusercontent.com</string>
+	<string>335367644035-1ht95tro17esa9s97n8svf201hr3nnts.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.335367644035-h2cs65qbd9ho0bioijts48957c3ubtnc</string>
+	<string>com.googleusercontent.apps.335367644035-1ht95tro17esa9s97n8svf201hr3nnts</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>335367644035-go2fo21ssb7c3j05395p9cklogpjcbkh.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.cbeeapps.runeOfTheDay</string>
+	<string>ru.dailymistika.runeOfTheDay</string>
 	<key>PROJECT_ID</key>
 	<string>runeoftheday-70767</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:335367644035:ios:a377e4662c1620d58d8cb6</string>
+	<string>1:335367644035:ios:74e64ac2a6f971ad8d8cb6</string>
 	<key>DATABASE_URL</key>
 	<string>https://runeoftheday-70767.firebaseio.com</string>
 </dict>
