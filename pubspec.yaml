@@ -54,13 +54,19 @@ dependencies:
   nuts_activity_indicator: ^0.1.1
   firebase_crashlytics: ^1.0.0
   flutter_funding_choices: ^0.2.0
+  flutter_launcher_icons: ^0.9.0
+
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/app_icon/app_icon.png"
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   floor_generator: ^0.19.1
   build_runner: ^1.10.3
-
 
 dependency_overrides:
   dartx: ^0.6.0
@@ -87,10 +93,7 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - assets/svg_icons/
-    - assets/database/tarot_cards_ver16.db
-    - assets/background/app_bg.jpg
-    - assets/images/
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
