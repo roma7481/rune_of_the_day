@@ -106,14 +106,14 @@ class MainPageBloc {
     int runeId = 1 + _random.nextInt(25);
 
     bool isFlipped = false;
-    if(flippedRunesIds.contains(runeId)){
+    if (flippedRunesIds.contains(runeId)) {
       isFlipped = _random.nextBool();
     }
 
     await _sharedPref.storeValue(
-        key: dateService.getCurrentDate(), value: runeId);
+        key: dateService.getCurrentDate(), value1: runeId, value2: isFlipped);
 
-    TarotCard card = await TarotCard.getCardById(runeId,isFlipped);
+    TarotCard card = await TarotCard.getCardById(runeId, isFlipped);
     String date = dateService.getCurrentDate();
     bool isForwardEnabled = _isForwardEnabled(date);
     bool isBackEnabled = _isBackEnabled(isCardOpen: true, date: date);
@@ -154,11 +154,13 @@ class MainPageBloc {
   void onInitCard() async {
     await _sharedPref.initKeys();
     var date = dateService.getCurrentDate();
-    final int cardId = await _sharedPref.getValue(date);
+    final Map<int, bool> cardIdToIsFlipped = await _sharedPref.getValue(date);
+    var cardId = cardIdToIsFlipped.keys.first;
+    var isFlipped = cardIdToIsFlipped.values.first;
 
     if (cardId != null) {
       try {
-        TarotCard card = await TarotCard.getCardById(cardId);
+        TarotCard card = await TarotCard.getCardById(cardId, isFlipped);
         bool isForwardEnabled = _isForwardEnabled(date);
         bool isBackEnabled = _isBackEnabled(isCardOpen: true, date: date);
         Note note = await _getLastNoteForCard(cardId);
@@ -181,14 +183,15 @@ class MainPageBloc {
   }
 
   void onBackPressed() async {
-    var headerToCardId = _model.cardType == CardType.open
+    var headerToCardIdAndFlipped = _model.cardType == CardType.open
         ? await _sharedPref.getPrevKeyValue()
         : await _sharedPref.getPrevKeyValueForClosedCard();
 
-    var date = headerToCardId[0].toString();
-    var cardId = headerToCardId[1];
+    var date = headerToCardIdAndFlipped[0].toString();
+    var cardId = headerToCardIdAndFlipped[1];
+    var isFlipped = headerToCardIdAndFlipped[2];
 
-    TarotCard card = await TarotCard.getCardById(cardId);
+    TarotCard card = await TarotCard.getCardById(cardId, isFlipped);
     Note note = await _getLastNoteForCard(cardId);
 
     bool isForwardEnabled = _isForwardEnabled(date);
@@ -203,9 +206,10 @@ class MainPageBloc {
   }
 
   void onForwardPressed() async {
-    List headerToCardId = await _sharedPref.getNextKeyValue();
-    String date = headerToCardId[0];
-    var cardId = headerToCardId[1];
+    List headerToCardIdAndFlipped = await _sharedPref.getNextKeyValue();
+    String date = headerToCardIdAndFlipped[0];
+    var cardId = headerToCardIdAndFlipped[1];
+    var isFlipped = headerToCardIdAndFlipped[2];
 
     if (cardId == null) {
       bool isBackEnabled = _isBackEnabled(isCardOpen: false, date: date);
@@ -214,7 +218,7 @@ class MainPageBloc {
       return;
     }
 
-    TarotCard card = await TarotCard.getCardById(cardId);
+    TarotCard card = await TarotCard.getCardById(cardId, isFlipped);
     Note note = await _getLastNoteForCard(cardId);
     bool isForwardEnabled = _isForwardEnabled(date);
     bool isBackEnabled = _isBackEnabled(isCardOpen: true, date: date);
