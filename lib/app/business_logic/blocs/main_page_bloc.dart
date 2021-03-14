@@ -102,7 +102,7 @@ class MainPageBloc {
       return null;
     }
     final Random _random = new Random();
-    int cardId = 1 + _random.nextInt(78);
+    int cardId = 1 + _random.nextInt(25);
 
     await _sharedPref.storeValue(
         key: dateService.getCurrentDate(), value: cardId);

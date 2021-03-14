@@ -2,6 +2,7 @@
     package="com.cbeeapps.rune_of_the_day">
    <application
         android:label="rune_of_the_day"
+        android:name="io.flutter.app.FlutterApplication"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
@@ -37,5 +38,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <meta-data
+           android:name="com.google.android.gms.ads.APPLICATION_ID"
+           android:value="ca-app-pub-1763151471947181~6122987194" />
     </application>
 </manifest>

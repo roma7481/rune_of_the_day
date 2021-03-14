@@ -6,12 +6,9 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
-  static final _dbName = 'tarot_cards_ver16.db';
+  static final _dbName = 'runes_db1.db';
   static final _assets = 'assets';
   static final _subPackage = 'database';
-
-  static final columnId = '_id';
-  static final columnName = 'name';
 
   //defining DB as singleton
   DatabaseHelper._privateConstructor();

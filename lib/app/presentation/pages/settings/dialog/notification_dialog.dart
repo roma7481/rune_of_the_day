@@ -12,7 +12,6 @@ import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/constants/styles/constants.dart';
 import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 import 'package:rune_of_the_day/app/localization/language/language_en.dart';
-import 'package:rune_of_the_day/app/localization/language/language_ja.dart';
 import 'package:rune_of_the_day/app/localization/language/languages.dart';
 import 'package:rune_of_the_day/app/services/date_serivce.dart';
 import 'package:rune_of_the_day/main.dart';
@@ -269,10 +268,6 @@ class _NotificationDialogState extends State<NotificationDialog> {
     var language = globals.Globals.instance.getLanguage();
     var dateService = DateService();
     var formattedDateTime = dateService.formatDateTime(DateTime.now());
-
-    if (language is LanguageJa) {
-      return formattedDateTime + ' ' + language.choseCardForDate;
-    }
     return language.choseCardForDate + formattedDateTime;
   }
 }
