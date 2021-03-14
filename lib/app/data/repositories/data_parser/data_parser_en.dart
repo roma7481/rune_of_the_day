@@ -14,13 +14,15 @@ class DataParserEn extends DataParser {
   @override
   CardCategory getCardDescription(Map<String, dynamic> row, bool isFlipped) {
     var columnName = 'rune_of_the_day';
+    var header = 'Rune of the day';
 
     if (isFlipped != null && isFlipped) {
       columnName = 'rune_of_the_day_upright';
+      header = 'Rune of the day (Reversed)';
     }
 
     return CardCategory(
-      header: 'Rune of the day',
+      header: header,
       description: row[columnName],
       icon: starIcon,
     );
@@ -48,7 +50,7 @@ class DataParserEn extends DataParser {
     bool canBeInverted,
   ) {
     if (isFlipped == null) {
-      if(canBeInverted != null && canBeInverted){
+      if (canBeInverted != null && canBeInverted) {
         return _getCategories(row) + _getFlippedCategories(row);
       }
       return _getCategories(row);

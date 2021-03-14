@@ -12,12 +12,18 @@ class DataParserRu extends DataParser {
   @override
   CardCategory getCardDescription(Map<String, dynamic> row, [bool isFlipped]) {
     var columnName = 'meaning';
+    var header = 'Руна дня';
+
     if (isFlipped != null && isFlipped) {
       columnName = 'meaning_upright';
+      header = 'Руна дня (Перёвернутая)';
     }
 
     return CardCategory(
-        header: 'Руна дня', description: row[columnName], icon: starIcon);
+      header: header,
+      description: row[columnName],
+      icon: starIcon,
+    );
   }
 
   @override
@@ -42,7 +48,7 @@ class DataParserRu extends DataParser {
     bool canBeInverted,
   ) {
     if (isFlipped == null) {
-      if(canBeInverted != null && canBeInverted){
+      if (canBeInverted != null && canBeInverted) {
         return _getCategories(row) + _getFlippedCategories(row);
       }
       return _getCategories(row);
