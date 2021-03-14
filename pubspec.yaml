@@ -93,6 +93,10 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+    - assets/svg_icons/
+    - assets/database/tarot_cards_ver16.db
+    - assets/background/app_bg.jpg
+    - assets/images/
     - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see

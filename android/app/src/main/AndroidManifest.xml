@@ -2,7 +2,7 @@
     package="com.cbeeapps.rune_of_the_day">
    <application
         android:label="rune_of_the_day"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
