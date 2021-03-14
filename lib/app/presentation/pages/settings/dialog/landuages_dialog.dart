@@ -28,11 +28,6 @@ class _LanguageDialogState extends State<LanguageDialog> {
   static Map<int, LanguageItem> allButtons = {
     0: LanguageItem(en, english),
     1: LanguageItem(ru, russian),
-    2: LanguageItem(es, spanish),
-    3: LanguageItem(pt, portuguese),
-    4: LanguageItem(it, italian),
-    5: LanguageItem(de, german),
-    6: LanguageItem(ja, japanese),
   };
 
   @override

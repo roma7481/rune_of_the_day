@@ -12,16 +12,16 @@ class CardCategory {
   final String description;
   final String icon;
 
-  static List<CardCategory> getCategories(Map<String, dynamic> row) {
-    return globals.Globals.instance.getDataParser().getCategories(row);
+  static List<CardCategory> getCategories(Map<String, dynamic> row, [bool isFlipped, bool canBeInverted]) {
+    return globals.Globals.instance.getDataParser().getCategories(row, isFlipped, canBeInverted);
   }
 
-  static CardCategory getCardDescription(Map<String, dynamic> row) {
-    return globals.Globals.instance.getDataParser().getCardDescription(row);
+  static CardCategory getCardDescription(Map<String, dynamic> row, [bool isFlipped]) {
+    return globals.Globals.instance.getDataParser().getCardDescription(row, isFlipped);
   }
 
-  static String getCardName(Map<String, dynamic> row) {
-    return globals.Globals.instance.getDataParser().getCardName(row);
+  static String getCardName(Map<String, dynamic> row, [bool isFlipped]) {
+    return globals.Globals.instance.getDataParser().getCardName(row, isFlipped);
   }
 
   static int getCardId(Map<String, dynamic> row) {

@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:rune_of_the_day/app/constants/enums/enums.dart';
+import 'package:rune_of_the_day/app/constants/flipped/flipped_runes.dart';
 import 'package:rune_of_the_day/app/data/models/note.dart';
 import 'package:rune_of_the_day/app/data/repositories/floor_database.dart';
 import 'package:rune_of_the_day/app/services/date_serivce.dart';
@@ -102,16 +103,21 @@ class MainPageBloc {
       return null;
     }
     final Random _random = new Random();
-    int cardId = 1 + _random.nextInt(25);
+    int runeId = 1 + _random.nextInt(25);
+
+    bool isFlipped = false;
+    if(flippedRunesIds.contains(runeId)){
+      isFlipped = _random.nextBool();
+    }
 
     await _sharedPref.storeValue(
-        key: dateService.getCurrentDate(), value: cardId);
+        key: dateService.getCurrentDate(), value: runeId);
 
-    TarotCard card = await TarotCard.getCardById(cardId);
+    TarotCard card = await TarotCard.getCardById(runeId,isFlipped);
     String date = dateService.getCurrentDate();
     bool isForwardEnabled = _isForwardEnabled(date);
     bool isBackEnabled = _isBackEnabled(isCardOpen: true, date: date);
-    Note note = await _getLastNoteForCard(cardId);
+    Note note = await _getLastNoteForCard(runeId);
 
     _setSelectedCard(
       card: card,
