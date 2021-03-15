@@ -250,7 +250,7 @@ class _JournalPageState extends State<JournalPage> {
           child: CustomCard(
             child: Row(
               children: [
-                _buildCardImage(card.image),
+                _buildCardImage(card.image, false),
                 Flexible(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -287,11 +287,14 @@ class _JournalPageState extends State<JournalPage> {
       (context, index) {
         var noteToCard = notesToCards.entries.toList()[index];
         var note = noteToCard.key;
+        var isFlippedSuffix = note.isFlipped
+            ? globals.Globals.instance.getLanguage().isFlipped
+            : '';
         var card = noteToCard.value;
         return CustomCard(
           child: Row(
             children: [
-              _buildCardImage(note.cardImage),
+              _buildCardImage(note.cardImage, note.isFlipped),
               Flexible(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -313,7 +316,7 @@ class _JournalPageState extends State<JournalPage> {
                                 buildEdit(
                                   context,
                                   note,
-                                  card.name,
+                                  card.name + isFlippedSuffix,
                                   _navigateToEditNote,
                                 ),
                                 buildDelete(note),
@@ -411,7 +414,17 @@ class _JournalPageState extends State<JournalPage> {
     );
   }
 
-  Widget _buildCardImage(String image) {
+  Widget _buildCardImage(String image, bool isFlipped) {
+    if (isFlipped) {
+      return new RotationTransition(
+        turns: new AlwaysStoppedAnimation(180 / 360),
+        child: CardImageWidget(
+          imagePath: image,
+          imageSizeRatio: 0.10,
+        ),
+      );
+    }
+
     return CardImageWidget(
       imagePath: image,
       imageSizeRatio: 0.10,

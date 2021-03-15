@@ -157,11 +157,16 @@ class _AddNotePageState extends State<AddNotePage> {
   }
 
   Future<void> insertNote() async {
+    String notePrefix = widget.card.isFlipped
+        ? globals.Globals.instance.getLanguage().isFlipped
+        : '';
+
     Note note = Note(
         cardImage: widget.card.image,
         cardId: widget.card.id,
         date: dateService.formatDateTime(_selectedDate),
-        note: formController.text,
+        note: notePrefix + formController.text,
+        isFlipped: widget.card.isFlipped,
         timeSaved: _selectedDate.millisecondsSinceEpoch);
     await AppDatabase.insertNote(note);
     widget.bloc.onAddNote(note);

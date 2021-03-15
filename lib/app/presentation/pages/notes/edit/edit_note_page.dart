@@ -173,6 +173,7 @@ class _EditNotePageState extends State<EditNotePage> {
       cardImage: widget.cardImage,
       noteId: widget.note.noteId,
       cardId: widget.note.cardId,
+      isFlipped: widget.note.isFlipped,
       date: dateService.formatDateTime(_selectedDate),
       note: formController.text,
       timeSaved: widget.note.timeSaved,

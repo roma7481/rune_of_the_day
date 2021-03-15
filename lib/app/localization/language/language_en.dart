@@ -195,4 +195,7 @@ class LanguageEn extends Languages {
 
   @override
   String get consent => 'Consent';
+
+  @override
+  String get isFlipped => ' (Reversed) ';
 }

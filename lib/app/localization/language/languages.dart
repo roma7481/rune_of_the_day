@@ -129,5 +129,5 @@ abstract class Languages {
 
   String get consent;
 
-
+  String get isFlipped;
 }
