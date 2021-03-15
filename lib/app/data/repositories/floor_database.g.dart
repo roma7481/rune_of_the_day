@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../../repositories/floor_database.dart';
+part of 'floor_database.dart';
 
 // **************************************************************************
 // FloorGenerator
@@ -80,7 +80,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Note` (`noteId` INTEGER PRIMARY KEY AUTOINCREMENT, `cardId` INTEGER, `cardImage` TEXT, `cardName` TEXT, `date` TEXT, `note` TEXT, `timeSaved` INTEGER)');
+            'CREATE TABLE IF NOT EXISTS `Note` (`noteId` INTEGER PRIMARY KEY AUTOINCREMENT, `cardId` INTEGER, `cardImage` TEXT, `date` TEXT, `note` TEXT, `timeSaved` INTEGER, `isFlipped` INTEGER)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -106,7 +106,9 @@ class _$NoteDao extends NoteDao {
                   'cardImage': item.cardImage,
                   'date': item.date,
                   'note': item.note,
-                  'timeSaved': item.timeSaved
+                  'timeSaved': item.timeSaved,
+                  'isFlipped':
+                      item.isFlipped == null ? null : (item.isFlipped ? 1 : 0)
                 }),
         _noteUpdateAdapter = UpdateAdapter(
             database,
@@ -118,7 +120,9 @@ class _$NoteDao extends NoteDao {
                   'cardImage': item.cardImage,
                   'date': item.date,
                   'note': item.note,
-                  'timeSaved': item.timeSaved
+                  'timeSaved': item.timeSaved,
+                  'isFlipped':
+                      item.isFlipped == null ? null : (item.isFlipped ? 1 : 0)
                 }),
         _noteDeletionAdapter = DeletionAdapter(
             database,
@@ -130,7 +134,9 @@ class _$NoteDao extends NoteDao {
                   'cardImage': item.cardImage,
                   'date': item.date,
                   'note': item.note,
-                  'timeSaved': item.timeSaved
+                  'timeSaved': item.timeSaved,
+                  'isFlipped':
+                      item.isFlipped == null ? null : (item.isFlipped ? 1 : 0)
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -154,7 +160,10 @@ class _$NoteDao extends NoteDao {
             cardImage: row['cardImage'] as String,
             date: row['date'] as String,
             note: row['note'] as String,
-            timeSaved: row['timeSaved'] as int));
+            timeSaved: row['timeSaved'] as int,
+            isFlipped: row['isFlipped'] == null
+                ? null
+                : (row['isFlipped'] as int) != 0));
   }
 
   @override
@@ -168,7 +177,10 @@ class _$NoteDao extends NoteDao {
             cardImage: row['cardImage'] as String,
             date: row['date'] as String,
             note: row['note'] as String,
-            timeSaved: row['timeSaved'] as int));
+            timeSaved: row['timeSaved'] as int,
+            isFlipped: row['isFlipped'] == null
+                ? null
+                : (row['isFlipped'] as int) != 0));
   }
 
   @override
@@ -182,7 +194,10 @@ class _$NoteDao extends NoteDao {
             cardImage: row['cardImage'] as String,
             date: row['date'] as String,
             note: row['note'] as String,
-            timeSaved: row['timeSaved'] as int));
+            timeSaved: row['timeSaved'] as int,
+            isFlipped: row['isFlipped'] == null
+                ? null
+                : (row['isFlipped'] as int) != 0));
   }
 
   @override
@@ -194,7 +209,10 @@ class _$NoteDao extends NoteDao {
             cardImage: row['cardImage'] as String,
             date: row['date'] as String,
             note: row['note'] as String,
-            timeSaved: row['timeSaved'] as int));
+            timeSaved: row['timeSaved'] as int,
+            isFlipped: row['isFlipped'] == null
+                ? null
+                : (row['isFlipped'] as int) != 0));
   }
 
   @override
@@ -207,7 +225,10 @@ class _$NoteDao extends NoteDao {
             cardImage: row['cardImage'] as String,
             date: row['date'] as String,
             note: row['note'] as String,
-            timeSaved: row['timeSaved'] as int));
+            timeSaved: row['timeSaved'] as int,
+            isFlipped: row['isFlipped'] == null
+                ? null
+                : (row['isFlipped'] as int) != 0));
   }
 
   @override

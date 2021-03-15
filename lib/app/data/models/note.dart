@@ -11,6 +11,7 @@ class Note {
   final String date;
   final String note;
   final int timeSaved;
+  final bool isFlipped;
 
   const Note({
     this.noteId,
@@ -19,5 +20,6 @@ class Note {
     this.date = '',
     this.note = '',
     this.timeSaved,
+    this.isFlipped = false,
   });
 }

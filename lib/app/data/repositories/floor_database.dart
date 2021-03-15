@@ -10,7 +10,7 @@ import '../data_providers/floor/note_dao.dart';
 ///flutter packages pub run build_runner build
 /// or  flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
 /// the name of the part, should match the name of your database class
-part '../data_providers/floor/floor_database.g.dart'; // the generated code will be there
+part 'floor_database.g.dart'; // the generated code will be there
 
 @Database(version: 1, entities: [Note])
 abstract class AppDatabase extends FloorDatabase {
