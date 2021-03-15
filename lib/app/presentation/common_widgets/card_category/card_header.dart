@@ -23,10 +23,26 @@ class CardHeader extends StatelessWidget {
         maintainAnimation: true,
         maintainState: true,
         visible: isVisible,
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: cardHeaderTextStyle,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Wrap(
+              children: [ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Container(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                    child: Text(
+                      text,
+                      textAlign: TextAlign.center,
+                      style: cardHeaderTextStyle,
+                    ),
+                  ),
+                ),
+              )],
+            ),
+          ],
         ),
       ),
     ));
