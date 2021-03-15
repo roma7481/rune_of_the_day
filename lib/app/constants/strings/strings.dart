@@ -22,6 +22,7 @@ const String japanese = '日本語';
 
 const String somethingWentWrong = 'something went wrong try again later';
 const String telegramURL = 'https://t.me/dailymistika';
+const String tarotAppURL = 'https://apps.apple.com/us/app/tarot-card-of-the-day/id1556452544';
 const String websiteURL = 'https://dailymistika.ru';
 const String privacyPolicyURL = 'https://cbeeapps.wixsite.com/cardtarot';
 

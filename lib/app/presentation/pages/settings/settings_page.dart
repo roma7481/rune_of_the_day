@@ -4,13 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_funding_choices/flutter_funding_choices.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-import 'package:share/share.dart';
 import 'package:rune_of_the_day/app/business_logic/cubites/purchases/purchases_cubit.dart';
 import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
     as globals;
 import 'package:rune_of_the_day/app/constants/strings/strings.dart';
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/constants/styles/constants.dart';
+import 'package:rune_of_the_day/app/constants/styles/icons.dart';
 import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 import 'package:rune_of_the_day/app/localization/language/language_ru.dart';
 import 'package:rune_of_the_day/app/localization/language/languages.dart';
@@ -25,6 +25,7 @@ import 'package:rune_of_the_day/app/presentation/pages/settings/dialog/landuages
 import 'package:rune_of_the_day/app/presentation/pages/settings/dialog/notification_dialog.dart';
 import 'package:rune_of_the_day/app/presentation/pages/settings/dialog/text_size_dialog.dart';
 import 'package:rune_of_the_day/app/services/premium/premium_controller.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -65,10 +66,76 @@ class SettingsPage extends StatelessWidget {
       child: Column(
         children: [
           _buildFirstSetting1(language, context),
+          _buildMoreApps(language, context),
           _buildFirstSetting2(language, context),
         ],
       ),
     ));
+  }
+
+  _buildMoreApps(Languages language, BuildContext context) {
+    var customIcon = ClipRRect(
+      borderRadius: BorderRadius.circular(4.0),
+      child: Container(
+        height: 30,
+        child: Image.asset(tarotIcon),
+      ),
+    );
+
+    return Column(
+      children: [
+        Text(
+          globals.Globals.instance.getLanguage().moreApps,
+          style: moreAppsTextStyle,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 16.0),
+          child: Align(
+            //To make container wrap parent you can wrap it in align
+            alignment: Alignment.topCenter,
+            child: CustomCard(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 12.0, right: 12.0, top: 16.0, bottom: 16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildSettingWithIcon(
+                          () => _openLink(tarotAppURL),
+                          customIcon,
+                          language.tarotApp,
+                        ),
+                        _buildAd(),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  ClipRRect _buildAd() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(4.0),
+      child: Container(
+        color: datePickerItem,
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Text(
+            'Ad',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
+    );
   }
 
   Padding _buildFirstSetting1(Languages language, BuildContext context) {
@@ -188,7 +255,7 @@ class SettingsPage extends StatelessWidget {
                 return errorDialog();
               } else {
                 var shodShowConsent = snapshot.data;
-                if(!shodShowConsent){
+                if (!shodShowConsent) {
                   return Container();
                 }
                 return Column(
@@ -198,7 +265,7 @@ class SettingsPage extends StatelessWidget {
                       Icons.article,
                       language.consent,
                       context,
-                          () => _showConsent(),
+                      () => _showConsent(),
                     ),
                   ],
                 );
@@ -255,7 +322,7 @@ class SettingsPage extends StatelessWidget {
     return false;
   }
 
-  Future<void> _showConsent() async{
+  Future<void> _showConsent() async {
     await FlutterFundingChoices.showConsentForm();
   }
 
@@ -296,6 +363,14 @@ class SettingsPage extends StatelessWidget {
 
   Widget _buildSetting(
       IconData icon, String text, BuildContext context, Function onClick) {
+    var customIcon = Icon(
+      icon,
+      color: settingsIconColor,
+    );
+    return _buildSettingWithIcon(onClick, customIcon, text);
+  }
+
+  InkWell _buildSettingWithIcon(Function onClick, Widget icon, String text) {
     return InkWell(
       onTap: () {
         onClick();
@@ -304,10 +379,7 @@ class SettingsPage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-            child: Icon(
-              icon,
-              color: settingsIconColor,
-            ),
+            child: icon,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),

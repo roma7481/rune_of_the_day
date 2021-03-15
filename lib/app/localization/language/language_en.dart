@@ -199,4 +199,10 @@ class LanguageEn extends Languages {
 
   @override
   String get isFlipped => ' (Reversed) ';
+
+  @override
+  String get tarotApp => 'Tarot daily reading';
+
+  @override
+  String get moreApps => 'More apps';
 }

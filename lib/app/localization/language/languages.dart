@@ -130,4 +130,8 @@ abstract class Languages {
   String get consent;
 
   String get isFlipped;
+
+  String get tarotApp;
+
+  String get moreApps;
 }

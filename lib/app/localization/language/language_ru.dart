@@ -199,4 +199,10 @@ class LanguageRu extends Languages {
 
   @override
   String get isFlipped => ' (Перёвернутая) ';
+
+  @override
+  String get tarotApp => 'Таро карта дня';
+
+  @override
+  String get moreApps => 'Наши приложения';
 }
