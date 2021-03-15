@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Runner
+
+  Created by Roman Makarenko on 2021-03-15.
+  
+*/
+CFBundleDisplayName = "Runes Daily Reading";
+NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";

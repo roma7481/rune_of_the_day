@@ -32,7 +32,7 @@ const Color cardIconColour = Color.fromRGBO(99, 188, 255, 1);
 const Color appBarIconColour = Color.fromRGBO(99, 188, 255, 1);
 
 ///admob
-const Color callToAction = Color.fromRGBO(52, 152, 224, 1);
+const Color callToAction = Color.fromRGBO(255, 196, 87, 1);
 const Color bodyTextAdmob = Color.fromRGBO(227, 243, 255, 1);
 const Color adBackground = Color.fromRGBO(19, 6, 6, 0.75);
 const Color adColor = Color.fromRGBO(99, 188, 255, 1);

@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Runner
+
+  Created by Roman Makarenko on 2021-03-15.
+  
+*/
+CFBundleDisplayName = "Руна Дня";
+NSUserTrackingUsageDescription = "Этот идентификатор будет использоваться для показа вам персонализированной рекламы.";
