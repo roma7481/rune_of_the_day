@@ -38,7 +38,7 @@ class LanguageRu extends Languages {
   String get enterNoteText => 'Внесите заметку ... ';
 
   @override
-  String get cardOfTheDay => 'Карта дня';
+  String get runeOfTheDay => 'Руна дня';
 
   @override
   String get copyToast => 'Скопировано';
@@ -47,23 +47,23 @@ class LanguageRu extends Languages {
   String get detailedDescription => 'Подробное описание';
 
   @override
-  String get tarotDeck => 'Колода Таро';
+  String get runeDeck => 'Колода Рун';
 
   @override
-  String get searchTarotDeck => 'Поиск';
+  String get searchRuneDeck => 'Поиск';
 
   @override
-  String get tarotCard => 'Карта Таро';
+  String get runeCard => 'Руна';
 
   @override
   String get notesHeader => 'Заметки';
 
   @override
-  String get selectCard =>
-      'Нажмите на колоду чтобы выбрать карту Таро на сегодня.';
+  String get selectRune =>
+      'Нажмите на колоду чтобы выбрать Руну на сегодня.';
 
   @override
-  String get appUrl => ' App "Tarot Magic" RU ';
+  String get appUrl => ' App "Rune Magic" RU ';
 
   @override
   String get errorMessageHeader => 'Nothing here RU ';
@@ -88,13 +88,13 @@ class LanguageRu extends Languages {
   String get lastNoteOn => 'Последняя заметка ';
 
   @override
-  String get notesForCard => 'Заметки для карты';
+  String get notesForRune => 'Заметки для руны';
 
   @override
   String get notesByDate => 'Заметки по дате';
 
   @override
-  String get notesByCard => 'Заметки по Карте';
+  String get notesByRune => 'Заметки по Руне';
 
   @override
   String get numberOfNotes => 'Количество заметок: ';
@@ -137,7 +137,7 @@ class LanguageRu extends Languages {
   String get rateUsHeader => 'Оцените приложение';
 
   @override
-  String get choseCardForDate => 'Выберите свою карту Таро на ';
+  String get choseRuneForDate => 'Выберите свою Руну на ';
 
   @override
   String get clickOnTheTimeToSet => 'Нажмите на время, чтобы установить';

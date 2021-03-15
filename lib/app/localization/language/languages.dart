@@ -27,21 +27,21 @@ abstract class Languages {
 
   String get enterNoteText;
 
-  String get cardOfTheDay;
+  String get runeOfTheDay;
 
   String get copyToast;
 
   String get detailedDescription;
 
-  String get tarotDeck;
+  String get runeDeck;
 
-  String get searchTarotDeck;
+  String get searchRuneDeck;
 
-  String get tarotCard;
+  String get runeCard;
 
   String get notesHeader;
 
-  String get selectCard;
+  String get selectRune;
 
   String get appUrl;
 
@@ -59,11 +59,11 @@ abstract class Languages {
 
   String get lastNoteOn;
 
-  String get notesForCard;
+  String get notesForRune;
 
   String get notesByDate;
 
-  String get notesByCard;
+  String get notesByRune;
 
   String get numberOfNotes;
 
@@ -89,7 +89,7 @@ abstract class Languages {
 
   String get no;
 
-  String get choseCardForDate;
+  String get choseRuneForDate;
 
   String get clickOnTheTimeToSet;
 

@@ -40,7 +40,7 @@ class LanguageEn extends Languages {
   String get enterNoteText => 'Enter note ...';
 
   @override
-  String get cardOfTheDay => 'Card of the day';
+  String get runeOfTheDay => 'Rune of the day';
 
   @override
   String get copyToast => 'Copied';
@@ -49,22 +49,22 @@ class LanguageEn extends Languages {
   String get detailedDescription => 'Detailed Description';
 
   @override
-  String get tarotDeck => 'Tarot Deck';
+  String get runeDeck => 'Rune Deck';
 
   @override
-  String get searchTarotDeck => 'Search ...';
+  String get searchRuneDeck => 'Search ...';
 
   @override
-  String get tarotCard => 'Tarot Card';
+  String get runeCard => 'Rune';
 
   @override
   String get notesHeader => 'Notes';
 
   @override
-  String get selectCard => 'Please tap on the deck to select a card.';
+  String get selectRune => 'Please tap on the deck to select a Rune.';
 
   @override
-  String get appUrl => ' App "Tarot Magic"';
+  String get appUrl => ' App "Rune Magic"';
 
   @override
   String get errorMessageHeader => 'Nothing here';
@@ -88,13 +88,13 @@ class LanguageEn extends Languages {
   String get lastNoteOn => 'Last note on ';
 
   @override
-  String get notesForCard => 'Notes for Card';
+  String get notesForRune => 'Notes for Rune';
 
   @override
   String get notesByDate => 'Notes by Date';
 
   @override
-  String get notesByCard => 'Notes by Cards';
+  String get notesByRune => 'Notes by Runes';
 
   @override
   String get numberOfNotes => 'Number of notes: ';
@@ -140,7 +140,7 @@ class LanguageEn extends Languages {
   String get clickOnTheTimeToSet => 'Click on the time to set';
 
   @override
-  String get choseCardForDate => 'Choose your daily tarot card for ';
+  String get choseRuneForDate => 'Choose your daily rune for ';
 
   @override
   String get dailyReminder => 'Daily reminder';

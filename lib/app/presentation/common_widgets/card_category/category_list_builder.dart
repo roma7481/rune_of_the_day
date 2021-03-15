@@ -60,8 +60,8 @@ class ListTileBuilder extends StatelessWidget {
     return SliverToBoxAdapter(
       child: CustomCard(
         child: CustomCategoryCard(
-          header: language.cardOfTheDay,
-          content: language.selectCard,
+          header: language.runeOfTheDay,
+          content: language.selectRune,
           icon: starIcon,
           isDefaultCard: true,
         ),

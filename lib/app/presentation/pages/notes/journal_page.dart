@@ -68,7 +68,7 @@ class _JournalPageState extends State<JournalPage> {
         return CustomScaffold.withFab(
           appBar: CustomAppBar(
             children: _buildAppBarContent(
-                globals.Globals.instance.getLanguage().notesByCard),
+                globals.Globals.instance.getLanguage().notesByRune),
           ),
           content: _buildNotesByCards(state.cardToNumNotes),
           fab: _buildFabs(fabInactiveColor, fabActiveColor),

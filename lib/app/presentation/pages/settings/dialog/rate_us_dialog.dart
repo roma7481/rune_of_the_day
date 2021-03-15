@@ -15,7 +15,7 @@ class RateApp {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) => CupertinoAlertDialog(
-        title: new Text(language.cardOfTheDay),
+        title: new Text(language.runeOfTheDay),
         content: new Text(language.doYouEnjoyTheApp),
         actions: <Widget>[
           CupertinoDialogAction(

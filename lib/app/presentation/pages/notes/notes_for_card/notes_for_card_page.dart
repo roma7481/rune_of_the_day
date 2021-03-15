@@ -117,7 +117,7 @@ class _NotesForCardPageState extends State<NotesForCardPage> {
   List<Widget> _buildAppBarContent() {
     return [
       Text(
-        language.notesForCard,
+        language.notesForRune,
         style: headerTextStyle,
       ),
     ];

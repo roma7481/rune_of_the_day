@@ -91,7 +91,7 @@ class _TarotDeckPageState extends State<TarotDeckPage> {
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
           icon: Icon(Icons.search, color: Colors.white),
-          hintText: globals.Globals.instance.getLanguage().searchTarotDeck,
+          hintText: globals.Globals.instance.getLanguage().searchRuneDeck,
           hintStyle: hintTextStyle,
           focusedBorder: new UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
@@ -102,7 +102,7 @@ class _TarotDeckPageState extends State<TarotDeckPage> {
   }
 
   Text disabledSearchHeader() => Text(
-        globals.Globals.instance.getLanguage().tarotDeck,
+        globals.Globals.instance.getLanguage().runeDeck,
         style: headerTextStyle,
       );
 

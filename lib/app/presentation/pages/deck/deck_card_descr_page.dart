@@ -55,7 +55,7 @@ class TarotDeckCardDescription extends StatelessWidget {
   Widget buildContent(BuildContext context, TarotCard card, Note note) {
     return CustomScaffold(
         appBar: CustomAppBar(children: [
-          Text(globals.Globals.instance.getLanguage().tarotCard,
+          Text(globals.Globals.instance.getLanguage().runeCard,
               style: headerTextStyle),
         ]),
         content: SafeArea(

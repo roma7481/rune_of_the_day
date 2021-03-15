@@ -254,7 +254,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
         0,
-        globals.Globals.instance.getLanguage().cardOfTheDay,
+        globals.Globals.instance.getLanguage().runeOfTheDay,
         _getNotificationText(),
         tz.TZDateTime.from(dateTime, tz.local),
         platformChannelSpecifics,
@@ -268,6 +268,6 @@ class _NotificationDialogState extends State<NotificationDialog> {
     var language = globals.Globals.instance.getLanguage();
     var dateService = DateService();
     var formattedDateTime = dateService.formatDateTime(DateTime.now());
-    return language.choseCardForDate + formattedDateTime;
+    return language.choseRuneForDate + formattedDateTime;
   }
 }
