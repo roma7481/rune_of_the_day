@@ -67,15 +67,15 @@ class DataParserEn extends DataParser {
     categories.add(CardCategory(
         header: 'General info',
         description: row['general_info'],
-        icon: workIcon));
+        icon: infoIcon));
     categories.add(CardCategory(
         header: 'General meaning',
         description: row['meaning'],
-        icon: workIcon));
+        icon: penIcon));
     categories.add(CardCategory(
         header: 'Key sentence',
         description: row['keysentence'],
-        icon: workIcon));
+        icon: keyIcon));
     categories.add(
         CardCategory(header: 'Work', description: row['work'], icon: workIcon));
     categories.add(
@@ -89,15 +89,15 @@ class DataParserEn extends DataParser {
     categories.add(CardCategory(
         header: 'General info',
         description: row['general_info'],
-        icon: workIcon));
+        icon: infoIcon));
     categories.add(CardCategory(
         header: 'General meaning' + flippedNamePrefix,
         description: row['meaning_upright'],
-        icon: workIcon));
+        icon: penIcon));
     categories.add(CardCategory(
         header: 'Key sentence' + flippedNamePrefix,
         description: row['keysentence_upright'],
-        icon: workIcon));
+        icon: keyIcon));
     categories.add(CardCategory(
       header: 'Work' + flippedNamePrefix,
       description: row['work_upright'],

@@ -63,7 +63,7 @@ class DataParserRu extends DataParser {
   List<CardCategory> _getCategories(Map<String, dynamic> row) {
     List<CardCategory> categories = [];
     categories.add(CardCategory(
-        header: 'Стихия', description: row['second_name'], icon: penIcon));
+        header: 'Стихия', description: row['second_name'], icon: infoIcon));
     categories.add(CardCategory(
         header: 'Работа', description: row['work'], icon: workIcon));
     categories.add(CardCategory(
@@ -80,7 +80,7 @@ class DataParserRu extends DataParser {
       CardCategory(
         header: 'Стихия' + flippedNamePrefix,
         description: row['second_name'],
-        icon: penIcon,
+        icon: infoIcon,
       ),
     );
     categories.add(CardCategory(
