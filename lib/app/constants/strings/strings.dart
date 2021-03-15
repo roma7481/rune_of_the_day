@@ -29,4 +29,4 @@ const String nativeAdId = 'ca-app-pub-1763151471947181/3744489459';
 const String interAdId = 'ca-app-pub-1763151471947181/9436779779';
 
 const String linkToApp =
-    'https://apps.apple.com/us/app/tarot-card-of-the-day/id1556452544';
+    'https://apps.apple.com/us/app/runes_daily_reading/id1558378053';

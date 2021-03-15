@@ -7,7 +7,7 @@ import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
 import 'package:rune_of_the_day/app/localization/language/languages.dart';
 
 class RateApp {
-  static var iosId = 'id1556452544';
+  static var iosId = 'id1558378053';
   static var androidId = '';
 
   static void showYesNoDialog(BuildContext context) {
