@@ -22,7 +22,7 @@ import 'app/services/ads/interestitial_controller.dart';
 import 'app/services/date_serivce.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-FlutterLocalNotificationsPlugin();
+    FlutterLocalNotificationsPlugin();
 
 Future<void> main() async {
   ///We need to initialize the the widget bindings prior calling to the native code
@@ -30,7 +30,7 @@ Future<void> main() async {
 
   WidgetsBinding.instance.addPostFrameCallback((_) async {
     ConsentInformation consentInfo =
-    await FlutterFundingChoices.requestConsentInformation();
+        await FlutterFundingChoices.requestConsentInformation();
     if (consentInfo.isConsentFormAvailable &&
         consentInfo.consentStatus == ConsentStatus.REQUIRED_IOS) {
       await FlutterFundingChoices.showConsentForm();
@@ -46,7 +46,7 @@ Future<void> main() async {
 
 // initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
   var initializationSettingsAndroid =
-  AndroidInitializationSettings(androidAppIcon);
+      AndroidInitializationSettings(androidAppIcon);
   var initializationSettingsIOS = IOSInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
@@ -57,10 +57,10 @@ Future<void> main() async {
       android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
       onSelectNotification: (String payload) async {
-        if (payload != null) {
-          debugPrint('notification payload: ' + payload);
-        }
-      });
+    if (payload != null) {
+      debugPrint('notification payload: ' + payload);
+    }
+  });
 
   InterestitialController interController = InterestitialController.instance;
   interController.setInter();
@@ -111,7 +111,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Tarot - Card of the day',
-        theme: ThemeData(primarySwatch: Colors.brown),
+        theme: ThemeData(primarySwatch: Colors.blue),
         home: HomePage(),
       ),
     );

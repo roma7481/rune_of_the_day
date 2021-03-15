@@ -30,7 +30,6 @@ class _PayWallState extends State<PayWall> {
     showToast(globals.Globals.instance.getLanguage().purchaseCanceled);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return BlocListener<PurchasesCubit, PurchasesState>(
@@ -91,7 +90,7 @@ class _PayWallState extends State<PayWall> {
                   _buildContentRow(language.goPremium, Icons.stars),
                   _buildLine(context),
                   _buildContentRow(
-                      language.tarotJournalAndNotes, Icons.check_circle),
+                      language.runeJournalAndNotes, Icons.check_circle),
                   _buildContentRow(language.removeAds, Icons.check_circle),
                   _buildContentRow(
                       language.oneTimePayment, Icons.monetization_on_outlined),

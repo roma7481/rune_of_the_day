@@ -101,7 +101,7 @@ abstract class Languages {
 
   String get premium;
 
-  String get tarotJournalAndNotes;
+  String get runeJournalAndNotes;
 
   String get removeAds;
 

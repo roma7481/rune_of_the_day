@@ -161,7 +161,7 @@ class LanguageEn extends Languages {
   String get removeAds => 'Remove ads';
 
   @override
-  String get tarotJournalAndNotes => 'Tarot journal and notes';
+  String get runeJournalAndNotes => 'Runes journal and notes';
 
   @override
   String get buy => 'Buy';
@@ -173,7 +173,8 @@ class LanguageEn extends Languages {
   String get noNotesExist => 'There are no notes at the moment.';
 
   @override
-  String get youCanAlwaysAddNodes => 'You can always add notes in the "Home" screen, under the "Notes" category.';
+  String get youCanAlwaysAddNodes =>
+      'You can always add notes in the "Home" screen, under the "Notes" category.';
 
   @override
   String get privacyPolicy => 'Privacy policy';

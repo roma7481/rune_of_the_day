@@ -161,7 +161,7 @@ class LanguageRu extends Languages {
   String get removeAds => 'Отключить рекламу';
 
   @override
-  String get tarotJournalAndNotes => 'Дневник и заметки';
+  String get runeJournalAndNotes => 'Дневник и заметки';
 
   @override
   String get buy => 'Купить';
@@ -173,7 +173,8 @@ class LanguageRu extends Languages {
   String get noNotesExist => 'На данный момент нет заметок.';
 
   @override
-  String get youCanAlwaysAddNodes => 'Вы всегда можете добавить заметки на главном экране в категории «Заметки».';
+  String get youCanAlwaysAddNodes =>
+      'Вы всегда можете добавить заметки на главном экране в категории «Заметки».';
 
   @override
   String get privacyPolicy => 'Политика конфиденц.';

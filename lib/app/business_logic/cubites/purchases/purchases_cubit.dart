@@ -32,7 +32,7 @@ class PurchasesCubit extends Cubit<PurchasesState> {
       emit(PurchasesInitError());
     }
 
-    const Set<String> _kIds = {'tarot_card_premium'};
+    const Set<String> _kIds = {'rune_premium'};
     final ProductDetailsResponse response =
         await InAppPurchaseConnection.instance.queryProductDetails(_kIds);
     if (response.notFoundIDs.isNotEmpty) {

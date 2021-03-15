@@ -18,15 +18,15 @@ class CardHeader extends StatelessWidget {
     return SliverToBoxAdapter(
         child: Padding(
       padding: EdgeInsets.only(top: topPadding),
-          child: Visibility(
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            visible: isVisible,
-            child: Text(
+      child: Visibility(
+        maintainSize: true,
+        maintainAnimation: true,
+        maintainState: true,
+        visible: isVisible,
+        child: Text(
           text,
           textAlign: TextAlign.center,
-          style: headerTextStyle,
+          style: cardHeaderTextStyle,
         ),
       ),
     ));

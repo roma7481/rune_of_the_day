@@ -28,8 +28,7 @@ TextStyle hintTextStyle = GoogleFonts.sourceSansPro(
     textStyle: TextStyle(fontSize: 18.0, color: hintTextColor));
 
 TextStyle settingsTextStyle = GoogleFonts.sourceSansPro(
-      textStyle:
-          TextStyle(fontSize: 18.0, color: noteInputTextColor));
+    textStyle: TextStyle(fontSize: 18.0, color: noteInputTextColor));
 
 TextStyle dialogHeaderTextStyle = GoogleFonts.sourceSansPro(
     textStyle: TextStyle(
@@ -74,6 +73,11 @@ TextStyle showMoreTextStyle() {
 TextStyle headerTextStyle = GoogleFonts.philosopher(
   textStyle: TextStyle(
       fontSize: 19.0, color: cardHeaderColor, fontWeight: FontWeight.bold),
+);
+
+TextStyle cardHeaderTextStyle = GoogleFonts.philosopher(
+  textStyle: TextStyle(
+      fontSize: 23.0, color: runeHeaderColor, fontWeight: FontWeight.bold),
 );
 
 TextStyle notesForCardStyle = GoogleFonts.philosopher(
