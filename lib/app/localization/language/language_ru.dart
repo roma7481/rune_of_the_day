@@ -197,5 +197,5 @@ class LanguageRu extends Languages {
   String get consent => 'Согласие';
 
   @override
-  String get isFlipped => ' (Перевернутая) ';
+  String get isFlipped => ' (Перёвернутая) ';
 }

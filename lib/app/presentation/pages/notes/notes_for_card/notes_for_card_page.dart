@@ -281,11 +281,22 @@ class _NotesForCardPageState extends State<NotesForCardPage> {
             imageSizeRatio: 0.15,
           ),
           Text(
-            card.name,
+            removePrefix(card.name),
             style: notesForCardStyle,
           )
         ],
       ),
     );
+  }
+
+  String removePrefix(String str){
+    var prefix1 = 'Перёвернутая';
+    var prefix2 = 'Reversed';
+    if(str.contains(prefix1) || str.contains(prefix2)){
+      var stringList = str.split(' ');
+      stringList.removeLast();
+      return stringList.join(' ');
+    }
+    return str;
   }
 }
