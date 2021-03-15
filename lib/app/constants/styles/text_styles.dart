@@ -82,7 +82,7 @@ TextStyle moreAppsTextStyle = GoogleFonts.philosopher(
 
 TextStyle cardHeaderTextStyle = GoogleFonts.philosopher(
   textStyle: TextStyle(
-      fontSize: 23.0, color: runeHeaderColor, fontWeight: FontWeight.bold),
+      fontSize: 19.0, color: runeHeaderColor, fontWeight: FontWeight.bold),
 );
 
 TextStyle notesForCardStyle = GoogleFonts.philosopher(

@@ -5,7 +5,7 @@ class CardHeader extends StatelessWidget {
   CardHeader({
     Key key,
     this.isVisible = true,
-    this.topPadding = 88.0,
+    this.topPadding = 96.0,
     this.text,
   }) : super(key: key);
 
@@ -32,7 +32,7 @@ class CardHeader extends StatelessWidget {
                 child: Container(
                   color: Colors.white,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
                     child: Text(
                       text,
                       textAlign: TextAlign.center,
