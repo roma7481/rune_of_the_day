@@ -40,11 +40,8 @@ class AttributionPage extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  _buildContentRow('http://tarot-stock.com/'),
                   _buildContentRow('https://www.flaticon.com/'),
-                  _buildContentRow('http://www.chertovologovo.com/t789-topic'),
-                  _buildContentRow('https://astrohelper.ru/gadaniya/taro//'),
-                  _buildContentRow('https://www.taro.lv/ru/'),
+                  _buildContentRow('https://www.predskazanie.ru'),
                   _buildContentRow('https://www.freepik.com'),
                 ],
               ),
