@@ -280,9 +280,18 @@ class _NotesForCardPageState extends State<NotesForCardPage> {
             imagePath: card.image,
             imageSizeRatio: 0.15,
           ),
-          Text(
-            removePrefix(card.name),
-            style: notesForCardStyle,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Container(
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Text(
+                  removePrefix(card.name),
+                  style: cardHeaderTextStyle,
+                ),
+              ),
+            ),
           )
         ],
       ),
