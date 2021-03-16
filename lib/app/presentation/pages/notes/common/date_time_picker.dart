@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
-as globals;
+    as globals;
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 import 'package:rune_of_the_day/app/services/date_serivce.dart';
@@ -66,19 +66,25 @@ class _DateTimePickerState extends State<DateTimePicker> {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Container(
-                        child: Row(
-                          children: <Widget>[
-                            Text(
-                              " $_date",
-                              style: datePickerTextStyle,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(4.0),
+                        child: Container(
+                          child: Container(
+                            color: cardColor,
+                            child: Row(
+                              children: <Widget>[
+                                Text(
+                                  " $_date",
+                                  style: datePickerTextStyle,
+                                ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  size: 18.0,
+                                  color: datePickerTextColor,
+                                ),
+                              ],
                             ),
-                            Icon(
-                              Icons.arrow_drop_down,
-                              size: 18.0,
-                              color: datePickerTextColor,
-                            ),
-                          ],
+                          ),
                         ),
                       )
                     ],
