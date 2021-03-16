@@ -84,9 +84,18 @@ class SettingsPage extends StatelessWidget {
 
     return Column(
       children: [
-        Text(
-          globals.Globals.instance.getLanguage().moreApps,
-          style: moreAppsTextStyle,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: Container(
+            color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text(
+                globals.Globals.instance.getLanguage().moreApps,
+                style: moreAppsTextStyle,
+              ),
+            ),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 16.0),
