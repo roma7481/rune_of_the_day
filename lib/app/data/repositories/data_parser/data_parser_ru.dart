@@ -74,7 +74,7 @@ class DataParserRu extends DataParser {
   }
 
   List<CardCategory> _getFlippedCategories(Map<String, dynamic> row) {
-    var flippedNamePrefix = ' (Перёвернутая)';
+    var flippedNamePrefix = ' \n(Перёвернутая)';
     List<CardCategory> categories = [];
     categories.add(
       CardCategory(
