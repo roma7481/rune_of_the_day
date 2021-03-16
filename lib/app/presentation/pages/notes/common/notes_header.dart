@@ -20,10 +20,19 @@ class NotesHeader extends StatelessWidget {
           maintainSize: true,
           maintainAnimation: true,
           maintainState: true,
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: headerTextStyle,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Container(
+              color: Colors.white,
+              child: Padding(
+                padding: EdgeInsets.all(4.0),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: cardHeaderTextStyle,
+                ),
+              ),
+            ),
           ),
         ),
       ),

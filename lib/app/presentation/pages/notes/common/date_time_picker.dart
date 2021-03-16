@@ -67,7 +67,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
                   Row(
                     children: <Widget>[
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(4.0),
+                        borderRadius: BorderRadius.circular(6.0),
                         child: Container(
                           child: Container(
                             color: cardColor,
