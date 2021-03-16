@@ -379,9 +379,9 @@ class SettingsPage extends StatelessWidget {
     return _buildSettingWithIcon(onClick, customIcon, text);
   }
 
-  InkWell _buildSettingWithIcon(Function onClick, Widget icon, String text) {
-    return InkWell(
-      onTap: () {
+  Widget _buildSettingWithIcon(Function onClick, Widget icon, String text) {
+    return TextButton(
+      onPressed: () {
         onClick();
       },
       child: Row(
@@ -391,7 +391,7 @@ class SettingsPage extends StatelessWidget {
             child: icon,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 0.0),
             child: Text(
               text,
               style: settingsTextStyle,
@@ -436,7 +436,7 @@ class SettingsPage extends StatelessWidget {
 
   Padding _buildLine(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+      padding: const EdgeInsets.only(top: 16.0, bottom: 0.0),
       child: Container(
         height: 1.0,
         width: MediaQuery.of(context).size.width * 0.68,
