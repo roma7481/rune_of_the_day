@@ -567,6 +567,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+  notification_permissions:
+    dependency: "direct main"
+    description:
+      name: notification_permissions
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.0"
   nuts_activity_indicator:
     dependency: "direct main"
     description:
