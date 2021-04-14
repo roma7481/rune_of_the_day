@@ -5,7 +5,6 @@ import 'package:flutter_funding_choices/flutter_funding_choices.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:rune_of_the_day/app/business_logic/cubites/deck_cubit/deck_cubit.dart';
 import 'package:rune_of_the_day/app/business_logic/cubites/language_cubit/language_cubit.dart';
@@ -29,18 +28,15 @@ Future<void> main() async {
   ///We need to initialize the the widget bindings prior calling to the native code
   WidgetsFlutterBinding.ensureInitialized();
 
-  PermissionStatus status = await Permission.notification.status;
-  if (status.isDenied || status.isGranted || status.isRestricted || status.isLimited) {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      ConsentInformation consentInfo =
-      await FlutterFundingChoices.requestConsentInformation();
-      if (consentInfo.isConsentFormAvailable &&
-          consentInfo.consentStatus == ConsentStatus.REQUIRED_IOS) {
-        await FlutterFundingChoices.showConsentForm();
-        // You can check the result by calling `FlutterFundingChoices.requestConsentInformation()` again !
-      }
-    });
-  }
+  WidgetsBinding.instance.addPostFrameCallback((_) async {
+    ConsentInformation consentInfo =
+    await FlutterFundingChoices.requestConsentInformation();
+    if (consentInfo.isConsentFormAvailable &&
+        consentInfo.consentStatus == ConsentStatus.REQUIRED_IOS) {
+      await FlutterFundingChoices.showConsentForm();
+      // You can check the result by calling `FlutterFundingChoices.requestConsentInformation()` again !
+    }
+  });
 
   ///Connection between the hydrated bloc to the device storage
   ///this is the call to the native code
