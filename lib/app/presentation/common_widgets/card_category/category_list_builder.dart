@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
     as globals;
-import 'package:rune_of_the_day/app/constants/strings/strings.dart';
 import 'package:rune_of_the_day/app/constants/styles/icons.dart';
 import 'package:rune_of_the_day/app/data/models/card.dart';
 import 'package:rune_of_the_day/app/data/models/category.dart';
@@ -11,6 +10,7 @@ import 'package:rune_of_the_day/app/presentation/common_widgets/share_widgets.da
 import 'package:rune_of_the_day/app/presentation/pages/card_description/detailed_description_args.dart';
 import 'package:rune_of_the_day/app/presentation/pages/card_description/detailed_description_page.dart';
 import 'package:rune_of_the_day/app/services/ads/ad_counter.dart';
+import 'package:rune_of_the_day/app/services/ads/ad_service.dart';
 import 'package:rune_of_the_day/app/services/ads/interestitial_controller.dart';
 import 'package:rune_of_the_day/app/services/ads/native_admob.dart';
 import 'package:rune_of_the_day/app/services/ads/native_admob_controller.dart';
@@ -25,7 +25,7 @@ class ListTileBuilder extends StatelessWidget {
 
   final TarotCard card;
   final bool isSelectNewCard;
-  static const _adUnitID = nativeAdId;
+  static const _adUnitID = realNativeAppId;
   final _nativeAdController = NativeAdmobController();
 
   @override

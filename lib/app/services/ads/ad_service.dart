@@ -1,12 +1,10 @@
 import 'dart:io';
 
-import 'package:rune_of_the_day/app/constants/strings/strings.dart';
-
 // String testInterestialAppId = 'ca-app-pub-3940256099942544/4411468910';
 String realInterestialAppId = 'ca-app-pub-1763151471947181/1800598808';
 
 // String testNativeAppId = 'ca-app-pub-3940256099942544/3986624511';
-String realNativeAppId = 'ca-app-pub-1763151471947181/8366007157';
+const String realNativeAppId = 'ca-app-pub-1763151471947181/8366007157';
 
 class AdManager {
   static String get appId {
