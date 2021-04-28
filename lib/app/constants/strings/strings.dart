@@ -27,7 +27,5 @@ const String tarotAppURL =
 const String websiteURL = 'https://dailymistika.ru';
 const String privacyPolicyURL = 'https://cbeeapps.wixsite.com/runepolicy';
 
-const String interAdId = 'ca-app-pub-1763151471947181/9436779779';
-
 const String linkToApp =
     'https://apps.apple.com/us/app/runes_daily_reading/id1558378053';
