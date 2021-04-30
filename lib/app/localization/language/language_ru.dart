@@ -59,8 +59,7 @@ class LanguageRu extends Languages {
   String get notesHeader => 'Заметки';
 
   @override
-  String get selectRune =>
-      'Нажмите на колоду чтобы выбрать Руну на сегодня.';
+  String get selectRune => 'Нажмите на колоду чтобы выбрать Руну на сегодня.';
 
   @override
   String get appUrl => ' App "Rune Magic" RU ';
@@ -205,4 +204,7 @@ class LanguageRu extends Languages {
 
   @override
   String get moreApps => 'Наши приложения';
+
+  @override
+  String get numerologyApp => 'Нумерология';
 }

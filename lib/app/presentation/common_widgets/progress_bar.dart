@@ -6,13 +6,13 @@ import 'package:nuts_activity_indicator/nuts_activity_indicator.dart';
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 
 Widget progressBar() {
-  Widget progressIndicator = Platform.isIOS
-      ? showCupertinoProgressBar()
-      : CircularProgressIndicator();
-  return Center(child: progressIndicator);
+  Widget progressIndicator =
+      Platform.isIOS ? showCupertinoProgressBar() : CircularProgressIndicator();
+  return Container(
+      color: runeHeaderColor, child: Center(child: progressIndicator));
 }
 
-Widget showCupertinoProgressBar(){
+Widget showCupertinoProgressBar() {
   return NutsActivityIndicator(
     radius: 33,
     activeColor: activeProgress,

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:rune_of_the_day/app/business_logic/cubites/purchases/purchases_cubit.dart';
 import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
     as globals;
+import 'package:rune_of_the_day/app/business_logic/globals/globals.dart';
 import 'package:rune_of_the_day/app/constants/strings/strings.dart';
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/constants/styles/constants.dart';
@@ -27,6 +28,8 @@ import 'package:rune_of_the_day/app/presentation/pages/settings/dialog/text_size
 import 'package:rune_of_the_day/app/services/premium/premium_controller.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'more_apps.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -66,22 +69,14 @@ class SettingsPage extends StatelessWidget {
       child: Column(
         children: [
           _buildFirstSetting1(language, context),
-          _buildMoreApps(language, context),
+          _buildMoreApps(context),
           _buildFirstSetting2(language, context),
         ],
       ),
     ));
   }
 
-  _buildMoreApps(Languages language, BuildContext context) {
-    var customIcon = ClipRRect(
-      borderRadius: BorderRadius.circular(4.0),
-      child: Container(
-        height: 30,
-        child: Image.asset(tarotIcon),
-      ),
-    );
-
+  Widget _buildMoreApps(BuildContext context) {
     return Column(
       children: [
         ClipRRect(
@@ -99,51 +94,19 @@ class SettingsPage extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 16.0),
-          child: Align(
-            //To make container wrap parent you can wrap it in align
-            alignment: Alignment.topCenter,
-            child: CustomCard(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    left: 12.0, right: 12.0, top: 16.0, bottom: 16.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        _buildSettingWithIcon(
-                          () => _openLink(tarotAppURL),
-                          customIcon,
-                          language.tarotApp,
-                        ),
-                        _buildAd(),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+          child: CustomCard(
+            child: Column(
+              children: [
+                buildMoreApps(numerologyIcon, numerologyAppURL,
+                    Globals.instance.language.numerologyApp),
+                _buildLine(context),
+                buildMoreApps(
+                    tarotIcon, tarotAppURL, Globals.instance.language.tarotApp),
+              ],
             ),
           ),
-        ),
+        )
       ],
-    );
-  }
-
-  ClipRRect _buildAd() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(4.0),
-      child: Container(
-        color: datePickerItem,
-        child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Text(
-            'Ad',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-      ),
     );
   }
 
@@ -391,7 +354,10 @@ class SettingsPage extends StatelessWidget {
             child: icon,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0,),
+            padding: const EdgeInsets.only(
+              left: 8.0,
+              right: 8.0,
+            ),
             child: Text(
               text,
               style: settingsTextStyle,

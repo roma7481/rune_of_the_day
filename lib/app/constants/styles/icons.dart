@@ -29,6 +29,7 @@ const backButtonIcon = 'assets/svg_icons/back.svg';
 const background = 'assets/background/app_bg.png';
 const cardBack = 'assets/images/card_back.png';
 const tarotIcon = 'assets/images/tarot_app_icon.png';
+const numerologyIcon = 'assets/images/numerology_app_icon.png';
 
 const algiz = 'assets/images/algiz.png';
 const ansuz = 'assets/images/ansuz.png';

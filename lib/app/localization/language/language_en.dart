@@ -205,4 +205,7 @@ class LanguageEn extends Languages {
 
   @override
   String get moreApps => 'More apps';
+
+  @override
+  String get numerologyApp => 'Numerology';
 }

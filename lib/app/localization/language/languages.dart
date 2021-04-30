@@ -133,5 +133,7 @@ abstract class Languages {
 
   String get tarotApp;
 
+  String get numerologyApp;
+
   String get moreApps;
 }
