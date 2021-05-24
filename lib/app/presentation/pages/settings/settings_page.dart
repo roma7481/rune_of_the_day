@@ -29,6 +29,7 @@ import 'package:rune_of_the_day/app/services/premium/premium_controller.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'dialog/rate_us_dialog.dart';
 import 'more_apps.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -188,6 +189,13 @@ class SettingsPage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                _buildSetting(
+                  Icons.star,
+                  language.rateUsHeader,
+                  context,
+                      () => RateApp.openRateUsPage(context),
+                ),
+                _buildLine(context),
                 _buildTelegramLink(context),
                 _buildWebsiteLink(context),
                 _buildSetting(

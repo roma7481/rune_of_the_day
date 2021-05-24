@@ -48,13 +48,7 @@ class RateApp {
         actions: <Widget>[
           CupertinoDialogAction(
             onPressed: () async {
-              final InAppReview inAppReview = InAppReview.instance;
-              if (await inAppReview.isAvailable()) {
-                inAppReview.openStoreListing(appStoreId: iosId);
-
-                ///test in app review after apk is in place
-                // inAppReview.requestReview();
-              }
+              await openRateUsPage(context);
               Navigator.of(context, rootNavigator: true).pop("Discard");
             },
             child: Text(language.rateNow),
@@ -76,5 +70,16 @@ class RateApp {
         ],
       ),
     );
+  }
+
+  static Future openRateUsPage(BuildContext context) async {
+    final InAppReview inAppReview = InAppReview.instance;
+    if (await inAppReview.isAvailable()) {
+      inAppReview.openStoreListing(appStoreId: iosId);
+
+      ///test in app review after apk is in place
+      // inAppReview.requestReview();
+    }
+    context.read<RateUsCubit>().emitDoNotShowAgain();
   }
 }
