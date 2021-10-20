@@ -30,8 +30,8 @@ class ImagePickerService extends ImagePickerBase {
       20: mannaz,
       21: lagus,
       22: inguz,
-      23: dagaz,
-      24: opilla,
+      23: opilla,
+      24: dagaz,
       25: odin,
     };
 
