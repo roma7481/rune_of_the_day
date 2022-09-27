@@ -9,11 +9,8 @@ import 'package:rune_of_the_day/app/localization/language/languages.dart';
 import 'package:rune_of_the_day/app/presentation/common_widgets/share_widgets.dart';
 import 'package:rune_of_the_day/app/presentation/pages/card_description/detailed_description_args.dart';
 import 'package:rune_of_the_day/app/presentation/pages/card_description/detailed_description_page.dart';
-import 'package:rune_of_the_day/app/services/ads/ad_counter.dart';
+import 'package:rune_of_the_day/app/services/ads/NativeAdItem.dart';
 import 'package:rune_of_the_day/app/services/ads/ad_service.dart';
-import 'package:rune_of_the_day/app/services/ads/interestitial_controller.dart';
-import 'package:rune_of_the_day/app/services/ads/native_admob.dart';
-import 'package:rune_of_the_day/app/services/ads/native_admob_controller.dart';
 import 'package:rune_of_the_day/app/services/premium/premium_controller.dart';
 
 import '../custom_card.dart';
@@ -25,8 +22,6 @@ class ListTileBuilder extends StatelessWidget {
 
   final TarotCard card;
   final bool isSelectNewCard;
-  static const _adUnitID = realNativeAppId;
-  final _nativeAdController = NativeAdmobController();
 
   @override
   Widget build(BuildContext context) {
@@ -110,19 +105,8 @@ class ListTileBuilder extends StatelessWidget {
   }
 
   Widget _adItem(int listItemIndex) {
-    if (listItemIndex == 0 || listItemIndex == 3) {
-      return NativeAdmob(
-        // Your ad unit id
-        error: Visibility(
-          child: Container(),
-          maintainSize: false,
-          visible: false,
-        ),
-        adUnitID: _adUnitID,
-        numberAds: 2,
-        controller: _nativeAdController,
-        type: NativeAdmobType.full,
-      );
+    if (listItemIndex == 0 || listItemIndex == 2 || listItemIndex == 4) {
+      return const NativeAdItem();
     }
     return Container();
   }
@@ -145,17 +129,14 @@ class ListTileBuilder extends StatelessWidget {
       ),
     );
 
-    await AdsCounter.instance.increaseAdCounter();
-    var adController = InterestitialController.instance;
+    _navigateToDetailedDescription(
+      context,
+      image,
+      header,
+      descriptionCard,
+    );
 
-    adController.setCallback(() => _navigateToDetailedDescription(
-          context,
-          image,
-          header,
-          descriptionCard,
-        ));
-
-    await adController.showInterstitialAd();
+    await AdManager.showInterstitial();
   }
 
   void _navigateToDetailedDescription(BuildContext context, Widget image,

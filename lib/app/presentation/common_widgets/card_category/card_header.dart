@@ -5,7 +5,7 @@ class CardHeader extends StatelessWidget {
   CardHeader({
     Key key,
     this.isVisible = true,
-    this.topPadding = 96.0,
+    this.topPadding = 124.0,
     this.text,
   }) : super(key: key);
 

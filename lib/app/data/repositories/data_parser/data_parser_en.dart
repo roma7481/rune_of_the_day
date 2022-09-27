@@ -92,7 +92,7 @@ class DataParserEn extends DataParser {
         icon: infoIcon));
     categories.add(CardCategory(
         header: 'General meaning' + flippedNamePrefix,
-        description: row['meaning_upright'],
+        description: row['description_upright'],
         icon: penIcon));
     categories.add(CardCategory(
         header: 'Key sentence' + flippedNamePrefix,

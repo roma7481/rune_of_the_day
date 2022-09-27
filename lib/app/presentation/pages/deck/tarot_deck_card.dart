@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 import 'package:rune_of_the_day/app/data/models/deck.dart';
-import 'package:rune_of_the_day/app/services/ads/ad_counter.dart';
-import 'package:rune_of_the_day/app/services/ads/interestitial_controller.dart';
+import 'package:rune_of_the_day/app/services/ads/ad_service.dart';
 
 import 'deck_card_descr_page.dart';
 
@@ -30,13 +29,7 @@ class TarotDeckCardWidget extends StatelessWidget {
                     icon: card.image,
                     iconSize: MediaQuery.of(context).size.height * 0.20,
                     onPressed: () async {
-                      await AdsCounter.instance.increaseAdCounter();
-                      var adController = InterestitialController.instance;
-
-                      adController.setCallback(
-                          () => _navigateToRoute(context, card.cardId));
-
-                      await adController.showInterstitialAd();
+                      _navigateToRoute(context, card.cardId);
                     },
                   ),
                 ),
@@ -58,7 +51,9 @@ class TarotDeckCardWidget extends StatelessWidget {
     );
   }
 
-  void _navigateToRoute(BuildContext context, int cardId) {
+  void _navigateToRoute(BuildContext context, int cardId) async{
+    await AdManager.showInterstitial();
+
     Navigator.of(context, rootNavigator: true).push(new MaterialPageRoute(
       builder: (BuildContext context) {
         return new TarotDeckCardDescription(

@@ -7,6 +7,7 @@ class AdsCounter {
   AdsCounter._();
 
   static final instance = AdsCounter._();
+  static final maxNumClicks = 5;
 
   Future<int> getAdsCounter() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

@@ -20,7 +20,7 @@ import 'app/business_logic/cubites/text_size_cubit/text_size_cubit.dart';
 import 'app/constants/styles/constants.dart';
 import 'app/presentation/common_widgets/progress_bar.dart';
 import 'app/presentation/pages/bottom_navigation/home_page.dart';
-import 'app/services/ads/interestitial_controller.dart';
+import 'app/services/ads/ad_service.dart';
 import 'app/services/date_serivce.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -29,6 +29,8 @@ FlutterLocalNotificationsPlugin();
 Future<void> main() async {
   ///We need to initialize the the widget bindings prior calling to the native code
   WidgetsFlutterBinding.ensureInitialized();
+
+  await AdManager.setup();
 
   ///Connection between the hydrated bloc to the device storage
   ///this is the call to the native code
@@ -53,9 +55,6 @@ Future<void> main() async {
           debugPrint('notification payload: ' + payload);
         }
       });
-
-  InterestitialController interController = InterestitialController.instance;
-  interController.setInter();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {

@@ -74,7 +74,7 @@ class CustomCategoryCard extends StatelessWidget {
           style: contextTextStyle());
     }
     return Text(
-      content,
+      content??"",
       style: contextTextStyle(),
     );
   }

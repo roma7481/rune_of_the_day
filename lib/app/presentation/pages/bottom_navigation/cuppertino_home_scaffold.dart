@@ -5,6 +5,7 @@ import 'package:rune_of_the_day/app/business_logic/cubites/language_cubit/langua
 import 'package:rune_of_the_day/app/constants/enums/enums.dart';
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/presentation/pages/bottom_navigation/tab_item.dart';
+import 'package:rune_of_the_day/app/services/ads/ad_service.dart';
 
 class CupertinoHomeScaffold extends StatelessWidget {
   const CupertinoHomeScaffold({
@@ -37,7 +38,10 @@ class CupertinoHomeScaffold extends StatelessWidget {
               _buildItem(TabItem.journal),
               _buildItem(TabItem.more),
             ],
-            onTap: (index) => onSelectTab(TabItem.values[index]),
+            onTap: (index) async{
+                await AdManager.showInterstitial();
+                onSelectTab(TabItem.values[index]);
+              },
           ),
           tabBuilder: (context, index) {
             final item = TabItem.values[index];
