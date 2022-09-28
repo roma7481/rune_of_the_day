@@ -6,7 +6,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
-  static final _dbName = 'runes_db2.db';
+  static final _dbName = 'runes_db3.db';
   static final _assets = 'assets';
   static final _subPackage = 'database';
 
