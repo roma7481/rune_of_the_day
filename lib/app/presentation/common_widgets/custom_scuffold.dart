@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rune_of_the_day/app/constants/styles/icons.dart';
+import 'package:rune_of_the_day/app/services/ads/ad_service.dart';
 
 class CustomScaffold extends StatelessWidget {
   CustomScaffold.withFab({
@@ -9,6 +10,13 @@ class CustomScaffold extends StatelessWidget {
     @required this.content,
     @required this.fab,
   });
+
+  CustomScaffold.withBanner({
+    Key key,
+    this.drawer,
+    @required this.appBar,
+    @required this.content,
+  }) : this.fab = Container(), this.pageWithBanner = true;
 
   CustomScaffold({
     Key key,
@@ -21,6 +29,7 @@ class CustomScaffold extends StatelessWidget {
   final Widget content;
   final Widget drawer;
   final Widget fab;
+  bool pageWithBanner = false ;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +46,7 @@ class CustomScaffold extends StatelessWidget {
           child: content),
       floatingActionButton: fab,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      bottomNavigationBar: pageWithBanner? AdManager.showBanner() : SizedBox(),
     );
   }
 }

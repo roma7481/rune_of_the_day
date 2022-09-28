@@ -105,7 +105,7 @@ class ListTileBuilder extends StatelessWidget {
   }
 
   Widget _adItem(int listItemIndex) {
-    if (listItemIndex == 0 || listItemIndex == 2 || listItemIndex == 4) {
+    if (listItemIndex % 2 == 0) {
       return const NativeAdItem();
     }
     return Container();

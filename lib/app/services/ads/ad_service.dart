@@ -1,6 +1,8 @@
 import 'dart:collection';
 import 'dart:io';
+import 'package:flutter/widgets.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:rune_of_the_day/app/presentation/common_widgets/error_dialog.dart';
 import 'package:rune_of_the_day/app/services/premium/premium_controller.dart';
 
 import 'ad_counter.dart';
@@ -11,12 +13,17 @@ String realInterestialAppId = 'ca-app-pub-1763151471947181/1800598808';
 // String testNativeAppId = 'ca-app-pub-3940256099942544/3986624511';
 const String realNativeAppId = 'ca-app-pub-1763151471947181/8366007157';
 
+String testBannerAppId = 'ca-app-pub-3940256099942544/6300978111';
+const String realBannerAppId = 'ca-app-pub-1763151471947181/8811732192';
+
 class AdManager {
   static int _loadNativeAdAttempts = 0;
   static final Queue<NativeAd> _admobAdQueue = Queue<NativeAd>();
   static NativeAd _admobNativeIntermediateAd;
   static int _loadInterstitialAttempts = 0;
-  static bool _loaded = false;
+  static bool _interLoaded = false;
+  static bool _bannerLoaded = false;
+  static Ad bannerAd;
   static InterstitialAd _admobInterstitialAd;
 
   static String get nativeAdUnitId {
@@ -31,9 +38,9 @@ class AdManager {
 
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
-      return "<YOUR_ANDROID_BANNER_AD_UNIT_ID";
+      return realBannerAppId;
     } else if (Platform.isIOS) {
-      return "<YOUR_IOS_BANNER_AD_UNIT_ID>";
+      return realBannerAppId;
     } else {
       throw new UnsupportedError("Unsupported platform");
     }
@@ -49,21 +56,12 @@ class AdManager {
     }
   }
 
-  static String get rewardedAdUnitId {
-    if (Platform.isAndroid) {
-      return "<YOUR_ANDROID_REWARDED_AD_UNIT_ID>";
-    } else if (Platform.isIOS) {
-      return "<YOUR_IOS_REWARDED_AD_UNIT_ID>";
-    } else {
-      throw new UnsupportedError("Unsupported platform");
-    }
-  }
-
   static setup() async {
     await MobileAds.instance.initialize();
     MobileAds.instance.setAppVolume(0);
     MobileAds.instance.setAppMuted(true);
     _loadInterstitial();
+    _loadBanner();
     await _loadNativeAd();
   }
 
@@ -74,16 +72,16 @@ class AdManager {
         adLoadCallback: InterstitialAdLoadCallback(
           onAdLoaded: (InterstitialAd ad) {
             _admobInterstitialAd = ad;
-            _loaded = true;
+            _interLoaded = true;
             ad.fullScreenContentCallback = FullScreenContentCallback(
                 onAdDismissedFullScreenContent: (InterstitialAd ad) {
               ad.dispose();
-              _loaded = false;
+              _interLoaded = false;
               _loadInterstitial();
             }, onAdFailedToShowFullScreenContent:
                     (InterstitialAd ad, AdError error) {
               ad.dispose();
-              _loaded = false;
+              _interLoaded = false;
               _loadInterstitial();
             });
           },
@@ -146,12 +144,79 @@ class AdManager {
     var adCount = await AdsCounter.instance.getAdsCounter();
 
     if (adCount >= AdsCounter.maxNumClicks) {
-      if (_loaded) {
+      if (_interLoaded) {
         _admobInterstitialAd?.show();
         await AdsCounter.instance.resetAdCounter();
       }
     } else {
       await AdsCounter.instance.increaseAdCounter();
     }
+  }
+
+  static _loadBanner() {
+    try {
+      BannerAd(
+        adUnitId: AdManager.bannerAdUnitId,
+        size: AdSize.fullBanner,
+        request: AdRequest(),
+        listener: BannerAdListener(
+          // Called when an ad is successfully received.
+          onAdLoaded: (Ad ad) {
+            _bannerLoaded = true;
+            bannerAd = ad;
+            debugPrint('Ad loaded.');
+          },
+          // Called when an ad request failed.
+          onAdFailedToLoad: (Ad ad, LoadAdError error) {
+            ad.dispose();
+            _bannerLoaded = false;
+            _loadBanner();
+            debugPrint('Ad failed to load: $error');
+          },
+          // Called when an ad opens an overlay that covers the screen.
+          onAdOpened: (Ad ad) => print('Ad opened.'),
+          // Called when an ad removes an overlay that covers the screen.
+          onAdClosed: (Ad ad) {
+            ad.dispose();
+            _bannerLoaded = false;
+            _loadBanner();
+            debugPrint('Ad closed.');
+          },
+          // Called when an ad is in the process of leaving the application.
+        ),
+      )..load();
+    } catch (e) {
+      print('banner failed with error: $e');
+      return null;
+    }
+  }
+
+  static showBanner() {
+    return FutureBuilder<bool>(
+        future: PremiumController.instance.isPremium(),
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return SizedBox();
+            default:
+              if (snapshot.hasError) {
+                return errorDialog();
+              } else {
+                var isPremium = snapshot.data;
+                if (isPremium) {
+                  return SizedBox();
+                }
+                if(_bannerLoaded && bannerAd != null){
+                  return Container(
+                    alignment: Alignment.center,
+                    child: AdWidget(ad: bannerAd),
+                    width: bannerAd == null ? 0 : AdSize.fullBanner.width.toDouble(),
+                    height: bannerAd == null ? 0 : AdSize.fullBanner.height.toDouble(),
+                  );
+                }
+                return SizedBox();
+              }
+          }
+        });
   }
 }

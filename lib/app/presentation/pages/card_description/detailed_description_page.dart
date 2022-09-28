@@ -16,7 +16,7 @@ class DetailedDescriptionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
+    return CustomScaffold.withBanner(
         appBar: CustomAppBar(children: [
           Text(globals.Globals.instance.getLanguage().detailedDescription,
               style: headerTextStyle),
