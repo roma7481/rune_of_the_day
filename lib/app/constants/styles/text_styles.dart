@@ -75,9 +75,14 @@ TextStyle headerTextStyle = GoogleFonts.philosopher(
       fontSize: 19.0, color: cardHeaderColor, fontWeight: FontWeight.bold),
 );
 
-TextStyle moreAppsTextStyle = GoogleFonts.philosopher(
+TextStyle moreAppsHeaderTextStyle = GoogleFonts.philosopher(
   textStyle: TextStyle(
       fontSize: 19.0, color: datePickerItem, fontWeight: FontWeight.bold),
+);
+
+TextStyle moreAppsTextStyle = GoogleFonts.philosopher(
+  textStyle: TextStyle(
+      fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold),
 );
 
 TextStyle cardHeaderTextStyle = GoogleFonts.philosopher(

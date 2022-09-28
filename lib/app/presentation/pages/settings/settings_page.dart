@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_funding_choices/flutter_funding_choices.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
+import 'package:rune_of_the_day/app/business_logic/cubites/other_app_cubit/OtherAppCubit.dart';
 import 'package:rune_of_the_day/app/business_logic/cubites/purchases/purchases_cubit.dart';
 import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
     as globals;
@@ -11,7 +13,6 @@ import 'package:rune_of_the_day/app/business_logic/globals/globals.dart';
 import 'package:rune_of_the_day/app/constants/strings/strings.dart';
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/constants/styles/constants.dart';
-import 'package:rune_of_the_day/app/constants/styles/icons.dart';
 import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 import 'package:rune_of_the_day/app/localization/language/language_ru.dart';
 import 'package:rune_of_the_day/app/localization/language/languages.dart';
@@ -30,7 +31,7 @@ import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'dialog/rate_us_dialog.dart';
-import 'more_apps.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -80,36 +81,136 @@ class SettingsPage extends StatelessWidget {
   Widget _buildMoreApps(BuildContext context) {
     return Column(
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(8.0),
-          child: Container(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(
-                globals.Globals.instance.getLanguage().moreApps,
-                style: moreAppsTextStyle,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Container(
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Text(
+                  globals.Globals.instance.getLanguage().moreApps,
+                  style: moreAppsHeaderTextStyle,
+                ),
               ),
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 16.0),
-          child: CustomCard(
-            child: Column(
-              children: [
-                buildMoreApps(numerologyIcon, numerologyAppURL,
-                    Globals.instance.language.numerologyApp),
-                _buildLine(context),
-                buildMoreApps(
-                    tarotIcon, tarotAppURL, Globals.instance.language.tarotApp),
-              ],
-            ),
-          ),
-        )
+        _getMoreApps(context)
       ],
     );
   }
+
+  Widget _getMoreApps(BuildContext context) {
+    OtherAppCubit otherAppCubit = OtherAppCubit();
+    otherAppCubit.loadOtherApps(context);
+
+    return CustomCard(
+      child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: BlocBuilder<OtherAppCubit, OtherAppsState>(
+              bloc: otherAppCubit,
+              builder: (context, state) {
+                if (state is OtherAppsLoading) {
+                  return Container();
+                } else if (state is OtherAppsLoaded) {
+                  return Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: state.otherApps
+                          .map((e) => GestureDetector(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Column(children: [
+                            Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius:
+                                  BorderRadius.circular(18.0),
+                                  child: CachedNetworkImage(
+                                      fadeInDuration: Duration.zero,
+                                      fadeOutDuration: Duration.zero,
+                                      height: 66,
+                                      width: 66,
+                                      imageUrl: e.imageLink,
+                                      fit: BoxFit.cover),
+                                ),
+                                adWidgetTag()
+                              ],
+                            ),
+                            Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 14),
+                                child: SizedBox(
+                                    width: 90,
+                                    child: Text(e.name, style: moreAppsTextStyle, textAlign: TextAlign.center,)))
+                          ]),
+                        ),
+                        onTap: () {
+                          launchUrl(Uri.parse(e.link),
+                              mode: LaunchMode.externalApplication);
+                        },
+                      ))
+                          .toList());
+                } else {
+                  return errorDialog();
+                }
+              })),
+    );
+  }
+
+  Widget adWidgetTag() {
+    return Container(
+      width: 14,
+      height: 14,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(4.0),
+        color: Colors.blueAccent,
+      ),
+      child: const Center(
+          child: Text(
+            'AD',
+            style: TextStyle(
+              fontSize: 10,
+              color: Colors.white,
+            ),
+          )),
+    );
+  }
+
+  // Widget _buildMoreApps(BuildContext context) {
+  //   return Column(
+  //     children: [
+  //       ClipRRect(
+  //         borderRadius: BorderRadius.circular(8.0),
+  //         child: Container(
+  //           color: Colors.white,
+  //           child: Padding(
+  //             padding: const EdgeInsets.all(4.0),
+  //             child: Text(
+  //               globals.Globals.instance.getLanguage().moreApps,
+  //               style: moreAppsTextStyle,
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //       Padding(
+  //         padding: const EdgeInsets.only(top: 16.0),
+  //         child: CustomCard(
+  //           child: Column(
+  //             children: [
+  //               buildMoreApps(numerologyIcon, numerologyAppURL,
+  //                   Globals.instance.language.numerologyApp),
+  //               _buildLine(context),
+  //               buildMoreApps(
+  //                   tarotIcon, tarotAppURL, Globals.instance.language.tarotApp),
+  //             ],
+  //           ),
+  //         ),
+  //       )
+  //     ],
+  //   );
+  // }
 
   Padding _buildFirstSetting1(Languages language, BuildContext context) {
     return Padding(
