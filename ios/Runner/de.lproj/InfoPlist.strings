@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by Roman Makarenko on 2021-03-15.
+  
+*/
+CFBundleDisplayName = "Rune des Tages";
+NSUserTrackingUsageDescription = "Diese Kennung wird verwendet, um Ihnen personalisierte Werbung zu liefern.";

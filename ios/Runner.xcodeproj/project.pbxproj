@@ -49,6 +49,9 @@
 		703E380226004D0A0027D4F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Runner/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		705C14FC28E0A9EF002D383C /* HealingGADView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HealingGADView.xib; sourceTree = "<group>"; };
 		705C14FE28E0AA2B002D383C /* HealingNativeAdFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealingNativeAdFactory.swift; sourceTree = "<group>"; };
+		707E587128E53FB10010973A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		707E587228E53FB10010973A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		707E587328E53FB20010973A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Runner/de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		70BA949825FEC3B4007741C8 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +194,7 @@
 				en,
 				Base,
 				ru,
+				de,
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
@@ -308,6 +312,7 @@
 			children = (
 				703E380026004CF20027D4F1 /* ru */,
 				703E380226004D0A0027D4F1 /* en */,
+				707E587328E53FB20010973A /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 			children = (
 				97C146FB1CF9000F007C117D /* Base */,
 				703E37FD26004C4D0027D4F1 /* ru */,
+				707E587128E53FB10010973A /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 			children = (
 				97C147001CF9000F007C117D /* Base */,
 				703E37FE26004C7A0027D4F1 /* ru */,
+				707E587228E53FB10010973A /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
