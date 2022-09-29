@@ -1,69 +1,65 @@
 import 'languages.dart';
 
 class LanguageDe extends Languages {
+  @override
+  String get languagesDialogHeader => 'Sprache';
 
   @override
-  String get languagesDialogHeader => 'Language';
+  String get readMore => 'Mehr anzeigen...';
 
   @override
-  String get readMore => 'Read more...';
+  String get saveText => 'Sparen';
 
   @override
-  String get saveText => 'Save';
+  String get settings => 'Einstellungen';
 
   @override
-  String get settings => 'Settings';
+  String get language => 'Sprache';
 
   @override
-  String get language => 'Language';
+  String get notifications => 'Benachrichtigungen';
 
   @override
-  String get notifications => 'Notifications';
+  String get textSize => 'Textgröße';
 
   @override
-  String get textSize => 'Text Size';
+  String get selectTextSize => 'Wählen Sie die Textgröße';
 
   @override
-  String get selectTextSize => 'Select text size';
+  String get small => 'Klein';
 
   @override
-  String get small => 'Small';
+  String get medium => 'Mittel';
 
   @override
-  String get medium => 'Medium';
+  String get large => 'Groß';
 
   @override
-  String get large => 'Large';
+  String get enterNoteText => 'Notiz eingeben ...';
 
   @override
-  String get enterNoteText => 'Enter note ...';
+  String get runeOfTheDay => 'Rune des Tages';
 
   @override
-  String get runeOfTheDay => 'Rune of the day';
+  String get copyToast => 'Kopiert';
 
   @override
-  String get copyToast => 'Copied';
+  String get detailedDescription => 'Ausführliche Erklärung';
 
   @override
-  String get detailedDescription => 'Detailed Description';
+  String get runeDeck => 'Runendeck';
 
   @override
-  String get runeDeck => 'Rune Deck';
-
-  @override
-  String get searchRuneDeck => 'Search ...';
+  String get searchRuneDeck => 'Suche ...';
 
   @override
   String get runeCard => 'Rune';
 
   @override
-  String get notesHeader => 'Notes';
+  String get notesHeader => 'Notizen';
 
   @override
-  String get selectRune => 'Please tap on the deck to select a Rune.';
-
-  @override
-  String get appUrl => ' App "Rune Magic"';
+  String get appUrl => ' App "Runenzauber"';
 
   @override
   String get errorMessageHeader => 'Nothing here';
@@ -72,139 +68,154 @@ class LanguageDe extends Languages {
   String get errorMessageContent => 'Something went wrong, please try again';
 
   @override
-  String get homeTabText => 'Home';
+  String get homeTabText => 'Zuhause';
+
+  @override
+  String get deck => 'Runendeck';
+
+  @override
+  String get journalTabText => 'Tagebuch';
+
+  @override
+  String get moreTabText => 'Mehr';
+
+  @override
+  String get lastNoteOn => 'Letzte Notiz ';
+
+  @override
+  String get notesForCard => 'Notizen zur Karte';
+
+  @override
+  String get notesByDate => 'Notizen nach Datum';
+
+  @override
+  String get notesByCard => 'Notizen nach Karte';
+
+  @override
+  String get numberOfNotes => 'Anzahl der Noten: ';
+
+  @override
+  String get deleteNoteDialogHeader => 'Notiz löschen';
+
+  @override
+  String get deleteNoteDialogContent => 'Bist du sicher?';
+
+  @override
+  String get yes => 'Ja';
+
+  @override
+  String get cancel => 'Abbrechen';
+
+  @override
+  String get languagesDialogText => 'Sprache wählen';
+
+  @override
+  String get doYouEnjoyTheApp => 'Benutzt du gerne die App?';
+
+  @override
+  String get no => 'Nein';
+
+  @override
+  String get doNotRate => 'Nein, Danke';
+
+  @override
+  String get rateLater => 'Später';
+
+  @override
+  String get rateNow => 'Jetzt bewerten';
+
+  @override
+  String get rateUsContent =>
+      'Wenn dir diese App gefällt, nimm dir doch einen Moment Zeit und bewerte sie. Danke für deine Unterstützung!';
+
+  @override
+  String get rateUsHeader => 'Bewerte diese App';
+
+  @override
+  String get clickOnTheTimeToSet => 'Klicken Sie auf die einzustellende Zeit';
+
+  @override
+  String get dailyReminder => 'Tägliche Benachrichtigung';
+
+  @override
+  String get shareApp => 'App teilen';
+
+  @override
+  String get goPremium => 'Premium aktivieren';
+
+  @override
+  String get oneTimePayment => 'Einmalige Zahlung !!';
+
+  @override
+  String get premium => 'Prämie';
+
+  @override
+  String get removeAds => 'Werbungen ausschalten';
+
+  @override
+  String get runeJournalAndNotes => 'Runen-Tagebuch und Notizen';
+
+  @override
+  String get buy => 'Kaufen';
+
+  @override
+  String get info => 'Die Info';
+
+  @override
+  String get noNotesExist => 'Im Moment gibt es keine Notizen.';
+
+  @override
+  String get youCanAlwaysAddNodes =>
+      'Sie können jederzeit Notizen auf dem Startbildschirm unter der Kategorie "Notizen" hinzufügen.';
+
+  @override
+  String get privacyPolicy => 'Datenschutz-Bestimmungen';
+
+  @override
+  String get purchaseCanceled => 'Kauf storniert';
+
+  @override
+  String get purchaseError => 'Fehler beim Kauf';
+
+  @override
+  String get purchaseSuccess => 'Kauferfolg';
+
+  @override
+  String get restorePurchase => 'Kauf wiederherstellen';
+
+  @override
+  String get purchaseRestored => 'Kauf wiederhergestellt';
+
+  @override
+  String get consent => 'Zustimmung';
+
+  @override
+  String get moreApps => 'Mehr Apps';
+
+  @override
+  String get runeApp => 'Rune des Tages';
+
+  @override
+  String get numerologyApp => 'Numerologie';
+
+  @override
+  String get choseRuneForDate => 'Wähle deine tägliche Rune für';
 
   @override
   String get deckTabText => 'Deck';
 
   @override
-  String get journalTabText => 'Journal';
+  String get isFlipped => ' (Umgekehrte)';
 
   @override
-  String get moreTabText => 'More';
+  String get notesByRune => 'Notizen von Runen';
 
   @override
-  String get lastNoteOn => 'Last note on ';
+  String get notesForRune => 'Hinweise für Rune';
 
   @override
-  String get notesForRune => 'Notes for Rune';
+  String get selectRune => 'Bitte tippen Sie auf das Deck, um eine Rune auszuwählen.';
 
   @override
-  String get notesByDate => 'Notes by Date';
-
-  @override
-  String get notesByRune => 'Notes by Runes';
-
-  @override
-  String get numberOfNotes => 'Number of notes: ';
-
-  @override
-  String get deleteNoteDialogHeader => 'Delete Note';
-
-  @override
-  String get deleteNoteDialogContent => 'Are you sure you want to delete?';
-
-  @override
-  String get yes => 'Yes';
-
-  @override
-  String get cancel => 'Cancel';
-
-  @override
-  String get languagesDialogText => 'select language';
-
-  @override
-  String get doNotRate => 'No thanks';
-
-  @override
-  String get doYouEnjoyTheApp => 'Do you like the app?';
-
-  @override
-  String get no => 'No';
-
-  @override
-  String get rateLater => 'Remind me later';
-
-  @override
-  String get rateNow => 'Rate Now';
-
-  @override
-  String get rateUsContent =>
-      'If you like this app, please take a moment to rate it. It will not take more than a minute. Thanks for your support!';
-
-  @override
-  String get rateUsHeader => 'Rate us';
-
-  @override
-  String get clickOnTheTimeToSet => 'Click on the time to set';
-
-  @override
-  String get choseRuneForDate => 'Choose your daily rune for ';
-
-  @override
-  String get dailyReminder => 'Daily reminder';
-
-  @override
-  String get shareApp => 'Share app';
-
-  @override
-  String get goPremium => 'Go premium';
-
-  @override
-  String get oneTimePayment => 'One-time payment !!';
-
-  @override
-  String get premium => 'Premium';
-
-  @override
-  String get removeAds => 'Remove ads';
-
-  @override
-  String get runeJournalAndNotes => 'Runes journal and notes';
-
-  @override
-  String get buy => 'Buy';
-
-  @override
-  String get info => 'Info';
-
-  @override
-  String get noNotesExist => 'There are no notes at the moment.';
-
-  @override
-  String get youCanAlwaysAddNodes =>
-      'You can always add notes in the "Home" screen, under the "Notes" category.';
-
-  @override
-  String get privacyPolicy => 'Privacy policy';
-
-  @override
-  String get purchaseCanceled => 'Purchase canceled';
-
-  @override
-  String get purchaseError => 'Purchase error';
-
-  @override
-  String get purchaseSuccess => 'Purchase success';
-
-  @override
-  String get restorePurchase => 'Restore Purchase';
-
-  @override
-  String get purchaseRestored => 'Purchase restored';
-
-  @override
-  String get consent => 'Consent';
-
-  @override
-  String get isFlipped => ' (Reversed) ';
-
-  @override
-  String get tarotApp => 'Tarot daily reading';
-
-  @override
-  String get moreApps => 'More apps';
-
-  @override
-  String get numerologyApp => 'Numerology';
+  String get tarotApp => 'Tägliche Tarot-Lektüre';
 }
