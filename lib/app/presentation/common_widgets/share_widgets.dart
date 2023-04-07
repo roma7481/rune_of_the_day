@@ -9,14 +9,14 @@ import 'package:rune_of_the_day/app/constants/styles/icons.dart';
 
 import 'csv_icon_widget.dart';
 
-Widget buildShareAndCopy(String content, BuildContext context) {
+Widget buildShareAndCopy(String content) {
   return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
     IconButton(
         icon: buildIcon(shareIcon, shareIconSize),
         onPressed: () => _share(content)),
     IconButton(
         icon: buildIcon(copyIcon, copyIconSize),
-        onPressed: () => _copy(context, content))
+        onPressed: () => _copy(content))
   ]);
 }
 
@@ -24,7 +24,7 @@ void _share(String content) {
   Share.share(content);
 }
 
-void _copy(BuildContext context, String content) {
+void _copy(String content) {
   Clipboard.setData(new ClipboardData(text: content));
   Fluttertoast.showToast(
     msg: globals.Globals.instance.getLanguage().copyToast,

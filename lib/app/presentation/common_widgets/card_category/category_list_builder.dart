@@ -98,7 +98,7 @@ class ListTileBuilder extends StatelessWidget {
               category,
             ),
           ),
-          buildShareAndCopy(category.description, context),
+          buildShareAndCopy(category.description),
         ],
       ),
     );

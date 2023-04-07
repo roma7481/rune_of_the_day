@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
-    as globals;
-import 'package:rune_of_the_day/app/constants/styles/constants.dart';
-import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 import 'package:rune_of_the_day/app/data/models/category.dart';
 import 'package:rune_of_the_day/app/presentation/common_widgets/card_category/castom_category_card.dart';
 import 'package:rune_of_the_day/app/presentation/common_widgets/custom_card.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../../common_widgets/share_widgets.dart';
 
 Widget buildDescriptionCard({
   @required CardCategory descriptionCategory,
@@ -25,18 +21,9 @@ Widget buildDescriptionCard({
             icon: descriptionCategory.icon,
             isWrapped: false,
           ),
+          buildShareAndCopy(descriptionCategory.description),
         ],
       ),
     ),
   );
-}
-
-
-Future<void> _launchURL() async {
-  const url = 'http://tarot-stock.com';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
 }

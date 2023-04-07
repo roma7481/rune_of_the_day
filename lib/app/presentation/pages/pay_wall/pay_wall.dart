@@ -30,31 +30,34 @@ class _PayWallState extends State<PayWall> {
     showToast(globals.Globals.instance.getLanguage().purchaseCanceled);
   }
 
+  void _onRestored (){
+    showToast(globals.Globals.instance.getLanguage().purchaseRestored);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocListener<PurchasesCubit, PurchasesState>(
-      listener: (context, state) {
-        if (state is PurchasesError) {
-          _onPurchaseError();
-        } else if (state is PurchasesCanceled) {
-          _onCanceled();
-        } else if (state is PurchasesSuccess) {
-          _onSuccess();
-        }
-      },
-      child: BlocBuilder<PurchasesCubit, PurchasesState>(
-          builder: (context, state) {
-        if (state is PurchasesInitLoading || state is PurchasesLoading) {
-          return progressBar();
-        } else if (state is PurchasesInitError) {
-          return errorDialog();
-        }
-        if (state is PurchasesInitSuccess) {
+    return BlocConsumer<PurchasesCubit, PurchasesState>(
+        listener: (BuildContext context, state) {
+          if (state is PurchasesCanceled) {
+            _onCanceled();
+          } else if(state is PurchasesSuccess){
+            _onSuccess();
+          }  else if(state is PurchasesRestored){
+            _onRestored();
+          } else if(state is PurchasesError){
+            _onPurchaseError();
+          } else if(state is PurchasesInitFailed){
+            context.read<PurchasesCubit>().emitInitPurchases();
+          }
+        },
+        builder: (context, state) {
+          if (state is PurchasesInitFailed) {
+            return errorDialog();
+          } else if (state is PurchasesLoading) {
+            return progressBar();
+          }
           return _buildPageContent(context);
-        }
-        return _buildPageContent(context);
-      }),
-    );
+        });
   }
 
   CustomScaffold _buildPageContent(BuildContext context) {
