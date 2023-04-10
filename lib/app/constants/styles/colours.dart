@@ -23,6 +23,7 @@ const Color settingsIconColor = Color.fromRGBO(99, 188, 255, 1);
 const Color cardContentColor = Color.fromRGBO(227, 243, 255, 1);
 const Color hintTextColor = Colors.white24;
 const Color searchLineColor = Color.fromRGBO(99, 188, 255, 1);
+const Color supportUsColor = Color.fromRGBO(137, 220, 255, 1.0);
 const Color noteHintColor = Color.fromRGBO(99, 188, 255, 1);
 const Color cardUrlLinkColor = Color.fromRGBO(52, 152, 224, 1);
 const Color buttonColor = Color.fromRGBO(52, 152, 224, 1);

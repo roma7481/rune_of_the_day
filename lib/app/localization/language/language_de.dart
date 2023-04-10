@@ -3,6 +3,9 @@ import 'languages.dart';
 class LanguageDe extends Languages {
 
   @override
+  String get supportUs => 'Bitte unterstützen Sie uns! Dies ist eine großartige Möglichkeit, zur Wartung der App beizutragen und den Entwicklern DANKE zu sagen.';
+
+  @override
   String get contactUs => 'Kontakt';
 
   @override

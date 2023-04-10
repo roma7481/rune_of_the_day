@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
     as globals;
+import 'package:rune_of_the_day/app/business_logic/globals/globals.dart';
 
 import 'colours.dart';
 
@@ -15,6 +16,12 @@ TextStyle buttonTextStyle() {
   double textSize = globals.Globals.instance.getTextSize();
   return GoogleFonts.sourceSansPro(
       textStyle: TextStyle(fontSize: textSize, color: Colors.black));
+}
+
+TextStyle supportUsTextStyle() {
+  double textSize = Globals.instance.getTextSize();
+  return GoogleFonts.sourceSansPro(
+      textStyle: TextStyle(fontSize: textSize, color: supportUsColor));
 }
 
 TextStyle urlLinkStyle = GoogleFonts.sourceSansPro(

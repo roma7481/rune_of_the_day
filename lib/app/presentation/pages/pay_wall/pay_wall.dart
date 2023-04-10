@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rune_of_the_day/app/business_logic/cubites/purchases/purchases_cubit.dart';
 import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
     as globals;
+import 'package:rune_of_the_day/app/business_logic/globals/globals.dart';
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
+import 'package:rune_of_the_day/app/localization/language/languages.dart';
 import 'package:rune_of_the_day/app/presentation/common_widgets/custom_app_bar.dart';
 import 'package:rune_of_the_day/app/presentation/common_widgets/custom_card.dart';
 import 'package:rune_of_the_day/app/presentation/common_widgets/custom_scuffold.dart';
@@ -83,28 +85,49 @@ class _PayWallState extends State<PayWall> {
         child: Align(
           //To make container wrap parent you can wrap it in align
           alignment: Alignment.topCenter,
-          child: CustomCard(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 12.0, right: 12.0, top: 16.0, bottom: 16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _buildContentRow(language.goPremium, Icons.stars),
-                  _buildLine(context),
-                  _buildContentRow(
-                      language.runeJournalAndNotes, Icons.check_circle),
-                  _buildContentRow(language.removeAds, Icons.check_circle),
-                  _buildContentRow(
-                      language.oneTimePayment, Icons.monetization_on_outlined),
-                  _buildBuyButton()
-                ],
-              ),
-            ),
+          child: Column(
+            children: [
+              buildSupportUsMessage(),
+              pageContent(language, context),
+            ],
           ),
         ),
       ),
     );
+  }
+
+  Widget buildSupportUsMessage() {
+    return CustomCard(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Text(
+            Globals.instance.getLanguage().supportUs,
+            textAlign: TextAlign.center,
+            style: supportUsTextStyle(),
+          ),
+        ));
+  }
+
+  CustomCard pageContent(Languages language, BuildContext context) {
+    return CustomCard(
+          child: Padding(
+            padding: const EdgeInsets.only(
+                left: 12.0, right: 12.0, top: 16.0, bottom: 16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildContentRow(language.goPremium, Icons.stars),
+                _buildLine(context),
+                _buildContentRow(
+                    language.runeJournalAndNotes, Icons.check_circle),
+                _buildContentRow(language.removeAds, Icons.check_circle),
+                _buildContentRow(
+                    language.oneTimePayment, Icons.monetization_on_outlined),
+                _buildBuyButton()
+              ],
+            ),
+          ),
+        );
   }
 
   Widget _buildBuyButton() {

@@ -4,6 +4,9 @@ class LanguageEn extends Languages {
   const LanguageEn();
 
   @override
+  String get supportUs => 'Please support us! Doing so is a great way to contribute to the app maintenance and say THANK YOU to developers.';
+
+  @override
   String get contactUs => 'Contact us';
 
   @override
