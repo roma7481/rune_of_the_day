@@ -17,3 +17,6 @@ const double largeTextSize = 24.0;
 const String androidAppIcon = 'ic_launcher';
 const String telegram = 'Телеграм';
 const String ourWebsite = 'Наш сайт';
+
+const String email = 'cbeeapps@gmail.com';
+const String emailSubject = 'Rune_iOS';

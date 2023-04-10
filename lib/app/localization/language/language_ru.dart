@@ -1,6 +1,10 @@
 import 'languages.dart';
 
 class LanguageRu extends Languages {
+
+  @override
+  String get contactUs => 'Напиши нам';
+
   @override
   String get languagesDialogHeader => 'Язык';
 

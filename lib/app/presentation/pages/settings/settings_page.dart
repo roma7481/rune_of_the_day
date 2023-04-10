@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_funding_choices/flutter_funding_choices.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:provider/provider.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:rune_of_the_day/app/business_logic/cubites/other_app_cubit/OtherAppCubit.dart';
 import 'package:rune_of_the_day/app/business_logic/cubites/purchases/purchases_cubit.dart';
 import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
-    as globals;
-import 'package:rune_of_the_day/app/business_logic/globals/globals.dart';
+as globals;
 import 'package:rune_of_the_day/app/constants/strings/strings.dart';
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/constants/styles/constants.dart';
@@ -31,7 +30,6 @@ import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'dialog/rate_us_dialog.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -46,7 +44,9 @@ class SettingsPage extends StatelessWidget {
   List<Widget> _buildAppBarContent(BuildContext context) {
     return [
       Text(
-        globals.Globals.instance.getLanguage().settings,
+        globals.Globals.instance
+            .getLanguage()
+            .settings,
         style: headerTextStyle,
       ),
     ];
@@ -56,7 +56,9 @@ class SettingsPage extends StatelessWidget {
     return BlocListener<PurchasesCubit, PurchasesState>(
         listener: (context, state) {
           if (state is PurchasesRestored) {
-            showToast(globals.Globals.instance.getLanguage().purchaseRestored);
+            showToast(globals.Globals.instance
+                .getLanguage()
+                .purchaseRestored);
           }
         },
         child: CustomScrollView(
@@ -68,14 +70,14 @@ class SettingsPage extends StatelessWidget {
     var language = globals.Globals.instance.getLanguage();
     return SliverToBoxAdapter(
         child: SafeArea(
-      child: Column(
-        children: [
-          _buildFirstSetting1(language, context),
-          _buildMoreApps(context),
-          _buildFirstSetting2(language, context),
-        ],
-      ),
-    ));
+          child: Column(
+            children: [
+              _buildFirstSetting1(language, context),
+              _buildMoreApps(context),
+              _buildFirstSetting2(language, context),
+            ],
+          ),
+        ));
   }
 
   Widget _buildMoreApps(BuildContext context) {
@@ -90,7 +92,9 @@ class SettingsPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
-                  globals.Globals.instance.getLanguage().moreApps,
+                  globals.Globals.instance
+                      .getLanguage()
+                      .moreApps,
                   style: moreAppsHeaderTextStyle,
                 ),
               ),
@@ -118,39 +122,42 @@ class SettingsPage extends StatelessWidget {
                   return Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: state.otherApps
-                          .map((e) => GestureDetector(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Column(children: [
-                            Stack(
-                              children: [
-                                ClipRRect(
-                                  borderRadius:
-                                  BorderRadius.circular(18.0),
-                                  child: CachedNetworkImage(
-                                      fadeInDuration: Duration.zero,
-                                      fadeOutDuration: Duration.zero,
-                                      height: 66,
-                                      width: 66,
-                                      imageUrl: e.imageLink,
-                                      fit: BoxFit.cover),
+                          .map((e) =>
+                          GestureDetector(
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Column(children: [
+                                Stack(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius:
+                                      BorderRadius.circular(18.0),
+                                      child: CachedNetworkImage(
+                                          fadeInDuration: Duration.zero,
+                                          fadeOutDuration: Duration.zero,
+                                          height: 66,
+                                          width: 66,
+                                          imageUrl: e.imageLink,
+                                          fit: BoxFit.cover),
+                                    ),
+                                    adWidgetTag()
+                                  ],
                                 ),
-                                adWidgetTag()
-                              ],
+                                Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 14),
+                                    child: SizedBox(
+                                        width: 90,
+                                        child: Text(
+                                          e.name, style: moreAppsTextStyle,
+                                          textAlign: TextAlign.center,)))
+                              ]),
                             ),
-                            Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 14),
-                                child: SizedBox(
-                                    width: 90,
-                                    child: Text(e.name, style: moreAppsTextStyle, textAlign: TextAlign.center,)))
-                          ]),
-                        ),
-                        onTap: () {
-                          launchUrl(Uri.parse(e.link),
-                              mode: LaunchMode.externalApplication);
-                        },
-                      ))
+                            onTap: () {
+                              launchUrl(Uri.parse(e.link),
+                                  mode: LaunchMode.externalApplication);
+                            },
+                          ))
                           .toList());
                 } else {
                   return errorDialog();
@@ -178,40 +185,6 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  // Widget _buildMoreApps(BuildContext context) {
-  //   return Column(
-  //     children: [
-  //       ClipRRect(
-  //         borderRadius: BorderRadius.circular(8.0),
-  //         child: Container(
-  //           color: Colors.white,
-  //           child: Padding(
-  //             padding: const EdgeInsets.all(4.0),
-  //             child: Text(
-  //               globals.Globals.instance.getLanguage().moreApps,
-  //               style: moreAppsTextStyle,
-  //             ),
-  //           ),
-  //         ),
-  //       ),
-  //       Padding(
-  //         padding: const EdgeInsets.only(top: 16.0),
-  //         child: CustomCard(
-  //           child: Column(
-  //             children: [
-  //               buildMoreApps(numerologyIcon, numerologyAppURL,
-  //                   Globals.instance.language.numerologyApp),
-  //               _buildLine(context),
-  //               buildMoreApps(
-  //                   tarotIcon, tarotAppURL, Globals.instance.language.tarotApp),
-  //             ],
-  //           ),
-  //         ),
-  //       )
-  //     ],
-  //   );
-  // }
-
   Padding _buildFirstSetting1(Languages language, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0),
@@ -226,16 +199,20 @@ class SettingsPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 _buildSetting(Icons.language, language.language, context,
-                    () => _showLanguageDialog(context)),
+                        () => _showLanguageDialog(context)),
                 _buildLine(context),
                 _buildSetting(Icons.notifications_none, language.notifications,
                     context, () => _showNotificationDialog(context)),
                 _buildLine(context),
+                _buildSetting(Icons.email_outlined, language.contactUs,
+                  context, () => _openCommunication(),
+                ),
+                _buildLine(context),
                 _buildSetting(Icons.format_size, language.textSize, context,
-                    () => _showTextSizeDialog(context)),
+                        () => _showTextSizeDialog(context)),
                 _buildLine(context),
                 _buildSetting(Icons.restore, language.restorePurchase, context,
-                    () => _restorePurchase(context)),
+                        () => _restorePurchase(context)),
                 _buildPremium(language, context),
               ],
             ),
@@ -267,7 +244,7 @@ class SettingsPage extends StatelessWidget {
                         Icons.stars,
                         language.goPremium,
                         context,
-                        () => _goToPremium(context),
+                            () => _goToPremium(context),
                       ),
                     ],
                   );
@@ -303,18 +280,18 @@ class SettingsPage extends StatelessWidget {
                   Icons.share,
                   language.shareApp,
                   context,
-                  () => _shareApp(context),
+                      () => _shareApp(context),
                 ),
                 _buildLine(context),
                 _buildSetting(
                   Icons.list_alt,
                   language.privacyPolicy,
                   context,
-                  () => _openLink(privacyPolicyURL),
+                      () => _openLink(privacyPolicyURL),
                 ),
                 _buildLine(context),
                 _buildSetting(Icons.info_outline, language.info, context,
-                    () => _goToAttribution(context)),
+                        () => _goToAttribution(context)),
                 _buildConsent(context, language),
               ],
             ),
@@ -346,7 +323,7 @@ class SettingsPage extends StatelessWidget {
                       Icons.article,
                       language.consent,
                       context,
-                      () => _showConsent(),
+                          () => _showConsent(),
                     ),
                   ],
                 );
@@ -367,13 +344,25 @@ class SettingsPage extends StatelessWidget {
             Icons.send,
             telegram,
             context,
-            () => _openLink(telegramURL),
+                () => _openLink(telegramURL),
           ),
           _buildLine(context),
         ],
       );
     }
     return Container();
+  }
+
+  void _openCommunication() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    final Uri emailLaunchUri = Uri(
+        scheme: 'mailto',
+        path: email,
+        queryParameters: {
+    'subject': emailSubject + '_' + 'version:' + packageInfo.version+'_'+'build:'+packageInfo.buildNumber
+    }
+    );
+    await launchUrl(Uri.parse(emailLaunchUri.toString()));
   }
 
   Widget _buildWebsiteLink(BuildContext context) {
@@ -384,7 +373,7 @@ class SettingsPage extends StatelessWidget {
             Icons.web,
             ourWebsite,
             context,
-            () => _openLink(websiteURL),
+                () => _openLink(websiteURL),
           ),
           _buildLine(context),
         ],
@@ -395,7 +384,7 @@ class SettingsPage extends StatelessWidget {
 
   Future<bool> _shouldShowConsent() async {
     ConsentInformation consentInfo =
-        await FlutterFundingChoices.requestConsentInformation();
+    await FlutterFundingChoices.requestConsentInformation();
     if (consentInfo.isConsentFormAvailable &&
         consentInfo.consentStatus == ConsentStatus.OBTAINED) {
       return true;
@@ -442,8 +431,8 @@ class SettingsPage extends StatelessWidget {
         sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }
 
-  Widget _buildSetting(
-      IconData icon, String text, BuildContext context, Function onClick) {
+  Widget _buildSetting(IconData icon, String text, BuildContext context,
+      Function onClick) {
     var customIcon = Icon(
       icon,
       color: settingsIconColor,
@@ -514,7 +503,10 @@ class SettingsPage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 4.0, bottom: 0.0),
       child: Container(
         height: 1.0,
-        width: MediaQuery.of(context).size.width * 0.68,
+        width: MediaQuery
+            .of(context)
+            .size
+            .width * 0.68,
         color: cardLineColor,
       ),
     );

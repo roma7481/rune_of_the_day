@@ -57,6 +57,7 @@ dependencies:
   notification_permissions: ^0.6.1
   cloud_firestore: ^4.5.0
   cached_network_image: ^3.2.2
+  package_info_plus: ^3.0.3
 
 flutter_icons:
   android: "launcher_icon"

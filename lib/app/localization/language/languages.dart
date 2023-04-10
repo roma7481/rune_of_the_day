@@ -1,6 +1,8 @@
 abstract class Languages {
   const Languages();
 
+  String get contactUs;
+
   String get languagesDialogHeader;
 
   String get languagesDialogText;
