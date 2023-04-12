@@ -4,6 +4,15 @@ class LanguageEn extends Languages {
   const LanguageEn();
 
   @override
+  String get healingSoundsPromotion1 => 'Focus on daily tasks with ';
+
+  @override
+  String get healingSoundsPromotion2 => '“Healing Sounds" ';
+
+  @override
+  String get healingSoundsPromotion3 => 'app';
+
+  @override
   String get supportUs => 'Please support us! Doing so is a great way to contribute to the app maintenance and say THANK YOU to developers.';
 
   @override

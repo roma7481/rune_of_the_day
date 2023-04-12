@@ -20,3 +20,5 @@ const String ourWebsite = 'Наш сайт';
 
 const String email = 'cbeeapps@gmail.com';
 const String emailSubject = 'Rune_iOS';
+
+const String healingSoundsLink = 'https://healing.page.link/Ak8K';

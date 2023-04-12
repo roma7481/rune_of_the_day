@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
     as globals;
@@ -6,6 +5,7 @@ import 'package:rune_of_the_day/app/constants/styles/icons.dart';
 import 'package:rune_of_the_day/app/data/models/card.dart';
 import 'package:rune_of_the_day/app/data/models/category.dart';
 import 'package:rune_of_the_day/app/localization/language/languages.dart';
+import 'package:rune_of_the_day/app/presentation/common_widgets/promorion_link.dart';
 import 'package:rune_of_the_day/app/presentation/common_widgets/share_widgets.dart';
 import 'package:rune_of_the_day/app/presentation/pages/card_description/detailed_description_args.dart';
 import 'package:rune_of_the_day/app/presentation/pages/card_description/detailed_description_page.dart';
@@ -119,12 +119,17 @@ class ListTileBuilder extends StatelessWidget {
   ) async {
     Widget descriptionCard = SliverToBoxAdapter(
       child: CustomCard(
-        child: CustomCategoryCard(
-          header: category.header,
-          content: category.description,
-          icon: category.icon,
-          isWrapped: false,
-          isDefaultCard: false,
+        child: Column(
+          children: [
+            CustomCategoryCard(
+              header: category.header,
+              content: category.description,
+              icon: category.icon,
+              isWrapped: false,
+              isDefaultCard: false,
+            ),
+            buildHealingSoundsPromotion()
+          ],
         ),
       ),
     );

@@ -3,6 +3,15 @@ import 'languages.dart';
 class LanguageRu extends Languages {
 
   @override
+  String get healingSoundsPromotion1 => 'Сосредоточьтесь на повседневных задачах с приложением ';
+
+  @override
+  String get healingSoundsPromotion2 => '«Лечебные звуки».';
+
+  @override
+  String get healingSoundsPromotion3 => '';
+
+  @override
   String get supportUs => 'Пожалуйста поддержите нас! Это отличный способ внести свой вклад в поддержку приложения и сказать СПАСИБО разработчикам.';
 
   @override
