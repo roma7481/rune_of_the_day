@@ -98,7 +98,6 @@ class ListTileBuilder extends StatelessWidget {
               category,
             ),
           ),
-          buildShareAndCopy(category.description),
         ],
       ),
     );
@@ -128,7 +127,8 @@ class ListTileBuilder extends StatelessWidget {
               isWrapped: false,
               isDefaultCard: false,
             ),
-            buildHealingSoundsPromotion()
+            buildHealingSoundsPromotion(),
+            buildShareAndCopy(category.description),
           ],
         ),
       ),

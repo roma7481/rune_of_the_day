@@ -6,6 +6,7 @@ import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/constants/styles/constants.dart';
 import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 import 'package:rune_of_the_day/app/data/models/note.dart';
+import 'package:rune_of_the_day/app/presentation/common_widgets/share_widgets.dart';
 
 import '../csv_icon_widget.dart';
 import 'card_with_url.dart';
@@ -74,7 +75,7 @@ class CustomCategoryCard extends StatelessWidget {
           style: contextTextStyle());
     }
     return Text(
-      content??"",
+      content ?? "",
       style: contextTextStyle(),
     );
   }
@@ -91,23 +92,28 @@ class CustomCategoryCard extends StatelessWidget {
         padding: const EdgeInsets.only(top: 32.0),
         child: Align(
           alignment: Alignment.bottomLeft,
-          child: _buildLinkAndShareIcon(context),
+          child: readMoreAndShare(context),
         ),
       )
     ]);
   }
 
-  Widget _buildLinkAndShareIcon(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget readMoreAndShare(BuildContext context) {
+    return Stack(
       children: [
-        TextButton(
-          onPressed: onMoreInfoPressed,
-          child: Text(
-            globals.Globals.instance.getLanguage().readMore,
-            style: showMoreTextStyle(),
-          ),
-        )
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextButton(
+              onPressed: onMoreInfoPressed,
+              child: Text(
+                globals.Globals.instance.getLanguage().readMore,
+                style: showMoreTextStyle(),
+              ),
+            )
+          ],
+        ),
+        buildShareAndCopy(content),
       ],
     );
   }
