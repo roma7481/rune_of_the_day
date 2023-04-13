@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "DE_iOS_6.5.png",
+      "filename" : "rune.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "app_bg.png",
+      "filename" : "rune 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "app_bg 1.png",
+      "filename" : "rune 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
