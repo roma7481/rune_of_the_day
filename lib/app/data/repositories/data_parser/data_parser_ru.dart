@@ -85,7 +85,7 @@ class DataParserRu extends DataParser {
     );
     categories.add(CardCategory(
         header: 'Работа' + flippedNamePrefix,
-        description: row['work_upright'],
+        description: row['work_flipped'],
         icon: workIcon));
     categories.add(
       CardCategory(
