@@ -13,10 +13,12 @@ class CardImageWidget extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 12.0),
-        child: IconButton(
-          icon: Image.asset(imagePath),
-          iconSize: MediaQuery.of(context).size.height * imageSizeRatio,
-          onPressed: () {},
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * imageSizeRatio!,
+          child: IconButton(
+            icon: Image.asset(imagePath!),
+            onPressed: () {},
+          ),
         ),
       ),
     );

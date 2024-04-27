@@ -5,6 +5,7 @@ const double copyIconSize = 17.0;
 const double editDeleteIconSize = 19.0;
 const double appBarIconsSize = 17.0;
 const double fabSize = 45.0;
+const double smallIconsPadding = 14.0;
 
 const String noteTable = 'Note';
 const String floorDB = 'floor_database.db';

@@ -276,6 +276,7 @@ class _NotesForCardPageState extends State<NotesForCardPage> {
     return SliverToBoxAdapter(
       child: Row(
         children: [
+          SizedBox(width: 8.0),
           CardImageWidget(
             imagePath: card.image,
             imageSizeRatio: 0.15,

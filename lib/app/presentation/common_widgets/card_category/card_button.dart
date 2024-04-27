@@ -15,10 +15,12 @@ class CardButton extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Padding(
         padding: const EdgeInsets.only(bottom: 12.0),
-        child: IconButton(
-          icon: image,
-          iconSize: MediaQuery.of(context).size.height * 0.36,
-          onPressed: onPressed,
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.36,
+          child: IconButton(
+            icon: image!,
+            onPressed: onPressed,
+          ),
         ),
       ),
     );

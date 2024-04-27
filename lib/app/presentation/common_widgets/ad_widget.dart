@@ -23,7 +23,7 @@ Widget _adWidgetTag(Color color) {
         child: Text(
           'AD',
           style: TextStyle(
-            fontSize: 10,
+            fontSize: 9,
             color: Colors.white,
           ),
         )),
