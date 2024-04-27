@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
 Widget appAdWidgetTag() {
-  return _adWidgetTag(Colors.blueAccent);
+  return _adWidgetTag();
 }
 
 Widget healingSoundsAdWidgetTag() {
   return Padding(
     padding: const EdgeInsets.only(right: 8.0),
-    child: _adWidgetTag(Colors.blueAccent),
+    child: _adWidgetTag(),
   );
 }
 
-Widget _adWidgetTag(Color color) {
+Widget _adWidgetTag() {
   return Container(
     width: 14,
     height: 14,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(4.0),
-      color: color,
+      color: Colors.blueAccent,
     ),
     child: const Center(
         child: Text(

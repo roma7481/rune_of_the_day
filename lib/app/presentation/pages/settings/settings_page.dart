@@ -15,6 +15,7 @@ import 'package:rune_of_the_day/app/constants/styles/constants.dart';
 import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 import 'package:rune_of_the_day/app/localization/language/language_ru.dart';
 import 'package:rune_of_the_day/app/localization/language/languages.dart';
+import 'package:rune_of_the_day/app/presentation/common_widgets/ad_widget.dart';
 import 'package:rune_of_the_day/app/presentation/common_widgets/custom_app_bar.dart';
 import 'package:rune_of_the_day/app/presentation/common_widgets/custom_card.dart';
 import 'package:rune_of_the_day/app/presentation/common_widgets/custom_scuffold.dart';
@@ -140,7 +141,7 @@ class SettingsPage extends StatelessWidget {
                                           imageUrl: e.imageLink,
                                           fit: BoxFit.cover),
                                     ),
-                                    adWidgetTag()
+                                    appAdWidgetTag()
                                   ],
                                 ),
                                 Padding(
@@ -163,25 +164,6 @@ class SettingsPage extends StatelessWidget {
                   return errorDialog();
                 }
               })),
-    );
-  }
-
-  Widget adWidgetTag() {
-    return Container(
-      width: 14,
-      height: 14,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4.0),
-        color: Colors.blueAccent,
-      ),
-      child: const Center(
-          child: Text(
-            'AD',
-            style: TextStyle(
-              fontSize: 10,
-              color: Colors.white,
-            ),
-          )),
     );
   }
 
