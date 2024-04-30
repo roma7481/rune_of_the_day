@@ -65,11 +65,15 @@ class DataParserRu extends DataParser {
     categories.add(CardCategory(
         header: 'Стихия', description: row['second_name'], icon: infoIcon));
     categories.add(CardCategory(
+        header: 'Ключевые слова', description: row['keyword'], icon: penIcon));
+    categories.add(CardCategory(
         header: 'Работа', description: row['work'], icon: workIcon));
     categories.add(CardCategory(
         header: 'Личные отношения', description: row['love'], icon: loveIcon));
     categories.add(CardCategory(
         header: 'Совет Руны', description: row['advice'], icon: penIcon));
+    categories.add(CardCategory(
+        header: 'Да/Нет', description: row['yes_no'], icon: yesNoIcon));
     return categories;
   }
 
@@ -100,6 +104,8 @@ class DataParserRu extends DataParser {
         icon: penIcon,
       ),
     );
+    categories.add(CardCategory(
+        header: 'Да/Нет'+ flippedNamePrefix, description: row['yes_no_flipped'], icon: yesNoIcon));
     return categories;
   }
 

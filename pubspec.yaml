@@ -89,7 +89,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/svg_icons/
-    - assets/database/runes_db3.db
+    - assets/database/runes_db4.db
     - assets/background/app_bg.png
     - assets/images/
     - assets/
