@@ -6,6 +6,7 @@ part of 'floor_database.dart';
 // FloorGenerator
 // **************************************************************************
 
+// ignore: avoid_classes_with_only_static_members
 class $FloorAppDatabase {
   /// Creates a database builder for a persistent database.
   /// Once a database is built, you should keep a reference to it and re-use it.
@@ -22,11 +23,11 @@ class $FloorAppDatabase {
 class _$AppDatabaseBuilder {
   _$AppDatabaseBuilder(this.name);
 
-  final String name;
+  final String? name;
 
   final List<Migration> _migrations = [];
 
-  Callback _callback;
+  Callback? _callback;
 
   /// Adds migrations to the builder.
   _$AppDatabaseBuilder addMigrations(List<Migration> migrations) {
@@ -43,7 +44,7 @@ class _$AppDatabaseBuilder {
   /// Creates the database and initializes it.
   Future<AppDatabase> build() async {
     final path = name != null
-        ? await sqfliteDatabaseFactory.getDatabasePath(name)
+        ? await sqfliteDatabaseFactory.getDatabasePath(name!)
         : ':memory:';
     final database = _$AppDatabase();
     database.database = await database.open(
@@ -56,18 +57,22 @@ class _$AppDatabaseBuilder {
 }
 
 class _$AppDatabase extends AppDatabase {
-  _$AppDatabase([StreamController<String> listener]) {
+  _$AppDatabase([StreamController<String>? listener]) {
     changeListener = listener ?? StreamController<String>.broadcast();
   }
 
-  NoteDao _noteDaoInstance;
+  NoteDao? _noteDaoInstance;
 
-  Future<sqflite.Database> open(String path, List<Migration> migrations,
-      [Callback callback]) async {
+  Future<sqflite.Database> open(
+    String path,
+    List<Migration> migrations, [
+    Callback? callback,
+  ]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
       version: 1,
       onConfigure: (database) async {
         await database.execute('PRAGMA foreign_keys = ON');
+        await callback?.onConfigure?.call(database);
       },
       onOpen: (database) async {
         await callback?.onOpen?.call(database);
@@ -95,12 +100,14 @@ class _$AppDatabase extends AppDatabase {
 }
 
 class _$NoteDao extends NoteDao {
-  _$NoteDao(this.database, this.changeListener)
-      : _queryAdapter = QueryAdapter(database),
+  _$NoteDao(
+    this.database,
+    this.changeListener,
+  )   : _queryAdapter = QueryAdapter(database),
         _noteInsertionAdapter = InsertionAdapter(
             database,
             'Note',
-            (Note item) => <String, dynamic>{
+            (Note item) => <String, Object?>{
                   'noteId': item.noteId,
                   'cardId': item.cardId,
                   'cardImage': item.cardImage,
@@ -108,13 +115,13 @@ class _$NoteDao extends NoteDao {
                   'note': item.note,
                   'timeSaved': item.timeSaved,
                   'isFlipped':
-                      item.isFlipped == null ? null : (item.isFlipped ? 1 : 0)
+                      item.isFlipped == null ? null : (item.isFlipped! ? 1 : 0)
                 }),
         _noteUpdateAdapter = UpdateAdapter(
             database,
             'Note',
             ['noteId'],
-            (Note item) => <String, dynamic>{
+            (Note item) => <String, Object?>{
                   'noteId': item.noteId,
                   'cardId': item.cardId,
                   'cardImage': item.cardImage,
@@ -122,13 +129,13 @@ class _$NoteDao extends NoteDao {
                   'note': item.note,
                   'timeSaved': item.timeSaved,
                   'isFlipped':
-                      item.isFlipped == null ? null : (item.isFlipped ? 1 : 0)
+                      item.isFlipped == null ? null : (item.isFlipped! ? 1 : 0)
                 }),
         _noteDeletionAdapter = DeletionAdapter(
             database,
             'Note',
             ['noteId'],
-            (Note item) => <String, dynamic>{
+            (Note item) => <String, Object?>{
                   'noteId': item.noteId,
                   'cardId': item.cardId,
                   'cardImage': item.cardImage,
@@ -136,7 +143,7 @@ class _$NoteDao extends NoteDao {
                   'note': item.note,
                   'timeSaved': item.timeSaved,
                   'isFlipped':
-                      item.isFlipped == null ? null : (item.isFlipped ? 1 : 0)
+                      item.isFlipped == null ? null : (item.isFlipped! ? 1 : 0)
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -154,13 +161,13 @@ class _$NoteDao extends NoteDao {
   @override
   Future<List<Note>> getAll() async {
     return _queryAdapter.queryList('SELECT * FROM Note ORDER BY timeSaved DESC',
-        mapper: (Map<String, dynamic> row) => Note(
-            noteId: row['noteId'] as int,
-            cardId: row['cardId'] as int,
-            cardImage: row['cardImage'] as String,
-            date: row['date'] as String,
-            note: row['note'] as String,
-            timeSaved: row['timeSaved'] as int,
+        mapper: (Map<String, Object?> row) => Note(
+            noteId: row['noteId'] as int?,
+            cardId: row['cardId'] as int?,
+            cardImage: row['cardImage'] as String?,
+            date: row['date'] as String?,
+            note: row['note'] as String?,
+            timeSaved: row['timeSaved'] as int?,
             isFlipped: row['isFlipped'] == null
                 ? null
                 : (row['isFlipped'] as int) != 0));
@@ -169,66 +176,66 @@ class _$NoteDao extends NoteDao {
   @override
   Future<List<Note>> getNotesByCardId(int cardId) async {
     return _queryAdapter.queryList(
-        'SELECT * FROM Note WHERE cardId = ? ORDER BY timeSaved DESC',
-        arguments: <dynamic>[cardId],
-        mapper: (Map<String, dynamic> row) => Note(
-            noteId: row['noteId'] as int,
-            cardId: row['cardId'] as int,
-            cardImage: row['cardImage'] as String,
-            date: row['date'] as String,
-            note: row['note'] as String,
-            timeSaved: row['timeSaved'] as int,
+        'SELECT * FROM Note WHERE cardId = ?1 ORDER BY timeSaved DESC',
+        mapper: (Map<String, Object?> row) => Note(
+            noteId: row['noteId'] as int?,
+            cardId: row['cardId'] as int?,
+            cardImage: row['cardImage'] as String?,
+            date: row['date'] as String?,
+            note: row['note'] as String?,
+            timeSaved: row['timeSaved'] as int?,
             isFlipped: row['isFlipped'] == null
                 ? null
-                : (row['isFlipped'] as int) != 0));
+                : (row['isFlipped'] as int) != 0),
+        arguments: [cardId]);
   }
 
   @override
-  Future<Note> getLastNote(int cardId) async {
+  Future<Note?> getLastNote(int cardId) async {
     return _queryAdapter.query(
-        'SELECT * FROM Note WHERE cardId = ? ORDER BY timeSaved DESC LIMIT 1',
-        arguments: <dynamic>[cardId],
-        mapper: (Map<String, dynamic> row) => Note(
-            noteId: row['noteId'] as int,
-            cardId: row['cardId'] as int,
-            cardImage: row['cardImage'] as String,
-            date: row['date'] as String,
-            note: row['note'] as String,
-            timeSaved: row['timeSaved'] as int,
+        'SELECT * FROM Note WHERE cardId = ?1 ORDER BY timeSaved DESC LIMIT 1',
+        mapper: (Map<String, Object?> row) => Note(
+            noteId: row['noteId'] as int?,
+            cardId: row['cardId'] as int?,
+            cardImage: row['cardImage'] as String?,
+            date: row['date'] as String?,
+            note: row['note'] as String?,
+            timeSaved: row['timeSaved'] as int?,
             isFlipped: row['isFlipped'] == null
                 ? null
-                : (row['isFlipped'] as int) != 0));
+                : (row['isFlipped'] as int) != 0),
+        arguments: [cardId]);
   }
 
   @override
   Future<List<Note>> getCards() async {
     return _queryAdapter.queryList('SELECT DISTINCT cardId FROM Note',
-        mapper: (Map<String, dynamic> row) => Note(
-            noteId: row['noteId'] as int,
-            cardId: row['cardId'] as int,
-            cardImage: row['cardImage'] as String,
-            date: row['date'] as String,
-            note: row['note'] as String,
-            timeSaved: row['timeSaved'] as int,
+        mapper: (Map<String, Object?> row) => Note(
+            noteId: row['noteId'] as int?,
+            cardId: row['cardId'] as int?,
+            cardImage: row['cardImage'] as String?,
+            date: row['date'] as String?,
+            note: row['note'] as String?,
+            timeSaved: row['timeSaved'] as int?,
             isFlipped: row['isFlipped'] == null
                 ? null
                 : (row['isFlipped'] as int) != 0));
   }
 
   @override
-  Future<Note> getNoteById(int id) async {
-    return _queryAdapter.query('SELECT * FROM Note WHERE noteId = ?',
-        arguments: <dynamic>[id],
-        mapper: (Map<String, dynamic> row) => Note(
-            noteId: row['noteId'] as int,
-            cardId: row['cardId'] as int,
-            cardImage: row['cardImage'] as String,
-            date: row['date'] as String,
-            note: row['note'] as String,
-            timeSaved: row['timeSaved'] as int,
+  Future<Note?> getNoteById(int id) async {
+    return _queryAdapter.query('SELECT * FROM Note WHERE noteId = ?1',
+        mapper: (Map<String, Object?> row) => Note(
+            noteId: row['noteId'] as int?,
+            cardId: row['cardId'] as int?,
+            cardImage: row['cardImage'] as String?,
+            date: row['date'] as String?,
+            note: row['note'] as String?,
+            timeSaved: row['timeSaved'] as int?,
             isFlipped: row['isFlipped'] == null
                 ? null
-                : (row['isFlipped'] as int) != 0));
+                : (row['isFlipped'] as int) != 0),
+        arguments: [id]);
   }
 
   @override

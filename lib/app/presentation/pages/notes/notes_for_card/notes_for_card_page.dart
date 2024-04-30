@@ -27,13 +27,13 @@ import '../edit/edit_note_page.dart';
 import '../edit/edit_widget.dart';
 
 class NotesForCardPage extends StatefulWidget {
-  const NotesForCardPage({Key key, @required this.card, @required this.bloc})
+  const NotesForCardPage({Key? key, required this.card, required this.bloc})
       : super(key: key);
 
-  final TarotCard card;
+  final TarotCard? card;
   final MainPageBloc bloc;
 
-  static Widget create({BuildContext context, TarotCard card}) {
+  static Widget create({BuildContext? context, TarotCard? card}) {
     return Consumer<MainPageBloc>(
       builder: (_, bloc, __) => NotesForCardPage(bloc: bloc, card: card),
     );
@@ -44,24 +44,24 @@ class NotesForCardPage extends StatefulWidget {
 }
 
 class _NotesForCardPageState extends State<NotesForCardPage> {
-  TarotCard get card => widget.card;
+  TarotCard? get card => widget.card;
 
   Languages get language => globals.Globals.instance.getLanguage();
 
   @override
   Widget build(BuildContext context) {
     return buildCustomFuture<List<Note>>(
-      futureMethod: AppDatabase.getNotesForCard(card.id),
+      futureMethod: AppDatabase.getNotesForCard(card!.id),
       builder: _buildContent,
     );
   }
 
-  Widget _buildContent(List<Note> notes) {
+  Widget _buildContent(List<Note>? notes) {
     return CustomScaffold.withFab(
       appBar: CustomAppBar(
         children: _buildAppBarContent(),
       ),
-      content: _buildScrollViewContent(notes),
+      content: _buildScrollViewContent(notes!),
       fab: _buildFab(context),
     );
   }
@@ -81,7 +81,7 @@ class _NotesForCardPageState extends State<NotesForCardPage> {
     );
   }
 
-  void _navigateToEditNote(BuildContext value, Note note, String cardName) {
+  void _navigateToEditNote(BuildContext value, Note note, String? cardName) {
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute<EditNotePage>(
           builder: (_) => MultiProvider(
@@ -181,7 +181,7 @@ class _NotesForCardPageState extends State<NotesForCardPage> {
           children: [
             Flexible(
               child: Text(
-                note.note,
+                note.note!,
                 style: noteInputTextStyle(),
               ),
             ),
@@ -206,7 +206,7 @@ class _NotesForCardPageState extends State<NotesForCardPage> {
           children: [
             Flexible(
               child: Text(
-                DateService.toPresentationDate(note.date),
+                DateService.toPresentationDate(note.date)!,
                 style: noteInputHeaderTextStyle,
               ),
             ),
@@ -217,7 +217,7 @@ class _NotesForCardPageState extends State<NotesForCardPage> {
                   buildEdit(
                     context,
                     note,
-                    card.name,
+                    card!.name,
                     _navigateToEditNote,
                   ),
                   buildDelete(note),
@@ -278,7 +278,7 @@ class _NotesForCardPageState extends State<NotesForCardPage> {
         children: [
           SizedBox(width: 8.0),
           CardImageWidget(
-            imagePath: card.image,
+            imagePath: card!.image,
             imageSizeRatio: 0.15,
           ),
           ClipRRect(
@@ -288,7 +288,7 @@ class _NotesForCardPageState extends State<NotesForCardPage> {
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
-                  removePrefix(card.name),
+                  removePrefix(card!.name!),
                   style: cardHeaderTextStyle,
                 ),
               ),

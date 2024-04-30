@@ -58,17 +58,17 @@ abstract class AppDatabase extends FloorDatabase {
     return noteDao.deleteNote(note);
   }
 
-  static Future<Note> getLastNoteForCard(int cardId) async {
+  static Future<Note?> getLastNoteForCard(int? cardId) async {
     final database = await $FloorAppDatabase.databaseBuilder(floorDB).build();
     final noteDao = database.noteDao;
 
-    return noteDao.getLastNote(cardId);
+    return noteDao.getLastNote(cardId!);
   }
 
-  static Future<List<Note>> getNotesForCard(int cardId) async {
+  static Future<List<Note>> getNotesForCard(int? cardId) async {
     final database = await $FloorAppDatabase.databaseBuilder(floorDB).build();
     final noteDao = database.noteDao;
 
-    return noteDao.getNotesByCardId(cardId);
+    return noteDao.getNotesByCardId(cardId!);
   }
 }
