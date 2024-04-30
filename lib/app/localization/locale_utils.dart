@@ -1,4 +1,4 @@
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart' as dateTimePicker;
 import 'package:rune_of_the_day/app/constants/strings/strings.dart';
 import 'package:rune_of_the_day/app/data/repositories/data_parser/data_parser.dart';
 import 'package:rune_of_the_day/app/data/repositories/data_parser/data_parser_de.dart';
@@ -15,13 +15,12 @@ class LocaleUtils {
     switch (localeCode) {
       case en:
         return LanguageEn();
-        break;
       case de:
         return LanguageDe();
-        break;
       case ru:
         return LanguageRu();
-        break;
+      default:
+        return LanguageEn();
     }
   }
 
@@ -29,27 +28,25 @@ class LocaleUtils {
     switch (localeCode) {
       case en:
         return DataParserEn();
-        break;
       case de:
         return DataParserDe();
-        break;
       case ru:
         return DataParserRu();
-        break;
+      default:
+        return DataParserEn();
     }
   }
 
-  static LocaleType getTimePickerLocale(String localeCode) {
+  static dateTimePicker.LocaleType getTimePickerLocale(String localeCode) {
     switch (localeCode) {
       case en:
-        return LocaleType.en;
-        break;
+        return dateTimePicker.LocaleType.en;
       case de:
-        return LocaleType.de;
-        break;
+        return dateTimePicker.LocaleType.de;
       case ru:
-        return LocaleType.ru;
-        break;
+        return dateTimePicker.LocaleType.ru;
+      default:
+        return dateTimePicker.LocaleType.en;
     }
   }
 }

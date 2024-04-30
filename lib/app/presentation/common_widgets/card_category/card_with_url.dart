@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 
 class UrlCard extends StatelessWidget {
-  const UrlCard({Key key, this.content}) : super(key: key);
+  const UrlCard({Key? key, this.content}) : super(key: key);
 
-  final String content;
+  final String? content;
 
   @override
   Widget build(BuildContext context) {

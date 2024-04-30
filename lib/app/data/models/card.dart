@@ -13,14 +13,14 @@ class TarotCard {
     this.isFlipped = false,
   });
 
-  final String name;
-  final int id;
+  final String? name;
+  final int? id;
   final CardCategory descriptionCategory;
   final List<CardCategory> categories;
-  final String image;
+  final String? image;
   final bool isFlipped;
 
-  static Future<TarotCard> getCardById(int cardId, [bool isFlipped]) async {
+  static Future<TarotCard> getCardById(int? cardId, [bool? isFlipped]) async {
     DBService _dbService = DBService.instance;
     return await _dbService.getEntryById(
       tableName: CardCategory.tableName,
@@ -30,18 +30,15 @@ class TarotCard {
     );
   }
 
-  factory TarotCard.fromMap(Map<String, dynamic> row, int cardId,
-      [bool isFlipped]) {
+  factory TarotCard.fromMap(Map<String, dynamic> row, int? cardId,
+      [bool? isFlipped]) {
     //factory c`tor, implementation of a c`tor that doesn't always create an object
-    if (row == null) {
-      return null;
-    }
     ImagePickerBase imagePicker = ImagePickerService();
     var canBeInverted = flippedRunesIds.contains(cardId);
 
-    String name = CardCategory.getCardName(row, isFlipped);
+    String? name = CardCategory.getCardName(row, isFlipped);
     CardCategory description = CardCategory.getCardDescription(row, isFlipped);
-    String image = imagePicker.getImageById(cardId);
+    String? image = imagePicker.getImageById(cardId);
     List<CardCategory> _cardCategories =
         CardCategory.getCategories(row, isFlipped, canBeInverted);
 

@@ -7,19 +7,19 @@ import 'package:rune_of_the_day/app/business_logic/globals/globals.dart';
 import 'colours.dart';
 
 TextStyle contextTextStyle() {
-  double textSize = globals.Globals.instance.getTextSize();
+  double? textSize = globals.Globals.instance.getTextSize();
   return GoogleFonts.sourceSansPro(
       textStyle: TextStyle(fontSize: textSize, color: cardContentColor));
 }
 
 TextStyle buttonTextStyle() {
-  double textSize = globals.Globals.instance.getTextSize();
+  double? textSize = globals.Globals.instance.getTextSize();
   return GoogleFonts.sourceSansPro(
       textStyle: TextStyle(fontSize: textSize, color: Colors.black));
 }
 
 TextStyle supportUsTextStyle() {
-  double textSize = Globals.instance.getTextSize();
+  double? textSize = Globals.instance.getTextSize();
   return GoogleFonts.sourceSansPro(
       textStyle: TextStyle(fontSize: textSize, color: supportUsColor));
 }
@@ -51,7 +51,7 @@ TextStyle dialogContentTextStyle = GoogleFonts.sourceSansPro(
 ));
 
 TextStyle noteInputTextStyle() {
-  double textSize = globals.Globals.instance.getTextSize();
+  double? textSize = globals.Globals.instance.getTextSize();
   return GoogleFonts.sourceSansPro(
       textStyle: TextStyle(fontSize: textSize, color: noteInputTextColor));
 }
@@ -69,7 +69,7 @@ TextStyle appBarTextStyle = GoogleFonts.sourceSansPro(
     textStyle: TextStyle(fontSize: 18.0, color: appBarTextColor));
 
 TextStyle showMoreTextStyle() {
-  double textSize = globals.Globals.instance.getTextSize();
+  double textSize = globals.Globals.instance.getTextSize()!;
   return GoogleFonts.philosopher(
       textStyle: TextStyle(
           fontSize: textSize - 1.5,

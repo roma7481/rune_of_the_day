@@ -131,7 +131,7 @@ class _PayWallState extends State<PayWall> {
   }
 
   Widget _buildBuyButton() {
-    String price = context.read<PurchasesCubit>().price;
+    String? price = context.read<PurchasesCubit>().price;
     return Padding(
       padding: const EdgeInsets.only(top: 20.0),
       child: Builder(
@@ -145,7 +145,7 @@ class _PayWallState extends State<PayWall> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      globals.Globals.instance.getLanguage().buy + ' ' + price,
+                      globals.Globals.instance.getLanguage().buy + ' ' + price!,
                       style: buttonTextStyle(),
                     ),
                   ),

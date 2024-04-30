@@ -8,8 +8,8 @@ import 'package:rune_of_the_day/app/localization/language/languages.dart';
 import 'package:rune_of_the_day/app/presentation/pages/main/empty_content.dart';
 
 Widget buildCustomFuture<T>(
-    {@required Widget Function(T data) builder,
-    @required Future<T> futureMethod}) {
+    {required Widget Function(T? data) builder,
+    required Future<T> futureMethod}) {
   Languages language = globals.Globals.instance.getLanguage();
   return FutureBuilder<T>(
       future: futureMethod,

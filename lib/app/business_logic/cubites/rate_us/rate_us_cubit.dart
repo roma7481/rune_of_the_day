@@ -1,6 +1,4 @@
-import 'package:bloc/bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'rate_us_state.dart';
 
@@ -15,16 +13,16 @@ class RateUsCubit extends Cubit<RateUsState> with HydratedMixin {
         ));
 
   void emitIncreaseAppLaunchedCounter() {
-    if (state.doNotShowAgain) {
+    if (state.doNotShowAgain!) {
       return;
     }
     emit(state.copyWith(
-      numTimesLaunched: state.numTimesLaunched + 1,
+      numTimesLaunched: state.numTimesLaunched! + 1,
     ));
     if (state.numTimesLaunched == state.minLaunches) {
       emitShowDialog();
-    } else if (state.numTimesLaunched >=
-        state.minLaunches + state.remindLaunches) {
+    } else if (state.numTimesLaunched! >=
+        state.minLaunches! + state.remindLaunches!) {
       emitRemind();
     }
   }
@@ -39,7 +37,7 @@ class RateUsCubit extends Cubit<RateUsState> with HydratedMixin {
 
   void emitRemind() {
     emit(state.copyWith(
-        numTimesLaunched: state.numTimesLaunched - state.remindLaunches));
+        numTimesLaunched: state.numTimesLaunched! - state.remindLaunches!));
     emitShowDialog();
   }
 

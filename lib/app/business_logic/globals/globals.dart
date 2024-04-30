@@ -1,30 +1,25 @@
 library app.globals;
 
-import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart' as dateTimePicker;
 import 'package:rune_of_the_day/app/data/repositories/data_parser/data_parser.dart';
 import 'package:rune_of_the_day/app/data/repositories/data_parser/data_parser_en.dart';
 import 'package:rune_of_the_day/app/localization/language/language_en.dart';
 import 'package:rune_of_the_day/app/localization/language/languages.dart';
 import 'package:rune_of_the_day/app/localization/locale_utils.dart';
 
+
 class Globals {
-  Globals._({
-    this.textSize = 18.0,
-    this.language = const LanguageEn(),
-    this.dataParser = const DataParserEn(),
-    this.localeType = LocaleType.en,
-  });
+  Globals._();
 
   static final instance = Globals._();
 
-  double textSize;
-  Languages language;
-  DataParser dataParser;
-  LocaleType localeType;
+  double? textSize = 18.0;
+  Languages language = const LanguageEn();
+  DataParser dataParser = const DataParserEn();
+  dateTimePicker.LocaleType localeType = dateTimePicker.LocaleType.en;
 
-  void setLocale({@required String localeCode}) {
-    this.language = LocaleUtils.selectLanguage(localeCode);
+  void setLocale({required String? localeCode}) {
+    this.language = LocaleUtils.selectLanguage(localeCode!);
     this.dataParser = LocaleUtils.selectDataParser(localeCode);
     this.localeType = LocaleUtils.getTimePickerLocale(localeCode);
   }
@@ -33,7 +28,7 @@ class Globals {
     return this.language;
   }
 
-  LocaleType getLocaleType() {
+  dateTimePicker.LocaleType getLocaleType() {
     return this.localeType;
   }
 
@@ -41,11 +36,11 @@ class Globals {
     return this.dataParser;
   }
 
-  void setTextSize({@required double textSize}) {
+  void setTextSize({required double? textSize}) {
     this.textSize = textSize;
   }
 
-  double getTextSize() {
+  double? getTextSize() {
     return textSize;
   }
 }

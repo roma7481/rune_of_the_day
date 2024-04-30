@@ -3,11 +3,11 @@ import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 
 class NotesHeader extends StatelessWidget {
   NotesHeader({
-    Key key,
+    Key? key,
     this.text,
   }) : super(key: key);
 
-  final String text;
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class NotesHeader extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(4.0),
                 child: Text(
-                  text,
+                  text!,
                   textAlign: TextAlign.center,
                   style: cardHeaderTextStyle,
                 ),

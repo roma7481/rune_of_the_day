@@ -1,12 +1,12 @@
 import 'package:rune_of_the_day/app/constants/styles/icons.dart';
 
 abstract class ImagePickerBase {
-  String getImageById(int id);
+  String? getImageById(int? id);
 }
 
 class ImagePickerService extends ImagePickerBase {
   @override
-  String getImageById(int id) {
+  String? getImageById(int? id) {
     Map<int, String> idToImage = {
       1: fehu,
       2: urus,
@@ -35,6 +35,6 @@ class ImagePickerService extends ImagePickerBase {
       25: odin,
     };
 
-    return idToImage[id];
+    return idToImage[id!];
   }
 }

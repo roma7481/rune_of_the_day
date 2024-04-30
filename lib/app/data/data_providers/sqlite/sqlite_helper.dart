@@ -15,9 +15,9 @@ class DatabaseHelper {
 
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
 
-  static Database _database;
+  static Database? _database;
 
-  Future<Database> get database async {
+  Future<Database?> get database async {
     return (_database != null) ? _database : await _initiateDatabase();
   }
 
@@ -55,9 +55,9 @@ class DatabaseHelper {
   }
 
   Future<List<Map<String, dynamic>>> queryRecord(
-      String tableName, String columnName, int value) async {
+      String tableName, String columnName, int? value) async {
     Database db =
-        await instance.database; // this command calls get database async method
+      (await instance.database)!; // this command calls get database async method
     return await db.query(
       tableName,
       where: columnName + ' = ?',
@@ -68,7 +68,7 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>> queryColumns(
       String tableName, String columnName1, String columnName2) async {
     Database db =
-        await instance.database; // this command calls get database async method
+        await (await instance.database)!; // this command calls get database async method
     // return await db.query(_tableName);
     return await db.query(
       tableName,
@@ -77,7 +77,7 @@ class DatabaseHelper {
   }
 
   Future closeDB() async {
-    Database db = await instance.database;
+    Database db = (await instance.database)!;
     debugPrint("Closing database");
     await db.close();
   }

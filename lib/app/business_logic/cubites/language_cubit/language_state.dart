@@ -1,14 +1,14 @@
 part of 'language_cubit.dart';
 
 class LanguageState {
-  int buttonId;
-  String locale;
-  bool firsTimeAppVisit;
+  int? buttonId;
+  String? locale;
+  bool? firsTimeAppVisit;
 
   LanguageState({
-    @required this.buttonId,
-    @required this.locale,
-    @required this.firsTimeAppVisit,
+    required this.buttonId,
+    required this.locale,
+    required this.firsTimeAppVisit,
   });
 
   factory LanguageState.fromJson(Map<String, dynamic> json) {

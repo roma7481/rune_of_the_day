@@ -9,9 +9,9 @@ class NavigationButton extends StatelessWidget {
   final VoidCallback onClick;
 
   const NavigationButton({
-    @required this.isEnabled,
-    @required this.icon,
-    @required this.onClick,
+    required this.isEnabled,
+    required this.icon,
+    required this.onClick,
   });
 
   @override

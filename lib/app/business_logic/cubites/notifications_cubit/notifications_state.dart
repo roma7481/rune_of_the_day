@@ -1,20 +1,20 @@
 part of 'notifications_cubit.dart';
 
 class NotificationsState {
-  bool isAlarmSet;
-  int hours;
-  int minutes;
+  bool? isAlarmSet;
+  int? hours;
+  int? minutes;
 
   NotificationsState({
-    @required this.isAlarmSet,
-    @required this.hours,
-    @required this.minutes,
+    required this.isAlarmSet,
+    required this.hours,
+    required this.minutes,
   });
 
   NotificationsState copyWith({
-    bool isAlarmSet,
-    int hours,
-    int minutes,
+    bool? isAlarmSet,
+    int? hours,
+    int? minutes,
   }) {
     return new NotificationsState(
       isAlarmSet: isAlarmSet ?? this.isAlarmSet,
@@ -25,9 +25,9 @@ class NotificationsState {
 
   factory NotificationsState.fromMap(Map<String, dynamic> map) {
     return new NotificationsState(
-      isAlarmSet: map['isAlarmSet'] as bool,
-      hours: map['hours'] as int,
-      minutes: map['minutes'] as int,
+      isAlarmSet: map['isAlarmSet'] as bool?,
+      hours: map['hours'] as int?,
+      minutes: map['minutes'] as int?,
     );
   }
 

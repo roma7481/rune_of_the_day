@@ -11,9 +11,9 @@ import 'package:rune_of_the_day/app/services/date_serivce.dart';
 
 Widget buildNotesCard({
   bool isVisible = true,
-  @required Note note,
-  @required TarotCard card,
-  @required BuildContext context,
+  required Note note,
+  required TarotCard card,
+  required BuildContext context,
 }) {
   return _buildContent(
     isVisible: isVisible,
@@ -25,19 +25,19 @@ Widget buildNotesCard({
 }
 
 SliverToBoxAdapter _buildContent({
-  bool isVisible,
-  Note note,
-  BuildContext context,
-  TarotCard card,
-  ValueSetter<Note> onAddNote,
-  int cardId,
+  required bool isVisible,
+  Note? note,
+  BuildContext? context,
+  TarotCard? card,
+  ValueSetter<Note>? onAddNote,
+  int? cardId,
 }) {
   if (isVisible) {
     return SliverToBoxAdapter(
       child: CustomCard(
         child: Column(
           children: [
-            _cardBase(context, getNoteContent(context, note)),
+            _cardBase(context, getNoteContent(context, note!)),
             buildAddNotes(
               context: context,
               card: card,
@@ -52,18 +52,18 @@ SliverToBoxAdapter _buildContent({
   return SliverToBoxAdapter();
 }
 
-String getNoteContent(BuildContext context, Note note) {
+String getNoteContent(BuildContext? context, Note note) {
   if (note.note != null && note.note != '') {
     return globals.Globals.instance.getLanguage().lastNoteOn +
-        DateService.toPresentationDate(note.date) +
+        DateService.toPresentationDate(note.date)! +
         ':' +
         '\n\n' +
-        note.note;
+        note.note!;
   }
   return '';
 }
 
-CustomCategoryCard _cardBase(BuildContext context, String cardContent) {
+CustomCategoryCard _cardBase(BuildContext? context, String cardContent) {
   return CustomCategoryCard(
     header: globals.Globals.instance.getLanguage().notesHeader,
     content: cardContent,

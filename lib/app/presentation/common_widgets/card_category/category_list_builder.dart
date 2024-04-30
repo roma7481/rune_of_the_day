@@ -18,7 +18,7 @@ import '../error_dialog.dart';
 import 'castom_category_card.dart';
 
 class ListTileBuilder extends StatelessWidget {
-  ListTileBuilder({@required this.card, @required this.isSelectNewCard});
+  ListTileBuilder({required this.card, required this.isSelectNewCard});
 
   final TarotCard card;
   final bool isSelectNewCard;
@@ -64,12 +64,12 @@ class ListTileBuilder extends StatelessWidget {
     );
   }
 
-  Widget _buildListTile(bool isPremium) {
+  Widget _buildListTile(bool? isPremium) {
     return SliverList(
         delegate: SliverChildBuilderDelegate(
       (context, index) {
         CardCategory category = card.categories[index];
-        if (isPremium) {
+        if (isPremium!) {
           return Column(children: [
             _buildItem(category, context),
           ]);
@@ -94,7 +94,7 @@ class ListTileBuilder extends StatelessWidget {
             onMoreInfoPressed: () => _onMoreInfoPressed(
               context,
               card.name,
-              Image.asset(card.image),
+              Image.asset(card.image!),
               category,
             ),
           ),
@@ -112,7 +112,7 @@ class ListTileBuilder extends StatelessWidget {
 
   void _onMoreInfoPressed(
     BuildContext context,
-    String header,
+    String? header,
     Widget image,
     CardCategory category,
   ) async {
@@ -145,7 +145,7 @@ class ListTileBuilder extends StatelessWidget {
   }
 
   void _navigateToDetailedDescription(BuildContext context, Widget image,
-      String header, Widget descriptionCard) {
+      String? header, Widget descriptionCard) {
     Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(
         builder: (context) => DetailedDescriptionPage(
               args: DetailedDescriptionArgs(

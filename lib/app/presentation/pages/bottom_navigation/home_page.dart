@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
               if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
-                var isPremium = snapshot.data;
+                var isPremium = snapshot.data!;
                 if (isPremium) {
                   return JournalPage.create(context);
                 } else {
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
 
   void _select(TabItem tabItem) {
     if (tabItem == _currentTab) {
-      navigatorKeys[tabItem].currentState.popUntil((route) => route.isFirst);
+      navigatorKeys[tabItem]!.currentState!.popUntil((route) => route.isFirst);
     }
     setState(() => _currentTab = tabItem);
   }
@@ -79,14 +79,14 @@ class _HomePageState extends State<HomePage> {
     displayLanguageDialog(context);
     return BlocListener<RateUsCubit, RateUsState>(
       listener: (context, state) {
-        if (state.shouldShowDialog) {
+        if (state.shouldShowDialog!) {
           RateApp.showYesNoDialog(context);
           context.read<RateUsCubit>().emitStopShowing();
         }
       },
       child: WillPopScope(
         onWillPop: () async =>
-            !await navigatorKeys[_currentTab].currentState.maybePop(),
+            !await navigatorKeys[_currentTab]!.currentState!.maybePop(),
         child: CupertinoHomeScaffold(
           currentTab: _currentTab,
           onSelectTab: _select,

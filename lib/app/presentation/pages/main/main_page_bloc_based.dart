@@ -24,11 +24,11 @@ import 'navigation_button.dart';
 import 'notes_card.dart';
 
 class MainPageBlocBased extends StatefulWidget {
-  const MainPageBlocBased({Key key, @required this.bloc, this.cubit})
+  const MainPageBlocBased({Key? key, required this.bloc, this.cubit})
       : super(key: key);
 
   final MainPageBloc bloc;
-  final LanguageCubit cubit;
+  final LanguageCubit? cubit;
 
   static Widget create(BuildContext context) {
     return Consumer2<MainPageBloc, LanguageCubit>(
@@ -78,10 +78,10 @@ class _MainPageBlocBasedState extends State<MainPageBlocBased>
     );
   }
 
-  Widget buildContent(CardModel model) {
+  Widget buildContent(CardModel? model) {
     return CustomScaffold(
         appBar: CustomAppBar(
-          children: _buildAppBarContent(model),
+          children: _buildAppBarContent(model!),
         ),
         content: _buildPageContent(model));
   }
@@ -93,7 +93,7 @@ class _MainPageBlocBasedState extends State<MainPageBlocBased>
         onClick: widget.bloc.onBackPressed,
         isEnabled: model.isBackEnabled,
       ),
-      Text(DateService.toPresentationDate(model.header),
+      Text(DateService.toPresentationDate(model.header)!,
           style: headerTextStyle),
       NavigationButton(
         icon: forwardButtonIcon,

@@ -4,9 +4,9 @@ part 'OtherApp.g.dart';
 
 @JsonSerializable()
 class OtherApp {
-  final String name;
-  final String link;
-  final String imageLink;
+  final String? name;
+  final String? link;
+  final String? imageLink;
 
   OtherApp(
       this.name,

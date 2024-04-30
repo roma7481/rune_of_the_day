@@ -18,13 +18,13 @@ const String realBannerAppId = 'ca-app-pub-1763151471947181/8811732192';
 
 class AdManager {
   static int _loadNativeAdAttempts = 0;
-  static final Queue<NativeAd> _admobAdQueue = Queue<NativeAd>();
-  static NativeAd _admobNativeIntermediateAd;
+  static final Queue<NativeAd?> _admobAdQueue = Queue<NativeAd?>();
+  static NativeAd? _admobNativeIntermediateAd;
   static int _loadInterstitialAttempts = 0;
   static bool _interLoaded = false;
   static bool _bannerLoaded = false;
-  static Ad bannerAd;
-  static InterstitialAd _admobInterstitialAd;
+  static Ad? bannerAd;
+  static InterstitialAd? _admobInterstitialAd;
 
   static String get nativeAdUnitId {
     if (Platform.isAndroid) {
@@ -94,7 +94,7 @@ class AdManager {
         ));
   }
 
-  static NativeAd getNativeAd() {
+  static NativeAd? getNativeAd() {
     if (_admobAdQueue.isNotEmpty) {
       _loadNativeAd();
       final ad = _admobAdQueue.first;
@@ -202,14 +202,14 @@ class AdManager {
               if (snapshot.hasError) {
                 return errorDialog();
               } else {
-                var isPremium = snapshot.data;
+                var isPremium = snapshot.data!;
                 if (isPremium) {
                   return SizedBox();
                 }
                 if(_bannerLoaded && bannerAd != null){
                   return Container(
                     alignment: Alignment.center,
-                    child: AdWidget(ad: bannerAd),
+                    child: AdWidget(ad: bannerAd as AdWithView),
                     width: bannerAd == null ? 0 : AdSize.fullBanner.width.toDouble(),
                     height: bannerAd == null ? 0 : AdSize.fullBanner.height.toDouble(),
                   );

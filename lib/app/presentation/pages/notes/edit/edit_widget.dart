@@ -6,8 +6,8 @@ import 'package:rune_of_the_day/app/data/models/note.dart';
 Widget buildEdit(
   BuildContext context,
   Note note,
-  String cardName,
-  Function(BuildContext, Note, String) onEdit,
+  String? cardName,
+  Function(BuildContext, Note, String?) onEdit,
 ) {
   return IconButton(
       padding: EdgeInsets.all(16.0),

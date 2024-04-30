@@ -8,8 +8,8 @@ import 'package:rune_of_the_day/app/localization/language/languages.dart';
 import 'package:rune_of_the_day/app/presentation/pages/main/empty_content.dart';
 
 Widget buildCustomStream<T>(
-    {@required Widget Function(T data) builder,
-    @required Stream<T> streamMethod}) {
+    {required Widget Function(T? data) builder,
+    required Stream<T> streamMethod}) {
   Languages language = globals.Globals.instance.getLanguage();
   return StreamBuilder<T>(
       stream: streamMethod,

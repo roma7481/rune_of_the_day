@@ -12,7 +12,7 @@ class DataParserDe extends DataParser {
   String get cardNameColumn => 'name_de';
 
   @override
-  CardCategory getCardDescription(Map<String, dynamic> row, bool isFlipped) {
+  CardCategory getCardDescription(Map<String, dynamic> row, bool? isFlipped) {
     var columnName = 'second_name_de';
     var header = 'Zweitname';
 
@@ -24,12 +24,12 @@ class DataParserDe extends DataParser {
   }
 
   @override
-  int getCardId(Map<String, dynamic> row) {
+  int? getCardId(Map<String, dynamic> row) {
     return row['id'];
   }
 
   @override
-  String getCardName(Map<String, dynamic> row, bool isFlipped) {
+  String? getCardName(Map<String, dynamic> row, bool? isFlipped) {
     var flippedNamePrefix = '';
     if (isFlipped != null && isFlipped) {
       flippedNamePrefix = ' (Umgekehrt)';
@@ -41,8 +41,8 @@ class DataParserDe extends DataParser {
   @override
   List<CardCategory> getCategories(
     Map<String, dynamic> row,
-    bool isFlipped,
-    bool canBeInverted,
+    bool? isFlipped,
+    bool? canBeInverted,
   ) {
     if (isFlipped == null) {
       if (canBeInverted != null && canBeInverted) {

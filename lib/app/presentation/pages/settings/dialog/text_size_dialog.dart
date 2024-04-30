@@ -59,7 +59,7 @@ class TextSizeDialogState extends State<TextSizeDialog> {
     );
   }
 
-  Widget _getButtonText(String buttonText) {
+  Widget _getButtonText(String? buttonText) {
     var language = globals.Globals.instance.getLanguage();
     if (buttonText == small) {
       return Text(language.small);

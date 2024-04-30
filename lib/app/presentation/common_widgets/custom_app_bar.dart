@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 import 'package:rune_of_the_day/app/constants/styles/text_styles.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomAppBar({
-    @required this.children,
+    required this.children,
     this.actions = const [],
   });
 
@@ -15,7 +16,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       iconTheme: appBarIconStyle,
       centerTitle: true,
-      brightness: Brightness.dark,
       elevation: 0.0,
       backgroundColor: appBarColor,
       actions: actions,
@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: children,
-      ),
+      ), systemOverlayStyle: SystemUiOverlayStyle.light,
     );
   }
 

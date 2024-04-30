@@ -1,9 +1,10 @@
-import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:rune_of_the_day/app/data/models/card.dart';
 import 'package:rune_of_the_day/app/data/models/deck.dart';
 import 'package:rune_of_the_day/app/data/models/note.dart';
 import 'package:rune_of_the_day/app/data/repositories/floor_database.dart';
+import 'package:bloc/bloc.dart';
+
 
 part 'journal_state.dart';
 
@@ -46,7 +47,7 @@ class JournalCubit extends Cubit<JournalState> {
 
   Future<Map<TarotCard, int>> getCardsToNumNotes() async {
     List<Note> notes = await AppDatabase.getAllNotes();
-    Map<int, int> cardIdToNumNotes = {};
+    Map<int?, int> cardIdToNumNotes = {};
 
     List<TarotDeckCard> cards = await TarotDeckCard.getDeck();
 
@@ -74,7 +75,7 @@ class JournalCubit extends Cubit<JournalState> {
         exception: exception,
       ));
 
-  TarotDeckCard _getCardById(int cardId, List<TarotDeckCard> cards) {
+  TarotDeckCard _getCardById(int? cardId, List<TarotDeckCard> cards) {
     return cards.where((card) => card.cardId == cardId).toList().first;
   }
 }

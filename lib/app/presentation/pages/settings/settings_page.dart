@@ -138,7 +138,7 @@ class SettingsPage extends StatelessWidget {
                                           fadeOutDuration: Duration.zero,
                                           height: 66,
                                           width: 66,
-                                          imageUrl: e.imageLink,
+                                          imageUrl: e.imageLink!,
                                           fit: BoxFit.cover),
                                     ),
                                     appAdWidgetTag()
@@ -150,12 +150,12 @@ class SettingsPage extends StatelessWidget {
                                     child: SizedBox(
                                         width: 90,
                                         child: Text(
-                                          e.name, style: moreAppsTextStyle,
+                                          e.name!, style: moreAppsTextStyle,
                                           textAlign: TextAlign.center,)))
                               ]),
                             ),
                             onTap: () {
-                              launchUrl(Uri.parse(e.link),
+                              launchUrl(Uri.parse(e.link!),
                                   mode: LaunchMode.externalApplication);
                             },
                           ))
@@ -215,7 +215,7 @@ class SettingsPage extends StatelessWidget {
               if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
-                var isPremium = snapshot.data;
+                var isPremium = snapshot.data!;
                 if (isPremium) {
                   return Container();
                 } else {
@@ -294,7 +294,7 @@ class SettingsPage extends StatelessWidget {
               if (snapshot.hasError) {
                 return errorDialog();
               } else {
-                var shodShowConsent = snapshot.data;
+                var shodShowConsent = snapshot.data!;
                 if (!shodShowConsent) {
                   return Container();
                 }
@@ -408,7 +408,7 @@ class SettingsPage extends StatelessWidget {
 
   void _shareApp(BuildContext context) {
     final String url = linkToApp;
-    final RenderBox box = context.findRenderObject();
+    final RenderBox box = context.findRenderObject() as RenderBox;
     Share.share(url,
         sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }

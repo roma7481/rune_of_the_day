@@ -13,10 +13,10 @@ import 'card_with_url.dart';
 
 class CustomCategoryCard extends StatelessWidget {
   CustomCategoryCard({
-    Key key,
-    @required this.header,
-    @required this.content,
-    @required this.icon,
+    Key? key,
+    required this.header,
+    required this.content,
+    required this.icon,
     this.onMoreInfoPressed,
     this.onAddNote,
     this.isWrapped = true,
@@ -26,12 +26,12 @@ class CustomCategoryCard extends StatelessWidget {
         );
 
   final String header;
-  final String content;
+  final String? content;
   final String icon;
   final bool isWrapped;
   final bool isDefaultCard;
-  final VoidCallback onMoreInfoPressed;
-  final ValueSetter<Note> onAddNote;
+  final VoidCallback? onMoreInfoPressed;
+  final ValueSetter<Note>? onAddNote;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class CustomCategoryCard extends StatelessWidget {
     if (isDefaultCard) {
       return UrlCard(content: content);
     } else if (isWrapped) {
-      return AutoSizeText(content,
+      return AutoSizeText(content!,
           minFontSize: mediumTextSize,
           maxLines: 4,
           overflowReplacement: _buildContentWithLink(context),
@@ -83,7 +83,7 @@ class CustomCategoryCard extends StatelessWidget {
   Widget _buildContentWithLink(BuildContext context) {
     return Column(children: [
       Text(
-        content,
+        content!,
         style: contextTextStyle(),
         overflow: TextOverflow.ellipsis,
         maxLines: 4,

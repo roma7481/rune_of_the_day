@@ -20,17 +20,17 @@ import '../common/date_time_picker.dart';
 
 class AddNotePage extends StatefulWidget {
   AddNotePage({
-    Key key,
-    @required this.card,
-    @required this.bloc,
-    @required this.notesChangeModel,
+    Key? key,
+    required this.card,
+    required this.bloc,
+    required this.notesChangeModel,
   }) : super(key: key);
 
-  final TarotCard card;
+  final TarotCard? card;
   final MainPageBloc bloc;
   final NotesChangeModel notesChangeModel;
 
-  static Widget create({BuildContext context, TarotCard card}) {
+  static Widget create({BuildContext? context, TarotCard? card}) {
     return Consumer2<MainPageBloc, NotesChangeModel>(
       builder: (_, bloc, notesState, __) => AddNotePage(
         bloc: bloc,
@@ -82,7 +82,7 @@ class _AddNotePageState extends State<AddNotePage> {
   List<Widget> _buildAppBarContent() {
     return [
       Text(
-        DateService.toPresentationDate(dateService.getCurrentDate()),
+        DateService.toPresentationDate(dateService.getCurrentDate())!,
         style: headerTextStyle,
       ),
     ];
@@ -112,7 +112,7 @@ class _AddNotePageState extends State<AddNotePage> {
 
   Widget _buildHeader() {
     return NotesHeader(
-      text: widget.card.name,
+      text: widget.card!.name,
     );
   }
 
@@ -157,16 +157,16 @@ class _AddNotePageState extends State<AddNotePage> {
   }
 
   Future<void> insertNote() async {
-    String notePrefix = widget.card.isFlipped
+    String notePrefix = widget.card!.isFlipped
         ? globals.Globals.instance.getLanguage().isFlipped
         : '';
 
     Note note = Note(
-        cardImage: widget.card.image,
-        cardId: widget.card.id,
+        cardImage: widget.card!.image,
+        cardId: widget.card!.id,
         date: dateService.formatDateTime(_selectedDate),
         note: notePrefix + formController.text,
-        isFlipped: widget.card.isFlipped,
+        isFlipped: widget.card!.isFlipped,
         timeSaved: _selectedDate.millisecondsSinceEpoch);
     await AppDatabase.insertNote(note);
     widget.bloc.onAddNote(note);

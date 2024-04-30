@@ -8,18 +8,15 @@ class TarotDeckCard {
   TarotDeckCard(this.image, this.name, this.cardId);
 
   final Widget image;
-  final String name;
-  final int cardId;
+  final String? name;
+  final int? cardId;
 
   factory TarotDeckCard.fromMap(Map<String, dynamic> row) {
-    if (row == null) {
-      return null;
-    }
     ImagePickerBase imagePicker = ImagePickerService();
 
-    int id = CardCategory.getCardId(row);
-    String cardName = CardCategory.getCardName(row);
-    String imagePath = imagePicker.getImageById(id);
+    int? id = CardCategory.getCardId(row);
+    String? cardName = CardCategory.getCardName(row);
+    String imagePath = imagePicker.getImageById(id)!;
 
     return new TarotDeckCard(
       Image.asset(imagePath),

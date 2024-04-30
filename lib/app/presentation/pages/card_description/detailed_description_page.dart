@@ -10,7 +10,7 @@ import 'package:rune_of_the_day/app/presentation/common_widgets/custom_scuffold.
 import 'detailed_description_args.dart';
 
 class DetailedDescriptionPage extends StatelessWidget {
-  const DetailedDescriptionPage({@required this.args});
+  const DetailedDescriptionPage({required this.args});
 
   final DetailedDescriptionArgs args;
 
@@ -38,7 +38,7 @@ class DetailedDescriptionPage extends StatelessWidget {
     return categoryCard;
   }
 
-  Widget _buildCardHeader(String headerText) {
+  Widget _buildCardHeader(String? headerText) {
     return CardHeader(
       text: headerText,
     );

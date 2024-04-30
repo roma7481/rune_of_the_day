@@ -83,8 +83,8 @@ class _TarotDeckPageState extends State<TarotDeckPage> {
           setState(() {
             filteredCards = allCards
                 .where((card) =>
-                    (card.name.toLowerCase().contains(string.toLowerCase()) ||
-                        card.name.toLowerCase().contains(string.toLowerCase())))
+                    (card.name!.toLowerCase().contains(string.toLowerCase()) ||
+                        card.name!.toLowerCase().contains(string.toLowerCase())))
                 .toList();
           });
         },

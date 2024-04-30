@@ -6,7 +6,7 @@ class NotesChangeModel with ChangeNotifier {
     NoteState noteState = NoteState.notUpdated,
   });
 
-  NoteState notesState;
+  NoteState? notesState;
 
   void updateNotes() {
     updateWith(notesState: NoteState.updated);
@@ -14,7 +14,7 @@ class NotesChangeModel with ChangeNotifier {
   }
 
   void updateWith({
-    NoteState notesState,
+    NoteState? notesState,
   }) {
     this.notesState = notesState ?? this.notesState;
     notifyListeners();

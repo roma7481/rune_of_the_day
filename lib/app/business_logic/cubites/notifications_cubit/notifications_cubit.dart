@@ -1,6 +1,4 @@
-import 'package:bloc/bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'notifications_state.dart';
 
@@ -19,7 +17,7 @@ class NotificationsCubit extends Cubit<NotificationsState> with HydratedMixin {
     ));
   }
 
-  void emitResetAlarm(bool isActive, int hours, int minutes){
+  void emitResetAlarm(bool? isActive, int? hours, int? minutes){
     emit(state.copyWith(
       isAlarmSet: isActive,
       hours: hours,

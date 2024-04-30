@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart' as dateTimePicker;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +35,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
       hoursInit = hoursInit ?? state.hours;
       minutesInit = minutesInit ?? state.minutes;
       isAlarmSetInit = isAlarmSetInit ?? state.isAlarmSet;
-      var isAlarmSet = state.isAlarmSet;
+      var isAlarmSet = state.isAlarmSet!;
       var hours = state.hours;
       var minutes = state.minutes;
       return _buildDialog(context, isAlarmSet, hours, minutes);
@@ -45,8 +45,8 @@ class _NotificationDialogState extends State<NotificationDialog> {
   CupertinoAlertDialog _buildDialog(
     BuildContext context,
     bool isAlarmSet,
-    int hours,
-    int minutes,
+    int? hours,
+    int? minutes,
   ) {
     Languages language = globals.Globals.instance.getLanguage();
 
@@ -84,8 +84,8 @@ class _NotificationDialogState extends State<NotificationDialog> {
   Widget _buildDialogContent(
     BuildContext context,
     bool isAlarmSet,
-    int hours,
-    int minutes,
+    int? hours,
+    int? minutes,
   ) {
     return Column(
       children: [
@@ -114,7 +114,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
     );
   }
 
-  Widget _buildTimeDropdown(BuildContext context, int hours, int minutes) {
+  Widget _buildTimeDropdown(BuildContext context, int? hours, int? minutes) {
     return CupertinoDialogAction(
       onPressed: () {
         _buildBottomPicker(context);
@@ -144,20 +144,20 @@ class _NotificationDialogState extends State<NotificationDialog> {
   }
 
   void _showAmPm(BuildContext context) {
-    DatePicker.showTime12hPicker(
+    dateTimePicker.DatePicker.showTime12hPicker(
       context,
       theme: _dialogTheme(),
       showTitleActions: true,
       onConfirm: (date) {
         onConfirmTime(context, date);
       },
-      locale: LocaleType.en,
+      locale: dateTimePicker.LocaleType.en,
       currentTime: DateTime.now(),
     );
   }
 
   void _showStandard(BuildContext context) {
-    DatePicker.showTimePicker(
+    dateTimePicker.DatePicker.showTimePicker(
       context,
       showSecondsColumn: false,
       theme: _dialogTheme(),
@@ -170,8 +170,8 @@ class _NotificationDialogState extends State<NotificationDialog> {
     );
   }
 
-  DatePickerTheme _dialogTheme() {
-    return DatePickerTheme(
+  dateTimePicker.DatePickerTheme _dialogTheme() {
+    return dateTimePicker.DatePickerTheme(
       backgroundColor: datePickerColor,
       doneStyle: TextStyle(color: datePickerItem),
       itemStyle: TextStyle(color: datePickerItem),
@@ -187,11 +187,11 @@ class _NotificationDialogState extends State<NotificationDialog> {
         );
   }
 
-  String _getFormattedDate(int hours, int minutes) {
+  String _getFormattedDate(int? hours, int? minutes) {
     String formattedHours = hours.toString();
     String formattedMinutes = minutes.toString();
     if (globals.Globals.instance.getLanguage() is LanguageEn) {
-      TimeOfDay timeOfTheDay = TimeOfDay(hour: hours, minute: minutes);
+      TimeOfDay timeOfTheDay = TimeOfDay(hour: hours!, minute: minutes!);
       String isAmPm = timeOfTheDay.period == DayPeriod.am ? 'AM' : 'PM';
       String formattedHours = timeOfTheDay.hourOfPeriod.toString();
       formattedHours = formattedHours.length == 1
@@ -210,7 +210,7 @@ class _NotificationDialogState extends State<NotificationDialog> {
     return '$formattedHours : $formattedMinutes';
   }
 
-  void scheduleAlarm(bool isAlarmSet, int hours, int minutes) async {
+  void scheduleAlarm(bool isAlarmSet, int? hours, int? minutes) async {
     if (!isAlarmSet) {
       flutterLocalNotificationsPlugin.cancelAll();
       return;
@@ -245,8 +245,8 @@ class _NotificationDialogState extends State<NotificationDialog> {
       dateTime.year,
       dateTime.month,
       dateTime.day,
-      hours,
-      minutes,
+      hours!,
+      minutes!,
       dateTime.second,
       dateTime.millisecond,
       dateTime.microsecond,

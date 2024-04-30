@@ -15,13 +15,13 @@ abstract class NoteDao {
   @Query("SELECT * FROM " +
       noteTable +
       " WHERE cardId = :cardId ORDER BY timeSaved DESC LIMIT 1")
-  Future<Note> getLastNote(int cardId);
+  Future<Note?> getLastNote(int cardId);
 
   @Query("SELECT DISTINCT cardId FROM " + noteTable)
   Future<List<Note>> getCards();
 
   @Query("SELECT * FROM " + noteTable + " WHERE noteId = :id")
-  Future<Note> getNoteById(int id);
+  Future<Note?> getNoteById(int id);
 
   @insert
   Future<void> insertNote(Note note);

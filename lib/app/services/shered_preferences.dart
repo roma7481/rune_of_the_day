@@ -4,7 +4,7 @@ final String _keysKey = 'list_key';
 final String _isFlippedSuffix = 'flipped_key';
 
 class SharedPref {
-  List<String> _keys = [];
+  List<String?> _keys = [];
   int _index = 0;
 
   SharedPref._();
@@ -13,13 +13,13 @@ class SharedPref {
 
   Future initKeys() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String keys = prefs.getString(_keysKey);
+    String? keys = prefs.getString(_keysKey);
     this._keys = [];
     keys != null ? this._keys.addAll(keys.split(',')) : this._keys = [];
     _index = _keys.length - 1;
   }
 
-  storeValue({String key, int value1, bool value2}) async {
+  storeValue({String? key, int? value1, bool? value2}) async {
     if (_keys.contains(key)) {
       return;
     }
@@ -27,8 +27,8 @@ class SharedPref {
 
     _keys.add(key);
     _index = _keys.length - 1;
-    prefs.setInt(key, value1);
-    prefs.setBool(key + _isFlippedSuffix, value2);
+    prefs.setInt(key!, value1!);
+    prefs.setBool(key + _isFlippedSuffix, value2!);
 
     var _keyList = prefs.getString(_keysKey);
 
@@ -37,7 +37,7 @@ class SharedPref {
         : prefs.setString(_keysKey, _keyList + "," + key);
   }
 
-  Future<Map<int, bool>> getValue(String key) async {
+  Future<Map<int?, bool?>> getValue(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return {prefs.getInt(key) : prefs.getBool(key + _isFlippedSuffix)};
   }
@@ -45,9 +45,9 @@ class SharedPref {
   Future<List> getValueByIndex(int index) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String key = _keys[index];
-    int value1 = prefs.getInt(key);
-    bool value2 = prefs.getBool(key + _isFlippedSuffix);
+    String key = _keys[index]!;
+    int? value1 = prefs.getInt(key);
+    bool? value2 = prefs.getBool(key + _isFlippedSuffix);
 
     return [key, value1, value2];
   }

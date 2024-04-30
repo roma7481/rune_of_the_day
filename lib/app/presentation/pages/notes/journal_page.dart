@@ -27,8 +27,8 @@ import 'edit/edit_widget.dart';
 import 'notes_for_card/notes_for_card_page.dart';
 
 class JournalPage extends StatefulWidget {
-  const JournalPage({Key key, this.bloc}) : super(key: key);
-  final MainPageBloc bloc;
+  const JournalPage({Key? key, this.bloc}) : super(key: key);
+  final MainPageBloc? bloc;
 
   static Widget create(BuildContext context) {
     return Consumer<MainPageBloc>(
@@ -257,7 +257,7 @@ class _JournalPageState extends State<JournalPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        card.name,
+                        card.name!,
                         style: noteInputHeaderTextStyle,
                       ),
                       Padding(
@@ -287,14 +287,14 @@ class _JournalPageState extends State<JournalPage> {
       (context, index) {
         var noteToCard = notesToCards.entries.toList()[index];
         var note = noteToCard.key;
-        var isFlippedSuffix = note.isFlipped
+        var isFlippedSuffix = note.isFlipped!
             ? globals.Globals.instance.getLanguage().isFlipped
             : '';
         var card = noteToCard.value;
         return CustomCard(
           child: Row(
             children: [
-              _buildCardImage(note.cardImage, note.isFlipped),
+              _buildCardImage(note.cardImage, note.isFlipped!),
               Flexible(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -305,7 +305,7 @@ class _JournalPageState extends State<JournalPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            DateService.toPresentationDate(note.date),
+                            DateService.toPresentationDate(note.date)!,
                             style: noteInputHeaderTextStyle,
                           ),
                           Padding(
@@ -316,7 +316,7 @@ class _JournalPageState extends State<JournalPage> {
                                 buildEdit(
                                   context,
                                   note,
-                                  card.name + isFlippedSuffix,
+                                  card.name! + isFlippedSuffix,
                                   _navigateToEditNote,
                                 ),
                                 buildDelete(note),
@@ -329,7 +329,7 @@ class _JournalPageState extends State<JournalPage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Text(
-                        card.name,
+                        card.name!,
                         // card.name,
                         style: noteInputTextStyle(),
                       ),
@@ -338,7 +338,7 @@ class _JournalPageState extends State<JournalPage> {
                       padding: const EdgeInsets.only(
                           top: 8.0, bottom: 12.0, right: 8.0),
                       child: Text(
-                        note.note,
+                        note.note!,
                         style: noteInputTextStyle(),
                       ),
                     ),
@@ -354,7 +354,7 @@ class _JournalPageState extends State<JournalPage> {
     ));
   }
 
-  void _navigateToEditNote(BuildContext value, Note note, String cardName) {
+  void _navigateToEditNote(BuildContext value, Note note, String? cardName) {
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute<EditNotePage>(
           builder: (_) => MultiProvider(
@@ -398,7 +398,7 @@ class _JournalPageState extends State<JournalPage> {
               await AppDatabase.deleteNote(note);
               Navigator.of(context, rootNavigator: true).pop('Discard');
               context.read<JournalCubit>().emitJournalByDates();
-              widget.bloc.onDeleteNote();
+              widget.bloc!.onDeleteNote();
             },
             isDefaultAction: true,
             child: Text(globals.Globals.instance.getLanguage().yes),
@@ -414,7 +414,7 @@ class _JournalPageState extends State<JournalPage> {
     );
   }
 
-  Widget _buildCardImage(String image, bool isFlipped) {
+  Widget _buildCardImage(String? image, bool isFlipped) {
     if (isFlipped) {
       return new RotationTransition(
         turns: new AlwaysStoppedAnimation(180 / 360),

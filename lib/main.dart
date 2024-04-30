@@ -49,11 +49,11 @@ Future<void> main() async {
       requestBadgePermission: true,
       requestSoundPermission: true,
       onDidReceiveLocalNotification:
-          (int id, String title, String body, String payload) async {});
+          (int id, String? title, String? body, String? payload) async {});
   var initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onSelectNotification: (String payload) async {
+      onSelectNotification: (String? payload) async {
         if (payload != null) {
           debugPrint('notification payload: ' + payload);
         }

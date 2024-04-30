@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CardImageWidget extends StatelessWidget {
-  const CardImageWidget({Key key, this.imageSizeRatio, this.imagePath})
+  const CardImageWidget({Key? key, this.imageSizeRatio, this.imagePath})
       : super(key: key);
 
-  final double imageSizeRatio;
-  final String imagePath;
+  final double? imageSizeRatio;
+  final String? imagePath;
 
   @override
   Widget build(BuildContext context) {

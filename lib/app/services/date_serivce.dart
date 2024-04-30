@@ -33,10 +33,10 @@ class DateService extends DateBase {
     return  DateFormat('hh:mm').format(date);
   }
 
-  static String toPresentationDate(String date) {
+  static String? toPresentationDate(String? date) {
     if (globals.Globals.instance.getLanguage() is LanguageEn) {
       try {
-        DateTime dateTime = new DateFormat(standardDateFormat).parse(date);
+        DateTime dateTime = new DateFormat(standardDateFormat).parse(date!);
         return DateFormat(usDateFormat).format(dateTime);
       } catch (e) {
         return date;

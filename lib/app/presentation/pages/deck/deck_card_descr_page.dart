@@ -20,8 +20,8 @@ import 'package:rune_of_the_day/app/presentation/pages/card_description/descript
 import 'package:rune_of_the_day/app/presentation/pages/main/notes_card.dart';
 
 class TarotDeckCardDescription extends StatelessWidget {
-  const TarotDeckCardDescription({Key key, this.cardId}) : super(key: key);
-  final int cardId;
+  const TarotDeckCardDescription({Key? key, this.cardId}) : super(key: key);
+  final int? cardId;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,7 @@ class TarotDeckCardDescription extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         _buildCardHeader(card.name),
-        _buildCardButton(Image.asset(card.image)),
+        _buildCardButton(Image.asset(card.image!)),
         _buildDescriptionCard(card),
         _buildNotesCard(context, card, note),
         _buildCardList(card),
@@ -94,7 +94,7 @@ class TarotDeckCardDescription extends StatelessWidget {
     );
   }
 
-  Widget _buildCardHeader(String headerText) {
+  Widget _buildCardHeader(String? headerText) {
     return CardHeader(
       topPadding: 7.0,
       text: headerText,

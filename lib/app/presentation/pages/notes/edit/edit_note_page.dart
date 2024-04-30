@@ -19,25 +19,25 @@ import '../common/date_time_picker.dart';
 
 class EditNotePage extends StatefulWidget {
   EditNotePage({
-    Key key,
-    @required this.cardName,
-    @required this.cardImage,
-    @required this.bloc,
-    @required this.notesChangeModel,
-    @required this.note,
+    Key? key,
+    required this.cardName,
+    required this.cardImage,
+    required this.bloc,
+    required this.notesChangeModel,
+    required this.note,
   }) : super(key: key);
 
-  final String cardName;
-  final String cardImage;
+  final String? cardName;
+  final String? cardImage;
   final MainPageBloc bloc;
   final NotesChangeModel notesChangeModel;
   final Note note;
 
   static Widget create(
-      {@required BuildContext context,
-      @required String cardName,
-      @required String cardImage,
-      @required Note note}) {
+      {required BuildContext context,
+      required String? cardName,
+      required String? cardImage,
+      required Note note}) {
     return Consumer2<MainPageBloc, NotesChangeModel>(
       builder: (_, bloc, notesState, __) => EditNotePage(
         bloc: bloc,
@@ -68,7 +68,7 @@ class _EditNotePageState extends State<EditNotePage> {
 
   @override
   Widget build(BuildContext context) {
-    formController.text = widget.note.note;
+    formController.text = widget.note.note!;
     formController.selection = TextSelection.fromPosition(
         TextPosition(offset: formController.text.length));
     return CustomScaffold(
@@ -94,7 +94,7 @@ class _EditNotePageState extends State<EditNotePage> {
   List<Widget> _buildAppBarContent() {
     return [
       Text(
-        DateService.toPresentationDate(dateService.getCurrentDate()),
+        DateService.toPresentationDate(dateService.getCurrentDate())!,
         style: headerTextStyle,
       ),
     ];

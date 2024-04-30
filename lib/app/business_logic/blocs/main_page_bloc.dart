@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
 import 'package:rune_of_the_day/app/constants/enums/enums.dart';
 import 'package:rune_of_the_day/app/constants/flipped/flipped_runes.dart';
 import 'package:rune_of_the_day/app/data/models/note.dart';
@@ -15,7 +14,7 @@ import 'card_state_model.dart';
 class MainPageBloc {
   MainPageBloc({this.dateService});
 
-  final DateBase dateService;
+  final DateBase? dateService;
   final SharedPref _sharedPref = SharedPref.instance;
   final StreamController<CardModel> _modelController =
       StreamController<CardModel>();
@@ -28,13 +27,13 @@ class MainPageBloc {
   }
 
   void updateWith({
-    bool isForwardEnabled,
-    bool isBackEnabled,
-    CardType cardType,
-    String cardName,
-    TarotCard card,
-    String header,
-    Note note,
+    bool? isForwardEnabled,
+    bool? isBackEnabled,
+    CardType? cardType,
+    String? cardName,
+    TarotCard? card,
+    String? header,
+    Note? note,
   }) {
     _model = _model.copyWith(
       isForwardEnabled,
@@ -50,11 +49,11 @@ class MainPageBloc {
   }
 
   void _setSelectedCard({
-    @required TarotCard card,
-    @required String date,
-    @required bool isForwardEnabled,
-    @required bool isBackEnabled,
-    @required Note note,
+    required TarotCard card,
+    required String? date,
+    required bool isForwardEnabled,
+    required bool isBackEnabled,
+    required Note note,
   }) async {
     updateWith(
       isForwardEnabled: isForwardEnabled,
@@ -68,7 +67,7 @@ class MainPageBloc {
   }
 
   void _setDefaultCard(
-      {@required bool isBackEnabled, @required String date}) async {
+      {required bool isBackEnabled, required String date}) async {
     TarotCard card = TarotCard();
 
     updateWith(
@@ -81,7 +80,7 @@ class MainPageBloc {
     );
   }
 
-  bool _isBackEnabled({bool isCardOpen, String date}) {
+  bool _isBackEnabled({required bool isCardOpen, String? date}) {
     if (!isCardOpen) {
       return _sharedPref.getNumKeys() > 0;
     }
@@ -91,12 +90,12 @@ class MainPageBloc {
     return _sharedPref.getIndexValue() > 0;
   }
 
-  bool _isForwardEnabled(String date) {
+  bool _isForwardEnabled(String? date) {
     return _isTodayDate(date) ? false : true;
   }
 
-  bool _isTodayDate(String currentDate) =>
-      currentDate == dateService.getCurrentDate();
+  bool _isTodayDate(String? currentDate) =>
+      currentDate == dateService!.getCurrentDate();
 
   Future<void> onOpenCardPressed() async {
     if (_model.cardType == CardType.open) {
@@ -111,10 +110,10 @@ class MainPageBloc {
     }
 
     await _sharedPref.storeValue(
-        key: dateService.getCurrentDate(), value1: runeId, value2: isFlipped);
+        key: dateService!.getCurrentDate(), value1: runeId, value2: isFlipped);
 
     TarotCard card = await TarotCard.getCardById(runeId, isFlipped);
-    String date = dateService.getCurrentDate();
+    String date = dateService!.getCurrentDate();
     bool isForwardEnabled = _isForwardEnabled(date);
     bool isBackEnabled = _isBackEnabled(isCardOpen: true, date: date);
     Note note = await _getLastNoteForCard(runeId);
@@ -146,15 +145,15 @@ class MainPageBloc {
     updateWith(note: note);
   }
 
-  Future<Note> _getLastNoteForCard(int cardId) async {
-    Note note = await AppDatabase.getLastNoteForCard(cardId);
+  Future<Note> _getLastNoteForCard(int? cardId) async {
+    Note? note = await AppDatabase.getLastNoteForCard(cardId);
     return note == null ? Note() : note;
   }
 
   void onInitCard() async {
     await _sharedPref.initKeys();
-    var date = dateService.getCurrentDate();
-    final Map<int, bool> cardIdToIsFlipped = await _sharedPref.getValue(date);
+    var date = dateService!.getCurrentDate();
+    final Map<int?, bool?> cardIdToIsFlipped = await _sharedPref.getValue(date);
     var cardId = cardIdToIsFlipped.keys.first;
     var isFlipped = cardIdToIsFlipped.values.first;
 
@@ -178,7 +177,7 @@ class MainPageBloc {
     } else {
       bool isBackEnabled = _isBackEnabled(isCardOpen: false, date: date);
       _setDefaultCard(
-          isBackEnabled: isBackEnabled, date: dateService.getCurrentDate());
+          isBackEnabled: isBackEnabled, date: dateService!.getCurrentDate());
     }
   }
 
@@ -207,14 +206,14 @@ class MainPageBloc {
 
   void onForwardPressed() async {
     List headerToCardIdAndFlipped = await _sharedPref.getNextKeyValue();
-    String date = headerToCardIdAndFlipped[0];
+    String? date = headerToCardIdAndFlipped[0];
     var cardId = headerToCardIdAndFlipped[1];
     var isFlipped = headerToCardIdAndFlipped[2];
 
     if (cardId == null) {
       bool isBackEnabled = _isBackEnabled(isCardOpen: false, date: date);
       _setDefaultCard(
-          isBackEnabled: isBackEnabled, date: dateService.getCurrentDate());
+          isBackEnabled: isBackEnabled, date: dateService!.getCurrentDate());
       return;
     }
 

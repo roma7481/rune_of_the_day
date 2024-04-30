@@ -5,8 +5,8 @@ import 'package:rune_of_the_day/app/presentation/common_widgets/custom_card.dart
 import '../../common_widgets/share_widgets.dart';
 
 Widget buildDescriptionCard({
-  @required CardCategory descriptionCategory,
-  @required bool isClosedCard,
+  required CardCategory descriptionCategory,
+  required bool isClosedCard,
 }) {
   if (isClosedCard) {
     return SliverToBoxAdapter(child: Container());

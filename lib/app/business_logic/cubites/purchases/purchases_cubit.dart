@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
+
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:meta/meta.dart';
 import 'package:rune_of_the_day/app/services/premium/premium_controller.dart';
@@ -9,22 +9,22 @@ part 'purchases_state.dart';
 
 class PurchasesCubit extends Cubit<PurchasesState> {
   static const productName = 'rune_premium';
-  StreamSubscription<List<PurchaseDetails>> _subscription;
+  late StreamSubscription<List<PurchaseDetails>> _subscription;
   InAppPurchase _connection = InAppPurchase.instance;
-  ProductDetails _productDetails;
-  String _price;
+  late ProductDetails _productDetails;
+  String? _price;
 
   PurchasesCubit() : super(PurchasesLoading()) {
     emitInitPurchases();
   }
 
-  String get price => _price;
+  String? get price => _price;
 
   void emitInitPurchases() async {
     Stream purchaseUpdates = _connection.purchaseStream;
     _subscription = purchaseUpdates.listen((purchases) {
       _listenToPurchaseUpdated(purchases);
-    });
+    }) as StreamSubscription<List<PurchaseDetails>>;
 
     final bool available = await _connection.isAvailable();
     if (!available) {

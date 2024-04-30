@@ -4,30 +4,30 @@ import 'package:rune_of_the_day/app/services/ads/ad_service.dart';
 
 class CustomScaffold extends StatelessWidget {
   CustomScaffold.withFab({
-    Key key,
+    Key? key,
     this.drawer,
-    @required this.appBar,
-    @required this.content,
-    @required this.fab,
+    required this.appBar,
+    required this.content,
+    required this.fab,
   });
 
   CustomScaffold.withBanner({
-    Key key,
+    Key? key,
     this.drawer,
-    @required this.appBar,
-    @required this.content,
+    required this.appBar,
+    required this.content,
   }) : this.fab = Container(), this.pageWithBanner = true;
 
   CustomScaffold({
-    Key key,
+    Key? key,
     this.drawer,
-    @required this.appBar,
-    @required this.content,
+    required this.appBar,
+    required this.content,
   }) : this.fab = Container();
 
   final Widget appBar;
   final Widget content;
-  final Widget drawer;
+  final Widget? drawer;
   final Widget fab;
   bool pageWithBanner = false ;
 
@@ -37,7 +37,7 @@ class CustomScaffold extends StatelessWidget {
       drawer: drawer,
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
-      appBar: appBar,
+      appBar: appBar as PreferredSizeWidget?,
       body: Container(
           constraints: BoxConstraints.expand(),
           decoration: BoxDecoration(

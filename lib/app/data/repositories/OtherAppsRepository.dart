@@ -11,7 +11,7 @@ class OtherAppsRepository {
     Query<OtherApp> snapshot = FirebaseFirestore.instance
         .collection("${Globals.instance.localeType.name}/other_apps/${Platform.operatingSystem}")
         .withConverter<OtherApp>(
-      fromFirestore: (snapshots, _) => OtherApp.fromJson(snapshots.data()),
+      fromFirestore: (snapshots, _) => OtherApp.fromJson(snapshots.data()!),
       toFirestore: (category, _) => category.toJson(),
     );
 

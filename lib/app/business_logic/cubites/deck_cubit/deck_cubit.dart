@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:rune_of_the_day/app/data/models/deck.dart';
+import 'package:bloc/bloc.dart';
 
 part 'deck_state.dart';
 

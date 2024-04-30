@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart' as dateTimePicker;
 import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
     as globals;
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
@@ -8,10 +8,10 @@ import 'package:rune_of_the_day/app/services/date_serivce.dart';
 
 class DateTimePicker extends StatefulWidget {
   const DateTimePicker(
-      {Key key, @required this.currentDate, @required this.onDateSelect})
+      {Key? key, required this.currentDate, required this.onDateSelect})
       : super(key: key);
 
-  final String currentDate;
+  final String? currentDate;
   final ValueSetter<DateTime> onDateSelect;
 
   @override
@@ -19,7 +19,7 @@ class DateTimePicker extends StatefulWidget {
 }
 
 class _DateTimePickerState extends State<DateTimePicker> {
-  String _date;
+  String? _date;
   DateService dateService = DateService();
 
   @override
@@ -41,8 +41,8 @@ class _DateTimePickerState extends State<DateTimePicker> {
                   Colors.white.withOpacity(0.0)),
             ),
             onPressed: () {
-              DatePicker.showDatePicker(context,
-                  theme: DatePickerTheme(
+              dateTimePicker.DatePicker.showDatePicker(context,
+                  theme: dateTimePicker.DatePickerTheme(
                     backgroundColor: datePickerColor,
                     doneStyle: TextStyle(color: datePickerItem),
                     itemStyle: TextStyle(color: datePickerItem),

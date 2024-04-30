@@ -4,7 +4,7 @@ import 'package:rune_of_the_day/app/business_logic/globals/globals.dart'
 import 'package:rune_of_the_day/app/constants/enums/enums.dart';
 
 class TabItemData {
-  TabItemData({@required this.title, @required this.icon});
+  TabItemData({required this.title, required this.icon});
 
   final String title;
   final IconData icon;

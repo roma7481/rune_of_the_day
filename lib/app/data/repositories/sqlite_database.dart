@@ -10,10 +10,10 @@ class DBService {
   static final DBService instance = DBService._privateConstructor();
 
   Future<T> getEntryById<T>({
-    @required int id,
-    @required String column,
-    @required String tableName,
-    @required T Function(Map<String, dynamic> data, int id) builder,
+    required int? id,
+    required String column,
+    required String tableName,
+    required T Function(Map<String, dynamic> data, int? id) builder,
   }) async {
     return _lock.synchronized(() async {
       var db = DatabaseHelper.instance;
@@ -26,10 +26,10 @@ class DBService {
   }
 
   Future<List<T>> getEntriesForColumns<T>({
-    @required String column1,
-    @required String column2,
-    @required String tableName,
-    @required T Function(Map<String, dynamic> row) builder,
+    required String column1,
+    required String column2,
+    required String tableName,
+    required T Function(Map<String, dynamic> row) builder,
   }) async {
     return _lock.synchronized(() async {
       var db = DatabaseHelper.instance;

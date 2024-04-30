@@ -9,18 +9,18 @@ class CardDescriptionReady extends CardDescriptionState {
   final TarotCard card;
   final Note note;
 
-  CardDescriptionReady({@required this.note, @required this.card});
+  CardDescriptionReady({required this.note, required this.card});
 }
 
 class CardDescriptionNoteUpdate extends CardDescriptionState {
   final TarotCard card;
   final Note note;
 
-  CardDescriptionNoteUpdate({@required this.note, @required this.card});
+  CardDescriptionNoteUpdate({required this.note, required this.card});
 }
 
 class CardDescriptionError extends CardDescriptionState {
   final Exception exception;
 
-  CardDescriptionError({@required this.exception});
+  CardDescriptionError({required this.exception});
 }

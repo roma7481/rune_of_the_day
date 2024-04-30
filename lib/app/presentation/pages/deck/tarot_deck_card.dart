@@ -7,7 +7,7 @@ import 'package:rune_of_the_day/app/services/ads/ad_service.dart';
 import 'deck_card_descr_page.dart';
 
 class TarotDeckCardWidget extends StatelessWidget {
-  TarotDeckCardWidget({@required this.card});
+  TarotDeckCardWidget({required this.card});
 
   final TarotDeckCard card;
 
@@ -38,7 +38,7 @@ class TarotDeckCardWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
-                    card.name,
+                    card.name!,
                     textAlign: TextAlign.center,
                     style: cardDeckTextStyle,
                   ),
@@ -51,7 +51,7 @@ class TarotDeckCardWidget extends StatelessWidget {
     );
   }
 
-  void _navigateToRoute(BuildContext context, int cardId) async{
+  void _navigateToRoute(BuildContext context, int? cardId) async{
     await AdManager.showInterstitial();
 
     Navigator.of(context, rootNavigator: true).push(new MaterialPageRoute(

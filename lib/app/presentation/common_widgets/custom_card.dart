@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rune_of_the_day/app/constants/styles/colours.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({Key key, @required this.child}) : super(key: key);
+  const CustomCard({Key? key, required this.child}) : super(key: key);
 
   final Widget child;
 

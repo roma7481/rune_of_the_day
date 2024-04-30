@@ -10,7 +10,7 @@ void displayLanguageDialog(BuildContext context) {
 }
 
 void _showLanguageDialog(BuildContext context) {
-  if (context.read<LanguageCubit>().state.firsTimeAppVisit) {
+  if (context.read<LanguageCubit>().state.firsTimeAppVisit!) {
     showCupertinoModalPopup(
         context: context, builder: (context) => LanguageDialog());
   }

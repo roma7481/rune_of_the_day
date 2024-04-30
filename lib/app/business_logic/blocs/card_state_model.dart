@@ -23,13 +23,13 @@ class CardModel {
   final Note note;
 
   CardModel copyWith(
-    bool isForwardEnabled,
-    bool isBackEnabled,
-    CardType cardType,
-    String cardName,
-    TarotCard card,
-    String header,
-    Note note,
+    bool? isForwardEnabled,
+    bool? isBackEnabled,
+    CardType? cardType,
+    String? cardName,
+    TarotCard? card,
+    String? header,
+    Note? note,
   ) {
     return CardModel(
       isForwardEnabled: isForwardEnabled ?? this.isForwardEnabled,
@@ -44,22 +44,22 @@ class CardModel {
   bool get isHeaderVisible => cardType != CardType.closed;
 
   Widget get image {
-    final String imagePath =
+    final String? imagePath =
         cardType == CardType.closed ? cardBack : card.image;
 
     if (card.isFlipped != null && card.isFlipped) {
       return new RotationTransition(
         turns: new AlwaysStoppedAnimation(180 / 360),
-        child: Image.asset(imagePath),
+        child: Image.asset(imagePath!),
       );
     }
 
-    return Image.asset(imagePath);
+    return Image.asset(imagePath!);
   }
 
   String get descriptionHeader => card.descriptionCategory.header;
 
-  String get descriptionContent => card.descriptionCategory.description;
+  String? get descriptionContent => card.descriptionCategory.description;
 
   String get descriptionImage => card.descriptionCategory.icon;
 }
