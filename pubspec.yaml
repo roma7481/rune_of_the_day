@@ -34,7 +34,7 @@ dependencies:
   sqflite: ^2.0.0+2
   shared_preferences: ^2.0.3
   auto_size_text: ^3.0.0
-  google_fonts: ^4.0.3
+  google_fonts: ^4.0.5
   share: ^2.0.4
   provider: ^6.0.3
   url_launcher: ^6.1.5
@@ -47,7 +47,7 @@ dependencies:
   in_app_review: ^2.0.4
   flutter_local_notifications: ^8.2.0
   flutter_native_timezone: ^2.0.0
-  google_mobile_ads: ^2.0.1
+  google_mobile_ads: ^5.0.0
   in_app_purchase: ^3.1.5
   nuts_activity_indicator: ^1.0.0
   firebase_crashlytics: ^3.1.0
@@ -56,7 +56,7 @@ dependencies:
   notification_permissions: ^0.6.1
   cloud_firestore: ^4.5.0
   cached_network_image: ^3.3.1
-  package_info_plus: ^3.0.3
+  package_info_plus: ^8.0.0
   flutter_datetime_picker_plus: ^2.1.0
 
 flutter_icons:
