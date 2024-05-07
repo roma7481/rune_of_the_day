@@ -30,14 +30,13 @@ FlutterLocalNotificationsPlugin();
 Future<void> main() async {
   ///We need to initialize the the widget bindings prior calling to the native code
   WidgetsFlutterBinding.ensureInitialized();
-
-  await AdManager.setup();
-
   ///Connection between the hydrated bloc to the device storage
   ///this is the call to the native code
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: await getApplicationDocumentsDirectory(),
   );
+
+  await AdManager.setup();
 
   await Firebase.initializeApp();
 

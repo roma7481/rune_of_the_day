@@ -13,7 +13,7 @@ class TextSizeCubit extends Cubit<TextSizeState> with HydratedMixin {
 
   TextSizeCubit()
       : super(TextSizeState(textSize: mediumTextSize, buttonId: 1)) {
-    globals.Globals.instance.setTextSize(textSize: this.state.textSize);
+    hydrate();
   }
 
   void emitTextSize(int buttonId) async {
@@ -44,6 +44,7 @@ class TextSizeCubit extends Cubit<TextSizeState> with HydratedMixin {
   @override
   TextSizeState fromJson(Map<String, dynamic> json) {
     TextSizeState _state = TextSizeState.fromJson(json);
+    globals.Globals.instance.setTextSize(textSize: _state.textSize);
     return _state;
   }
 

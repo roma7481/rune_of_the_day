@@ -10,7 +10,9 @@ class RateUsCubit extends Cubit<RateUsState> with HydratedMixin {
           remindLaunches: 8,
           numTimesLaunched: 0,
           shouldShowDialog: false,
-        ));
+        )){
+    hydrate();
+  }
 
   void emitIncreaseAppLaunchedCounter() {
     if (state.doNotShowAgain!) {

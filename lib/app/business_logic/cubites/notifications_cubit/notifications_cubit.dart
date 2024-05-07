@@ -8,7 +8,9 @@ class NotificationsCubit extends Cubit<NotificationsState> with HydratedMixin {
           isAlarmSet: false,
           hours: 8,
           minutes: 30,
-        ));
+        )){
+    hydrate();
+  }
 
   void emitSetAlarmTime(int hours, int minutes) {
     emit(state.copyWith(
